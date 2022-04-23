@@ -14,13 +14,13 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome',[
+    return view('welcome', [
         'title' => 'Requester'
     ]);
 });
 
 Route::get('/requester/details/1', function () {
-    return view('requester.details',[
+    return view('requester.details', [
         'title' => 'Requester - Details',
         'id' => '1',
         'Req_Name' => 'Fathullah Auzan',
@@ -34,7 +34,7 @@ Route::get('/requester/details/1', function () {
 });
 
 Route::get('/agent/details/1', function () {
-    return view('agent.details',[
+    return view('agent.details', [
         'title' => 'Agent - Details',
         'id' => '1',
         'Ag_Name' => 'Muhammad Aliif Gadri',
@@ -43,5 +43,11 @@ Route::get('/agent/details/1', function () {
         'Ag_Address' => 'Gayungsari Timur MGM 14',
         'Ag_No' => '82921201'
 
+    ]);
+});
+
+Route::get("/requester", function () {
+    return view('requester.list', [
+        'title' => 'Requester'
     ]);
 });
