@@ -57,3 +57,10 @@ Route::get("/requester/add", function(){
         'title' => 'Requester/Tambah Requester'
     ]);
 });
+
+Route::get('/requester/add_ticket', function () {
+    return view('requester.create_ticket', [
+        'title' => 'List Tickets / Buat Ticket'
+
+    ]);
+});
