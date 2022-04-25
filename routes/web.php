@@ -57,3 +57,9 @@ Route::get("/requester/add", function(){
         'title' => 'Requester/Tambah Requester'
     ]);
 });
+
+Route::get("/agent/add", function(){
+    return view('agent.add',[
+        'title' => 'Agent/Tambah Agent'
+    ]);
+});
