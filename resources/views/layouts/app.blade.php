@@ -32,8 +32,6 @@
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
-
-
   <!-- Navbar -->
   <nav class="main-header navbar navbar-expand navbar-primary navbar-dark">
     <!-- Left navbar links -->
@@ -42,7 +40,7 @@
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="/" class="nav-link">{{ $title }}</a>
+        <a href="" class="nav-link">{{ $title }}</a>
         </li>
       
     </ul>
@@ -75,7 +73,7 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item">
-            <a href="/" class="nav-link">
+            <a href="/requester" class="nav-link">
               <i class="nav-icon fas fa-user"></i>
               <p>
                 Requester
@@ -120,7 +118,6 @@
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
-  
   <!-- Control Sidebar -->
   <aside class="control-sidebar control-sidebar-dark">
     <!-- Control sidebar content goes here -->

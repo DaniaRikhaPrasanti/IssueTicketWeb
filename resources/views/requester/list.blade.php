@@ -13,7 +13,7 @@
       <div class="card">
         <!-- /.card-header -->
         <div class="card-body">
-          <a href="" class="btn btn-primary"><i class="fas fa-plus"></i> Tambah Requester</a>
+          <a href="/requester/add" class="btn btn-primary"><i class="fas fa-plus"></i> Tambah Requester</a>
           <table id="myTable" class="table table-bordered table-hover">
             <thead>
             <tr>
