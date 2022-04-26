@@ -46,6 +46,19 @@ Route::get('/agent/details/1', function () {
     ]);
 });
 
+Route::get('/agent/edit/1', function () {
+    return view('agent.edit', [
+        'title' => 'Agent/ Detail / Edit',
+        'id' => '1',
+        'Ag_Name' => 'Muhammad Aliif Gadri',
+        'Ag_Email' => 'aliif1540@gmail.com',
+        'Ag_No' => '08123456789',
+        'Ag_Address' => 'Gayungsari Timur MGM 14',
+        'Ag_No' => '82921201'
+
+    ]);
+});
+
 Route::get("/requester", function () {
     return view('requester.list', [
         'title' => 'Requester'
@@ -67,5 +80,17 @@ Route::get('/requester/add_ticket', function () {
 Route::get("/agent/add", function(){
     return view('agent.add',[
         'title' => 'Agent/Tambah Agent'
+    ]);
+});
+
+Route::get('/ticket/timeline_details/1', function () {
+    return view('ticket.timeline_details', [
+        'title' => 'Ticket/ Details Ticket/ Timeline Details',
+        'id' => '1',
+        'Req_Name' => 'Dania Rikha Prasanti',
+        'Tick_Subj' => 'Tiket subjeknya adalah ',
+        'Tick_Issue' => 'Tiket issuenya adalah',
+        'Tick_Attach' => 'Tiket issuenya adalah',
+
     ]);
 });
