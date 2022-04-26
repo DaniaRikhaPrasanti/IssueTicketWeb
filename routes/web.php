@@ -94,3 +94,14 @@ Route::get('/ticket/timeline_details/1', function () {
 
     ]);
 });
+Route::get('/ticket/timeline_details_done/1', function () {
+    return view('ticket.timeline_details_done', [
+        'title' => 'Ticket/ Details Ticket/ Timeline Details',
+        'id' => '1',
+        'Ag_Name' => 'Dania Rikha Prasanti',
+        'Tick_Subj' => 'Tiket subjeknya adalah ',
+        'Tick_Issue' => 'Kolom response blm di definisikan di ERD',
+        'Tick_Attach' => 'Tiket issuenya adalah',
+
+    ]);
+});
