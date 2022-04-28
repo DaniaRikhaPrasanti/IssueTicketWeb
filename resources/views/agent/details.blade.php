@@ -13,7 +13,7 @@
                         <span class="input-group-text" id="basic-addon1">
                             <i class="fas fa-user"></i>
                         </span>
-                        <input type="text" class="form-control" id="Ag_Name" required value="{{ $Ag_Name }}" ria-label="Username" aria-describedby="basic-addon1">
+                        <input type="text" class="form-control" id="Ag_Name" required value="{{ $Ag_Name }}" ria-label="Username" aria-describedby="basic-addon1" disabled>
                     </div>
                         
                     <label for="Ag_Email" class="form-label">Email : </label>
@@ -22,7 +22,7 @@
                         <span class="input-group-text" id="basic-addon3">
                             <i class="fas fa-envelope"></i>
                         </span>
-                        <input type="text" class="form-control" id="Ag_Email" required value="{{ $Ag_Email }}" ria-label="Username" aria-describedby="basic-addon3">
+                        <input type="text" class="form-control" id="Ag_Email" required value="{{ $Ag_Email }}" ria-label="Username" aria-describedby="basic-addon3" disabled>
                     </div>
 
                     
@@ -32,7 +32,7 @@
                         <span class="input-group-text" id="basic-addon4">
                             <i class="fas fa-phone"></i>
                         </span>
-                        <input type="text" class="form-control" id="Ag_No" required value="{{ $Ag_No }}" ria-label="Username" aria-describedby="basic-addon4">
+                        <input type="text" class="form-control" id="Ag_No" required value="{{ $Ag_No }}" ria-label="Username" aria-describedby="basic-addon4" disabled>
                     </div>
 
                     
@@ -42,12 +42,20 @@
                         <span class="input-group-text" id="basic-addon5">
                             <i class="fas fa-home"></i>
                         </span>
-                        <input type="text" class="form-control" id="Ag_Address" required value="{{ $Ag_Address }}" ria-label="Username" aria-describedby="basic-addon5">
+                        <input type="text" class="form-control" id="Ag_Address" required value="{{ $Ag_Address }}" ria-label="Username" aria-describedby="basic-addon5" disabled>
+                    </div>
+
+                    <div class="checkbox mb-3">
+                        <label>
+                          <input type="checkbox" value="true"> Agen termasuk team
+                        </label>
                     </div>
 
                     <div class="text-right mt-4">
                         <button type="button" class="btn btn-danger">Hapus</button>
-                        <button type="button" class="btn btn-primary mx-2">Edit</button>
+                        <a href="/agent/details/edit/1">
+                            <button type="button" class="btn btn-primary mx-2">Edit</button>
+                        </a>
                     </div>
                 </form>
             </div>
