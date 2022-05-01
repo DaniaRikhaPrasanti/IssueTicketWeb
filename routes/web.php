@@ -96,3 +96,16 @@ Route::get("/agent/add", function(){
         'title' => 'Agent/Tambah Agent'
     ]);
 });
+
+Route::get('/ticket/list_tickets', function () {
+    return view('ticket.list_tickets', [
+        'title' => 'List Tickets'
+    ]);
+});
+
+Route::get('/settings/setting_admin', function () {
+    return view('settings.setting_admin', [
+        'title' => 'Setting'
+    ]);
+});
+
