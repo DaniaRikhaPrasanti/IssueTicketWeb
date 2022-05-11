@@ -47,12 +47,12 @@
 
                     <div class="checkbox mb-3">
                         <label>
-                          <input type="checkbox" value=""> Agen termasuk team
+                          <input type="checkbox" value="true"> Agen termasuk team
                         </label>
                     </div>
 
                     <div class="mt-4">
-                        <a href="/agent" class="btn btn-outline-danger ">Cancel</a>
+                        <a href="/agent/details/1" class="btn btn-outline-danger ">Cancel</a>
                         <!-- Button trigger modal -->
                         <button type="button" class="btn btn-outline-primary mx-2 float-right" data-bs-toggle="modal" data-bs-target="#add">
                             Save

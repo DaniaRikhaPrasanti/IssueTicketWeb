@@ -33,6 +33,20 @@ Route::get('/requester/details/1', function () {
     ]);
 });
 
+Route::get('/requester/details/edit/1', function () {
+    return view('requester.edit', [
+        'title' => 'Requester - Edit',
+        'id' => '1',
+        'Req_Name' => 'Fathullah Auzan',
+        'Req_Email' => 'auzanganteng@gmail.com',
+        'Req_Jabatan' => 'UI/UX Designer',
+        'Req_No' => '08123456789',
+        'Req_Address' => 'Rungkut Asri Timur Gang 8',
+        'Comp_No' => '82921201'
+
+    ]);
+});
+
 Route::get('/agent/details/1', function () {
     return view('agent.details', [
         'title' => 'Agent - Details',
@@ -46,9 +60,9 @@ Route::get('/agent/details/1', function () {
     ]);
 });
 
-Route::get('/agent/edit/1', function () {
+Route::get('/agent/details/edit/1', function () {
     return view('agent.edit', [
-        'title' => 'Agent/ Detail / Edit',
+        'title' => 'Agent - Edit',
         'id' => '1',
         'Ag_Name' => 'Muhammad Aliif Gadri',
         'Ag_Email' => 'aliif1540@gmail.com',
@@ -65,8 +79,8 @@ Route::get("/requester", function () {
     ]);
 });
 
-Route::get("/requester/add", function(){
-    return view('requester.add',[
+Route::get("/requester/add", function () {
+    return view('requester.add', [
         'title' => 'Requester/Tambah Requester'
     ]);
 });
@@ -77,37 +91,55 @@ Route::get('/requester/add_ticket', function () {
     ]);
 });
 
-Route::get("/agent/add", function(){
-    return view('agent.add',[
+Route::get("/agent", function () {
+    return view('agent.list', [
+        'title' => 'Agent/List'
+    ]);
+});
+Route::get("/agent/add", function () {
+    return view('agent.add', [
         'title' => 'Agent/Tambah Agent'
     ]);
 });
 
-Route::get('/ticket/timeline_details/1', function () {
-    return view('ticket.timeline_details', [
-        'title' => 'Ticket/ Details Ticket/ Timeline Details',
-        'id' => '1',
-        'Req_Name' => 'Dania Rikha Prasanti',
-        'Tick_Subj' => 'Tiket subjeknya adalah ',
-        'Tick_Issue' => 'Tiket issuenya adalah',
-        'Tick_Attach' => 'Tiket issuenya adalah',
+// Route::get('/ticket/done', function () {
+//     return view('ticket.timeline_details_done', [
+//         'title' => 'List Tickets'
+//     ]);
+// });
 
-    ]);
-});
-Route::get('/ticket/timeline_details_done/1', function () {
-    return view('ticket.timeline_details_done', [
-        'title' => 'Ticket/ Details Ticket/ Timeline Details',
-        'id' => '1',
-        'Ag_Name' => 'Dania Rikha Prasanti',
-        'Tick_Subj' => 'Tiket subjeknya adalah ',
-        'Tick_Issue' => 'Kolom response blm di definisikan di ERD',
-        'Tick_Attach' => 'Tiket issuenya adalah',
 
+Route::get('/ticket/close_ticket', function () {
+    return view('ticket.close_ticket', [
+        'title' => 'List Tickets'
     ]);
 });
 
+Route::get('/ticket/list_tickets', function () {
+    return view('ticket.list_tickets', [
+        'title' => 'List Tickets'
+    ]);
+});
 Route::get('/ticket/details_ticket', function(){
     return view('ticket/detail_ticket',[
         'title' => 'List Tickets/Detail Ticket'
     ]);
 });
+Route::get('/settings/setting_admin', function () {
+    return view('settings.setting_admin', [
+        'title' => 'Setting'
+    ]);
+});
+<<<<<<< HEAD
+Route::get('/ticket/details_ticket', function(){
+    return view('ticket/detail_ticket',[
+        'title' => 'List Tickets/Detail Ticket'
+    ]);
+});
+=======
+Route::get('/settings/setting_admin', function () {
+    return view('settings.setting_admin', [
+        'title' => 'Setting'
+    ]);
+});
+>>>>>>> bda31343dda9906827d79ada23a5e8049b301419
