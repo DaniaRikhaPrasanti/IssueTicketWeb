@@ -102,6 +102,19 @@ Route::get("/agent/add", function () {
     ]);
 });
 
+// Route::get('/ticket/done', function () {
+//     return view('ticket.timeline_details_done', [
+//         'title' => 'List Tickets'
+//     ]);
+// });
+
+
+Route::get('/ticket/close_ticket', function () {
+    return view('ticket.close_ticket', [
+        'title' => 'List Tickets'
+    ]);
+});
+
 Route::get('/ticket/list_tickets', function () {
     return view('ticket.list_tickets', [
         'title' => 'List Tickets'
