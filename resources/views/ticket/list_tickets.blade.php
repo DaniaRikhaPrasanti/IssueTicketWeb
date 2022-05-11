@@ -13,51 +13,60 @@
       <div class="card">
         <!-- /.card-header -->
         <div class="card-body">
-
-          <a href="#" class="btn btn-primary"><i class="fas fa-plus"></i> Buat Ticket</a>
-
-          {{-- <div class="container">
-            <div class="row justify-content-start">
-                <div class="col-1">
-                  Status
+            <!-- Filter & Add Button -->
+            <div class="d-flex justify-content-between my-4" >
+                <div class="">
+                    <a href="#" class="btn btn-primary"><i class="fas fa-plus"></i> Buat Ticket</a>
                 </div>
-                <div class="col-1">
-                    <div class="btn-group">
-                        <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            All
-                        </button>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item" href="#">Action</a>
-                            <a class="dropdown-item" href="#">Another action</a>
-                            <a class="dropdown-item" href="#">Something else here</a>
+                <div class="">
+                    <div class="d-flex justify-content-start">
+                        <div class="mx-3">
+                            Status
+                        </div>
+                        <div class="">
+                            <div class="btn-group">
+                                <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    All
+                                </button>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                    <a class="dropdown-item" href="#">Action</a>
+                                    <a class="dropdown-item" href="#">Another action</a>
+                                    <a class="dropdown-item" href="#">Something else here</a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-          </div>
-
-
-          <div class="container">
-            <div class="row justify-content-start">
-                <div class="col-1">
-                  Type
-                </div>
-                <div class="col-1">
-                    <div class="btn-group">
-                        <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            All
-                        </button>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item" href="#">Action</a>
-                            <a class="dropdown-item" href="#">Another action</a>
-                            <a class="dropdown-item" href="#">Something else here</a>
+                <div class="">
+                    <div class="d-flex justify-content-start">
+                        <div class="mx-3">
+                            Type
+                        </div>
+                        <div class="">
+                            <div class="btn-group">
+                                <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    All
+                                </button>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                    <a class="dropdown-item" href="#">Action</a>
+                                    <a class="dropdown-item" href="#">Another action</a>
+                                    <a class="dropdown-item" href="#">Something else here</a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
+                <div class="">
+                    <form class="form-inline">
+                        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                    </form>
+                </div>
             </div>
-          </div> --}}
 
-          <table id="myTable" class="table table-bordered table-hover">
+
+
+          <table id="" class="table table-bordered table-hover">
             <thead>
             <tr>
               <th>Date</th>
