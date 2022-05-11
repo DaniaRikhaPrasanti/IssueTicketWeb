@@ -11,16 +11,16 @@
       <div class="card">
         <!-- /.card-header -->
         <div class="card-body">
-          <a href="/requester/add" class="btn btn-primary"><i class="fas fa-plus"></i> Tambah Requester</a>
+          <a href="/agent/add" class="btn btn-primary"><i class="fas fa-plus"></i> Tambah Agent</a>
           <table id="myTable" class="table table-bordered table-hover">
             <thead>
             <tr>
               <th>Id</th>
               <th>Name</th>
-              <th>Jabatan</th>
               <th>Email</th>
               <th>Phone Number</th>
               <th>Address</th>
+              <th>Team</th>
               <th>Action</th>
             </tr>
             </thead>
@@ -28,10 +28,10 @@
             <tr>
               <td>1</td>
               <td>Dian</td>
-              <td>Programmer</td>
               <td>dian@gmail.com</td>
               <td>081234567890</td>
               <td>Jl. Kebon Jeruk No.1</td>
+              <td class="text-success">True</td>
               <td>
                 <div class="btn-group dropend">
                   <button type="button" class="btn btn-link" data-bs-toggle="dropdown" aria-expanded="false">
@@ -61,7 +61,6 @@
 <script src="{{ url("admin") }}/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
 <script src="{{ url("admin") }}/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
 <script src="{{ url("admin") }}/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
-
 
 <script>  
     $('#myTable').DataTable({

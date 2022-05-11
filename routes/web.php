@@ -79,8 +79,8 @@ Route::get("/requester", function () {
     ]);
 });
 
-Route::get("/requester/add", function(){
-    return view('requester.add',[
+Route::get("/requester/add", function () {
+    return view('requester.add', [
         'title' => 'Requester/Tambah Requester'
     ]);
 });
@@ -91,8 +91,13 @@ Route::get('/requester/add_ticket', function () {
     ]);
 });
 
-Route::get("/agent/add", function(){
-    return view('agent.add',[
+Route::get("/agent", function () {
+    return view('agent.list', [
+        'title' => 'Agent/List'
+    ]);
+});
+Route::get("/agent/add", function () {
+    return view('agent.add', [
         'title' => 'Agent/Tambah Agent'
     ]);
 });
@@ -108,4 +113,3 @@ Route::get('/settings/setting_admin', function () {
         'title' => 'Setting'
     ]);
 });
-
