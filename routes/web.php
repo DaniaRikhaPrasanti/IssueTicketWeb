@@ -120,26 +120,15 @@ Route::get('/ticket/list_tickets', function () {
         'title' => 'List Tickets'
     ]);
 });
+
 Route::get('/ticket/details_ticket', function(){
     return view('ticket/detail_ticket',[
         'title' => 'List Tickets/Detail Ticket'
     ]);
 });
+
 Route::get('/settings/setting_admin', function () {
     return view('settings.setting_admin', [
         'title' => 'Setting'
     ]);
 });
-<<<<<<< HEAD
-Route::get('/ticket/details_ticket', function(){
-    return view('ticket/detail_ticket',[
-        'title' => 'List Tickets/Detail Ticket'
-    ]);
-});
-=======
-Route::get('/settings/setting_admin', function () {
-    return view('settings.setting_admin', [
-        'title' => 'Setting'
-    ]);
-});
->>>>>>> bda31343dda9906827d79ada23a5e8049b301419
