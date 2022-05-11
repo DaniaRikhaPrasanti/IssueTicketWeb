@@ -105,3 +105,9 @@ Route::get('/ticket/timeline_details_done/1', function () {
 
     ]);
 });
+
+Route::get('/ticket/details_ticket', function(){
+    return view('ticket/detail_ticket',[
+        'title' => 'List Tickets/Detail Ticket'
+    ]);
+});
