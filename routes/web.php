@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\RequesterController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,6 +19,9 @@ Route::get('/', function () {
         'title' => 'Requester'
     ]);
 });
+
+Route::get('/requester', [RequesterController::class, 'index']);
+
 
 Route::get('/requester/details/1', function () {
     return view('requester.details', [
@@ -73,11 +77,11 @@ Route::get('/agent/details/edit/1', function () {
     ]);
 });
 
-Route::get("/requester", function () {
-    return view('requester.list', [
-        'title' => 'Requester'
-    ]);
-});
+// Route::get("/requester", function () {
+//     return view('requester.list', [
+//         'title' => 'Requester'
+//     ]);
+// });
 
 Route::get("/requester/add", function () {
     return view('requester.add', [
