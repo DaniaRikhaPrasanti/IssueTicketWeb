@@ -121,7 +121,7 @@ Route::get('/ticket/list_tickets', function () {
     ]);
 });
 
-Route::get('/ticket/details_ticket', function(){
+Route::get('/ticket/list_tickets/details_ticket', function(){
     return view('ticket/detail_ticket',[
         'title' => 'List Tickets/Detail Ticket'
     ]);
