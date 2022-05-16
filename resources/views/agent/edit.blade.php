@@ -9,7 +9,6 @@
             <div class="form">
                 <form method="POST" action="/agent/details/edit/1" >
                     @csrf
-                    <input type="hidden" name="Ag_ID" value="1">
                     <label for="Ag_Name" class="form-label">Nama : </label>
                     <div class="input-group mb-3">
                         <span class="input-group-text" id="basic-addon1">

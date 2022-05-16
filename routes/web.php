@@ -78,8 +78,8 @@ Route::get('/agent/details/edit/1', function () {
 
     ]);
 });
-Route::post('/agent/details/edit/1', function (Request $request) {
-    DB::table('agent')->where('Ag_ID', '=', $request->Ag_ID)->update([
+Route::post('/agent/details/edit/{id}', function (Request $request, $id) {
+    DB::table('agent')->where('Ag_ID', '=', $id)->update([
         'Ag_Name' => $request->Ag_Name,
         'Ag_Email' => $request->Ag_Email,
         'Ag_No' => $request->Ag_No,
