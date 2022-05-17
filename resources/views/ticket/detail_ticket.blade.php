@@ -34,7 +34,8 @@
         <div class="card-body">
             <div class="container mb-3 col-10 col-md-12">
                 <h5>Timeline</h5>
-                    <ul class="timeline mt-2">
+                    <ul class="timeline mt-2
+                    ">
                         <li>
                             <div class="timeline-badge bg-danger">
                                 <small class="text-light">Pending</small>
