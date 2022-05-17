@@ -141,13 +141,8 @@ Route::get('/ticket/list_tickets', function () {
     ]);
 });
 
-<<<<<<< HEAD
 Route::get('/ticket/list_tickets/details_ticket', function(){
     return view('ticket/detail_ticket',[
-=======
-Route::get('/ticket/details_ticket', function () {
-    return view('ticket/detail_ticket', [
->>>>>>> 929e1a5ffb9b5a9f1bf08d0b18db0f69d5167543
         'title' => 'List Tickets/Detail Ticket'
     ]);
 });
