@@ -34,8 +34,6 @@
                         @enderror
                     </div>
 
-                    
-    
                     <label for="Req_No" class="form-label">Phone Number </label>
                     <div class="input-group mb-3">
                         <span class="input-group-text" id="basic-addon4">

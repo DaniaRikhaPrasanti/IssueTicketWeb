@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\RequesterController;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,6 +21,9 @@ Route::get('/', function () {
         'title' => 'Requester'
     ]);
 });
+
+Route::get('/requester', [RequesterController::class, 'index']);
+
 
 Route::get('/requester/details/1', function () {
     return view('requester.details', [
@@ -72,12 +78,22 @@ Route::get('/agent/details/edit/1', function () {
 
     ]);
 });
-
-Route::get("/requester", function () {
-    return view('requester.list', [
-        'title' => 'Requester'
+Route::post('/agent/details/edit/{id}', function (Request $request, $id) {
+    DB::table('agent')->where('Ag_ID', '=', $id)->update([
+        'Ag_Name' => $request->Ag_Name,
+        'Ag_Email' => $request->Ag_Email,
+        'Ag_No' => $request->Ag_No,
+        'Ag_Address' => $request->Ag_Address,
+        'Team_Status' => $request->Team_Status
     ]);
+    return back();
 });
+
+// Route::get("/requester", function () {
+//     return view('requester.list', [
+//         'title' => 'Requester'
+//     ]);
+// });
 
 Route::get("/requester/add", function () {
     return view('requester.add', [
@@ -101,6 +117,10 @@ Route::get("/agent/add", function () {
         'title' => 'Agent/Tambah Agent'
     ]);
 });
+Route::get("/agent/delete/{id}", function ($id) {
+    DB::table('agent')->where('id', '=', $id)->delete();
+    return back();
+});
 
 // Route::get('/ticket/done', function () {
 //     return view('ticket.timeline_details_done', [
@@ -121,8 +141,13 @@ Route::get('/ticket/list_tickets', function () {
     ]);
 });
 
+<<<<<<< HEAD
 Route::get('/ticket/list_tickets/details_ticket', function(){
     return view('ticket/detail_ticket',[
+=======
+Route::get('/ticket/details_ticket', function () {
+    return view('ticket/detail_ticket', [
+>>>>>>> 929e1a5ffb9b5a9f1bf08d0b18db0f69d5167543
         'title' => 'List Tickets/Detail Ticket'
     ]);
 });
