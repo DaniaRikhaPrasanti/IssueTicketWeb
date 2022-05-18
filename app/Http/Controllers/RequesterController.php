@@ -2,42 +2,98 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\requester;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facedes\Storage;
-use Illuminate\Support\Facades\Auth;
-use DB;
-
 
 class RequesterController extends Controller
 {
-    //
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function index()
     {
-        $requester = DB::table('requester')->get();
-        // $nama = Auth::user()->name;
-
-
-        $data = array(
-            'menu' => 'requester',
-            'requester' => $requester,
-            'submenu' => '',
-        );
-
-        return view('/requester/add',$data); 
+        return view('requester.list',[
+            'title' => 'requester',
+        ]);
     }
 
-    public function insert_requester()
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
     {
-        // $nama = Auth::user()->name;
-        $requester = DB::table('requester')->get();
-
-        $data = array(
-            'menu' => 'requester',
-            'requester' => $requester,
-            'submenu' => '',
-        );
-
-        return view('/requester/list',$data); 
+        return view('requester.add', [
+            'title' => 'Requester',
+        ]);
     }
 
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        $validated = $request->validate([
+            'Req_Name' => 'required|max:255',
+            'Req_Jabatan' => 'required|max:255',
+            'Req_Email' => 'required|email',
+            'Comp_No' => 'required|numeric|min:8',
+            'Req_No' => 'required|numeric|min:8',
+            'Req_Address' => 'required|max:255'
+        ]);
+
+        requester::create($validated);
+        return redirect('/requester')->with('success','Requester has been added!');
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Models\requester  $requester
+     * @return \Illuminate\Http\Response
+     */
+    public function show(requester $requester)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  \App\Models\requester  $requester
+     * @return \Illuminate\Http\Response
+     */
+    public function edit(requester $requester)
+    {
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Models\requester  $requester
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, requester $requester)
+    {
+        //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Models\requester  $requester
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(requester $requester)
+    {
+        //
+    }
 }

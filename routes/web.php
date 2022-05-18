@@ -22,8 +22,7 @@ Route::get('/', function () {
     ]);
 });
 
-Route::get('/requester', [RequesterController::class, 'index']);
-
+Route::resource('/requester', RequesterController::class);
 
 Route::get('/requester/details/1', function () {
     return view('requester.details', [
@@ -90,22 +89,22 @@ Route::post('/agent/details/edit/{id}', function (Request $request, $id) {
 });
 
 // Route::get("/requester", function () {
-//     return view('requester.list', [
+//      return view('requester.list', [
 //         'title' => 'Requester'
+//      ]);
+//  });
+
+// Route::get("/requester/add", function () {
+//     return view('requester.add', [
+//         'title' => 'Requester/Tambah Requester'
 //     ]);
 // });
 
-Route::get("/requester/add", function () {
-    return view('requester.add', [
-        'title' => 'Requester/Tambah Requester'
-    ]);
-});
-
-Route::get('/requester/add_ticket', function () {
-    return view('requester.create_ticket', [
-        'title' => 'List Tickets / Buat Ticket'
-    ]);
-});
+// Route::get('/requester/add_ticket', function () {
+//     return view('requester.create_ticket', [
+//         'title' => 'List Tickets / Buat Ticket'
+//     ]);
+// });
 
 Route::get("/agent", function () {
     return view('agent.list', [

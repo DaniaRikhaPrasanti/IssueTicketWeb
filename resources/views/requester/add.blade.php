@@ -13,7 +13,7 @@
                         <span class="input-group-text" id="basic-addon1">
                             <i class="fas fa-user"></i>
                         </span>
-                        <input type="text" class="form-control @error('Req_Name') is-invalid @enderror" id="Req_Name" required ria-label="Username" aria-describedby="basic-addon1"value="{{ old('Req_Name') }}">
+                        <input type="text" name="Req_Name" class="form-control @error('Req_Name') is-invalid @enderror" id="Req_Name" required ria-label="Username" aria-describedby="basic-addon1"value="{{ old('Req_Name') }}">
                         @error('Req_Name')
                             <div class="invalid-feedback">
                                 {{ $message }}
@@ -27,7 +27,7 @@
                         <span class="input-group-text" id="basic-addon2">
                             <i class="fas fa-suitcase"></i>
                         </span>
-                        <input type="text" class="form-control @error('Req_Jabatan') is-invalid @enderror" id="Req_Jabatan" required  ria-label="Username" aria-describedby="basic-addon2"value="{{ old('Req_Jabatan') }}">
+                        <input type="text" name="Req_Jabatan" class="form-control @error('Req_Jabatan') is-invalid @enderror" id="Req_Jabatan" required  ria-label="Username" aria-describedby="basic-addon2"value="{{ old('Req_Jabatan') }}">
                         @error('Req_Jabatan')
                             <div class="invalid-feedback">
                                 {{ $message }}
@@ -41,22 +41,19 @@
                         <span class="input-group-text" id="basic-addon3">
                             <i class="fas fa-envelope"></i>
                         </span>
-                        <input type="email" class="form-control @error('Req_Email') is-invalid @enderror" id="Req_Email" required ria-label="Username" aria-describedby="basic-addon3"value="{{ old('Req_Email') }}">
+                        <input type="email" name="Req_Email"class="form-control @error('Req_Email') is-invalid @enderror" id="Req_Email" required ria-label="Username" aria-describedby="basic-addon3"value="{{ old('Req_Email') }}">
                         @error('Req_Email')
                             <div class="invalid-feedback">
                                 {{ $message }}
                             </div>
                         @enderror
                     </div>
-
-                    
-    
                     <label for="Req_No" class="form-label">Phone Number </label>
                     <div class="input-group mb-3">
                         <span class="input-group-text" id="basic-addon4">
                             <i class="fas fa-phone"></i>
                         </span>
-                        <input type="tel" class="form-control @error('Req_No') is-invalid @enderror" id="Req_No" required  ria-label="Username" aria-describedby="basic-addon4"value="{{ old('Req_No') }}">
+                        <input type="tel" name="Req_No"class="form-control @error('Req_No') is-invalid @enderror" id="Req_No" required  ria-label="Username" aria-describedby="basic-addon4"value="{{ old('Req_No') }}">
                         @error('Req_No')
                             <div class="invalid-feedback">
                                 {{ $message }}
@@ -71,7 +68,7 @@
                         <span class="input-group-text" id="basic-addon5">
                             <i class="fas fa-home"></i>
                         </span>
-                        <input type="text" class="form-control @error('Req_Address') is-invalid @enderror" id="Req_Address" required ria-label="Username" aria-describedby="basic-addon5" value="{{ old('Req_Address') }}" >
+                        <input type="text" name="Req_Address"class="form-control @error('Req_Address') is-invalid @enderror" id="Req_Address" required ria-label="Username" aria-describedby="basic-addon5" value="{{ old('Req_Address') }}" >
                         @error('Req_Address')
                             <div class="invalid-feedback">
                                 {{ $message }}
@@ -84,7 +81,7 @@
                         <span class="input-group-text" id="basic-addon5">
                             <i class="fas fa-phone"></i>
                         </span>
-                        <input type="tel" class="form-control @error('Comp_No') is-invalid @enderror" id="Comp_No" required ria-label="Username" aria-describedby="basic-addon5" value="{{ old('Comp_No') }}">
+                        <input type="tel" name="Comp_No"class="form-control @error('Comp_No') is-invalid @enderror" id="Comp_No" required ria-label="Username" aria-describedby="basic-addon5" value="{{ old('Comp_No') }}">
                         @error('Comp_No')
                             <div class="invalid-feedback">
                                 {{ $message }}

@@ -11,38 +11,40 @@
       <div class="card">
         <!-- /.card-header -->
         <div class="card-body">
-          <a href="/requester/add" class="btn btn-primary"><i class="fas fa-plus"></i> Tambah Requester</a>
+          <a href="/requester/create" class="btn btn-primary"><i class="fas fa-plus"></i> Tambah Requester</a>
           <table id="myTable" class="table table-bordered table-hover">
             <thead>
-            <tr>
-              <th>Id</th>
-              <th>Name</th>
-              <th>Jabatan</th>
-              <th>Email</th>
-              <th>Phone Number</th>
-              <th>Address</th>
-              <th>Action</th>
-            </tr>
+              <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Jabatan</th>
+                <th>Email</th>
+                <th>Phone Number</th>
+                <th>Address</th>
+                <th>Action</th>
+              </tr>
             </thead>
             <tbody>
-            <tr>
-              <td>1</td>
-              <td>Dian</td>
-              <td>Programmer</td>
-              <td>dian@gmail.com</td>
-              <td>081234567890</td>
-              <td>Jl. Kebon Jeruk No.1</td>
-              <td>
-                <div class="btn-group dropend">
-                  <button type="button" class="btn btn-link" data-bs-toggle="dropdown" aria-expanded="false">
-                    <i class="fas fa-ellipsis-v"></i>
-                  </button>
-                  <ul class="dropdown-menu dropdown-menu-end">
-                    <li><a class="dropdown-item" href="/requester/details/1">Edit</a></li>
-                    <li><a class="dropdown-item" href="#">Delete</a></li>
-                  </ul>
-                </div>
-            </tr>
+              
+              <tr>
+                <td>1</td>
+                <td>Dian</td>
+                <td>Programmer</td>
+                <td>dian@gmail.com</td>
+                <td>081234567890</td>
+                <td>Jl. Kebon Jeruk No.1</td>
+                <td>
+                  <div class="btn-group dropend">
+                    <button type="button" class="btn btn-link" data-bs-toggle="dropdown" aria-expanded="false">
+                      <i class="fas fa-ellipsis-v"></i>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end">
+                      <li><a class="dropdown-item" href="/requester/details/1">Edit</a></li>
+                      <li><a class="dropdown-item" href="#">Delete</a></li>
+                    </ul>
+                  </div>
+              </tr>
+              
             </tbody>
           </table>
         </div>
