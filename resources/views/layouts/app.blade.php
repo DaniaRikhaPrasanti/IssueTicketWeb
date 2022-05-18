@@ -86,7 +86,7 @@
           </li>
           <span class="border-bottom"></span>
           <li class="nav-item mt-2">
-            <a href="/" class="nav-link">
+            <a href="/agent" class="nav-link">
               <i class="nav-icon fas fa-user-secret"></i>
               <p>
                 Agent

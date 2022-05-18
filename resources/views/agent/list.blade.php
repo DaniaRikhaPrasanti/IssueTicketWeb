@@ -25,12 +25,18 @@
             </tr>
             </thead>
             <tbody>
+            @foreach($agent as $data)
             <tr>
-              <td>1</td>
+              <!-- <td>1</td>
               <td>Dian</td>
               <td>dian@gmail.com</td>
               <td>081234567890</td>
-              <td>Jl. Kebon Jeruk No.1</td>
+              <td>Jl. Kebon Jeruk No.1</td> -->
+              <td>{{ $data->Ag_ID }}</td>
+              <td>{{ $data->Ag_Name }}</td>
+              <td>{{ $data->Ag_Email }}</td>
+              <td>{{ $data->Ag_No }}</td>
+              <td>{{ $data->Ag_Address }}</td>
               <td class="text-success">True</td>
               <td>
                 <div class="btn-group dropend">
@@ -38,11 +44,12 @@
                     <i class="fas fa-ellipsis-v"></i>
                   </button>
                   <ul class="dropdown-menu dropdown-menu-end">
-                    <li><a class="dropdown-item" href="/agent/details/1">Edit</a></li>
+                    <li><a class="dropdown-item" href="/agent/edit/{{ $data->Ag_ID }}">Edit</a></li>
                     <li><a class="dropdown-item" href="/agent/delete/1">Delete</a></li>
                   </ul>
                 </div>
             </tr>
+            @endforeach
             </tbody>
           </table>
         </div>

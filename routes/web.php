@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RequesterController;
+use App\Http\Controllers\AgentController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -22,7 +23,17 @@ Route::get('/', function () {
     ]);
 });
 
-Route::get('/requester', [RequesterController::class, 'index']);
+Route::get('/requester', [RequesterController::class, 'index']); //menampilkan list data requester 
+
+
+
+
+//Route Agent
+Route::get('/agent', [AgentController::class, 'index']); //menampilkan list data agent 
+Route::get('/agent/add', [AgentController::class, 'add_agent']);
+Route::post('/agent/insert/', [AgentController::class, 'insert_agent']);
+Route::get('/agent/edit/{Ag_ID}', [AgentController::class, 'edit_agent']);
+Route::post('/agent/update', [AgentController::class, 'update_agent']);
 
 
 Route::get('/requester/details/1', function () {
@@ -78,16 +89,16 @@ Route::get('/agent/details/edit/1', function () {
 
     ]);
 });
-Route::post('/agent/details/edit/{id}', function (Request $request, $id) {
-    DB::table('agent')->where('Ag_ID', '=', $id)->update([
-        'Ag_Name' => $request->Ag_Name,
-        'Ag_Email' => $request->Ag_Email,
-        'Ag_No' => $request->Ag_No,
-        'Ag_Address' => $request->Ag_Address,
-        'Team_Status' => $request->Team_Status
-    ]);
-    return back();
-});
+// Route::post('/agent/details/edit/{id}', function (Request $request, $id) {
+//     DB::table('agent')->where('Ag_ID', '=', $id)->update([
+//         'Ag_Name' => $request->Ag_Name,
+//         'Ag_Email' => $request->Ag_Email,
+//         'Ag_No' => $request->Ag_No,
+//         'Ag_Address' => $request->Ag_Address,
+//         'Team_Status' => $request->Team_Status
+//     ]);
+//     return back();
+// });
 
 // Route::get("/requester", function () {
 //     return view('requester.list', [
@@ -107,16 +118,17 @@ Route::get('/requester/add_ticket', function () {
     ]);
 });
 
-Route::get("/agent", function () {
-    return view('agent.list', [
-        'title' => 'Agent/List'
-    ]);
-});
-Route::get("/agent/add", function () {
-    return view('agent.add', [
-        'title' => 'Agent/Tambah Agent'
-    ]);
-});
+// Route::get("/agent", function () {
+//     return view('agent.list', [
+//         'title' => 'Agent/List'
+//     ]);
+// });
+
+// Route::get("/agent/add", function () {
+//     return view('agent.add', [
+//         'title' => 'Agent/Tambah Agent'
+//     ]);
+// });
 Route::get("/agent/delete/{id}", function ($id) {
     DB::table('agent')->where('id', '=', $id)->delete();
     return back();

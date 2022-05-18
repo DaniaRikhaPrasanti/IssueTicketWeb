@@ -7,8 +7,16 @@
             <h3 class="mt-4">Edit Agent</h3>
             <hr>
             <div class="form">
-                <form method="POST" action="/agent/details/edit/1" >
+                <form method="POST" action="/agent/update/" >
                     @csrf
+                    <label for="Ag_ID" class="form-label">Nama : </label>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1">
+                            <i class="fas fa-user"></i>
+                        </span>
+                        <input type="text" class="form-control" id="Ag_ID" name="Ag_ID" value="{{ $Ag_ID }}" ria-label="Username" aria-describedby="basic-addon1">
+                    </div>
+
                     <label for="Ag_Name" class="form-label">Nama : </label>
                     <div class="input-group mb-3">
                         <span class="input-group-text" id="basic-addon1">
