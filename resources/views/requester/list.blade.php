@@ -25,26 +25,38 @@
               </tr>
             </thead>
             <tbody>
-              
-              <tr>
-                <td>1</td>
-                <td>Dian</td>
-                <td>Programmer</td>
-                <td>dian@gmail.com</td>
-                <td>081234567890</td>
-                <td>Jl. Kebon Jeruk No.1</td>
+              @foreach ($requests as $requester)
+              <tr >
+                <td>{{ $loop->iteration }}</td>
+                <td>{{ $requester->Req_Name }}</td>
+                <td>{{ $requester->Req_Jabatan }}</td>
+                <td>{{ $requester->Req_Email }}</td>
+                <td>{{ $requester->Comp_No }}</td>
+                <td>{{ $requester->Req_No }}</td>
+                <td>{{ $requester->Req_Address }}</td>
                 <td>
                   <div class="btn-group dropend">
                     <button type="button" class="btn btn-link" data-bs-toggle="dropdown" aria-expanded="false">
                       <i class="fas fa-ellipsis-v"></i>
                     </button>
                     <ul class="dropdown-menu dropdown-menu-end">
-                      <li><a class="dropdown-item" href="/requester/details/1">Edit</a></li>
-                      <li><a class="dropdown-item" href="#">Delete</a></li>
+                      <li>
+                        <a href="/requester/{{ $requester->id }}" class="dropdown-item">Read</a>
+                      </li>
+                      <li>
+                        <a href="/requester/{{ $requester->id }}/edit" class="dropdown-item">Edit</a>
+                      </li>
+                      <li>
+                        <form action="/requester/{{ $requester->id }}" method="post">
+                          @csrf
+                          @method('delete')
+                          <button class="dropdown-item" onclick="return confirm('Anda ingin menghapus Requester?')">Delete</button>
+                        </form>
+                      </li>
                     </ul>
                   </div>
               </tr>
-              
+              @endforeach
             </tbody>
           </table>
         </div>

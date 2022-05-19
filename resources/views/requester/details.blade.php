@@ -13,7 +13,7 @@
                         <span class="input-group-text" id="basic-addon1">
                             <i class="fas fa-user"></i>
                         </span>
-                        <input type="text" class="form-control" id="Req_Name" required value="{{ $Req_Name }}" ria-label="Username" aria-describedby="basic-addon1"  disabled>
+                        <input type="text" class="form-control" name="Req_Name" id="Req_Name" required value="{{ $requester->Req_Name }}" ria-label="Username" aria-describedby="basic-addon1"  disabled>
                     </div>
 
     
@@ -22,7 +22,7 @@
                         <span class="input-group-text" id="basic-addon2">
                             <i class="fas fa-suitcase"></i>
                         </span>
-                        <input type="text" class="form-control" id="Req_Jabatan" required value="{{ $Req_Jabatan }}" ria-label="Username" aria-describedby="basic-addon2" disabled>
+                        <input type="text" class="form-control" name="Req_Jabatan" id="Req_Jabatan" required value="{{ $requester->Req_Jabatan }}" ria-label="Username" aria-describedby="basic-addon2" disabled>
                     </div>
                     
     
@@ -32,7 +32,7 @@
                         <span class="input-group-text" id="basic-addon3">
                             <i class="fas fa-envelope"></i>
                         </span>
-                        <input type="text" class="form-control" id="Req_Email" required value="{{ $Req_Email }}" ria-label="Username" aria-describedby="basic-addon3" disabled>
+                        <input type="text" class="form-control" id="Req_Email"  name="Req_Email" required value="{{ $requester->Req_Email }}" ria-label="Username" aria-describedby="basic-addon3" disabled>
                     </div>
 
                     
@@ -43,7 +43,7 @@
                         <span class="input-group-text" id="basic-addon4">
                             <i class="fas fa-phone"></i>
                         </span>
-                        <input type="text" class="form-control" id="Req_No" required value="{{ $Req_No }}" ria-label="Username" aria-describedby="basic-addon4" disabled>
+                        <input type="text" class="form-control" id="Req_No" name="Req_No" required value="{{ $requester->Req_No }}" ria-label="Username" aria-describedby="basic-addon4" disabled>
                     </div>
 
                     
@@ -54,7 +54,7 @@
                         <span class="input-group-text" id="basic-addon5">
                             <i class="fas fa-home"></i>
                         </span>
-                        <input type="text" class="form-control" id="Req_Address" required value="{{ $Req_Address }}" ria-label="Username" aria-describedby="basic-addon5" disabled>
+                        <input type="text" class="form-control" name="Req_Address" id="Req_Address" required value="{{ $requester->Req_Address }}" ria-label="Username" aria-describedby="basic-addon5" disabled>
                     </div>
 
 
@@ -66,14 +66,17 @@
                         <span class="input-group-text" id="basic-addon5">
                             <i class="fas fa-phone"></i>
                         </span>
-                        <input type="text" class="form-control" id="Comp_No" required value="{{ $Comp_No }}" ria-label="Username" aria-describedby="basic-addon5" disabled>
+                        <input type="text" class="form-control" name="Comp_No" id="Comp_No" required value="{{ $requester->Comp_No }}" ria-label="Username" aria-describedby="basic-addon5" disabled>
                     </div>
-                    
-
-
+                    {{-- ERROR DELETE TIDAK BERFUNGSI --}}
                     <div class="text-right mt-4">
-                        <button type="button" class="btn btn-danger">Hapus</button>
-                        <a href="/requester/details/edit/1">
+                        <form action="/requester/{{ $requester->id }}" method="post">
+                            @method('delete')
+                            @csrf
+                            <button type="button" class="btn btn-danger" onclick="return confirm('Anda ingin menghapus Requester?')">Hapus</button>
+                        </form>
+
+                        <a href="/requester/{{ $requester->id }}/edit">
                             <button type="button" class="btn btn-primary mx-2">Edit</button>
                         </a>
                     </div>

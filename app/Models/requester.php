@@ -22,4 +22,6 @@ class requester extends Model
         'Req_No',
         'Req_Address'
     ];
+
+    
 }

@@ -16,6 +16,7 @@ class RequesterController extends Controller
     {
         return view('requester.list',[
             'title' => 'requester',
+            'requests' => requester::all()
         ]);
     }
 
@@ -60,7 +61,11 @@ class RequesterController extends Controller
      */
     public function show(requester $requester)
     {
-        //
+        return view('requester.details', [
+            'title' => 'Requester',
+            'requester' => $requester
+        ]);
+        
     }
 
     /**
@@ -71,7 +76,11 @@ class RequesterController extends Controller
      */
     public function edit(requester $requester)
     {
-        //
+        return view('requester.edit',[
+            'title' => 'requester',
+            'requester' => $requester
+            
+        ]);
     }
 
     /**
@@ -83,7 +92,18 @@ class RequesterController extends Controller
      */
     public function update(Request $request, requester $requester)
     {
-        //
+        $validated = $request->validate([
+            'Req_Name' => 'required|max:255',
+            'Req_Jabatan' => 'required|max:255',
+            'Req_Email' => 'required|email',
+            'Comp_No' => 'required|numeric|min:8',
+            'Req_No' => 'required|numeric|min:8',
+            'Req_Address' => 'required|max:255'
+        ]);
+
+        requester::where('id', $requester->id)
+            ->update($validated);
+        return redirect('/requester');
     }
 
     /**
@@ -94,6 +114,7 @@ class RequesterController extends Controller
      */
     public function destroy(requester $requester)
     {
-        //
+        requester::destroy($requester->id);
+        return redirect('/requester');
     }
 }

@@ -23,43 +23,13 @@ Route::get('/', function () {
     ]);
 });
 Route::resource('/requester', RequesterController::class);
-
-
+Route::get('/requester/{requester:id}', [RequesterController::class, 'show']);
 //Route Agent
 Route::get('/agent', [AgentController::class, 'index']); //menampilkan list data agent 
 Route::get('/agent/add', [AgentController::class, 'add_agent']);
 Route::post('/agent/insert/', [AgentController::class, 'insert_agent']);
 Route::get('/agent/edit/{Ag_ID}', [AgentController::class, 'edit_agent']);
 Route::post('/agent/update', [AgentController::class, 'update_agent']);
-
-
-Route::get('/requester/details/1', function () {
-    return view('requester.details', [
-        'title' => 'Requester - Details',
-        'id' => '1',
-        'Req_Name' => 'Fathullah Auzan',
-        'Req_Email' => 'auzanganteng@gmail.com',
-        'Req_Jabatan' => 'UI/UX Designer',
-        'Req_No' => '08123456789',
-        'Req_Address' => 'Rungkut Asri Timur Gang 8',
-        'Comp_No' => '82921201'
-
-    ]);
-});
-
-Route::get('/requester/details/edit/1', function () {
-    return view('requester.edit', [
-        'title' => 'Requester - Edit',
-        'id' => '1',
-        'Req_Name' => 'Fathullah Auzan',
-        'Req_Email' => 'auzanganteng@gmail.com',
-        'Req_Jabatan' => 'UI/UX Designer',
-        'Req_No' => '08123456789',
-        'Req_Address' => 'Rungkut Asri Timur Gang 8',
-        'Comp_No' => '82921201'
-
-    ]);
-});
 
 Route::get('/agent/details/1', function () {
     return view('agent.details', [
@@ -86,16 +56,16 @@ Route::get('/agent/details/edit/1', function () {
 
     ]);
 });
-// Route::post('/agent/details/edit/{id}', function (Request $request, $id) {
-//     DB::table('agent')->where('Ag_ID', '=', $id)->update([
-//         'Ag_Name' => $request->Ag_Name,
-//         'Ag_Email' => $request->Ag_Email,
-//         'Ag_No' => $request->Ag_No,
-//         'Ag_Address' => $request->Ag_Address,
-//         'Team_Status' => $request->Team_Status
-//     ]);
-//     return back();
-// });
+Route::post('/agent/details/edit/{id}', function (Request $request, $id) {
+    DB::table('agent')->where('Ag_ID', '=', $id)->update([
+        'Ag_Name' => $request->Ag_Name,
+        'Ag_Email' => $request->Ag_Email,
+        'Ag_No' => $request->Ag_No,
+        'Ag_Address' => $request->Ag_Address,
+        'Team_Status' => $request->Team_Status
+    ]);
+    return back();
+});
 
 // Route::get("/requester", function () {
 //      return view('requester.list', [
