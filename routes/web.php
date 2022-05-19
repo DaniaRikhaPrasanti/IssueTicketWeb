@@ -24,6 +24,7 @@ Route::get('/', function () {
 });
 Route::resource('/requester', RequesterController::class);
 Route::get('/requester/{requester:id}', [RequesterController::class, 'show']);
+Route::get('/requester/delete/{id}',[RequesterController::class,'destroyid']);
 //Route Agent
 Route::get('/agent', [AgentController::class, 'index']); //menampilkan list data agent 
 Route::get('/agent/add', [AgentController::class, 'add_agent']);

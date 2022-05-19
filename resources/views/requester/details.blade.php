@@ -70,17 +70,21 @@
                     </div>
                     {{-- ERROR DELETE TIDAK BERFUNGSI --}}
                     <div class="text-right mt-4">
-                        <form action="/requester/{{ $requester->id }}" method="post">
-                            @method('delete')
-                            @csrf
+                        
+                        
+                        
+                        <a href="/requester/delete/{{$requester->id}}">
                             <button type="button" class="btn btn-danger" onclick="return confirm('Anda ingin menghapus Requester?')">Hapus</button>
-                        </form>
-
+                            
+                        </a>
+                        
+                        
                         <a href="/requester/{{ $requester->id }}/edit">
                             <button type="button" class="btn btn-primary mx-2">Edit</button>
                         </a>
                     </div>
                 </form>
+                
             </div>
         </div>
     </div>

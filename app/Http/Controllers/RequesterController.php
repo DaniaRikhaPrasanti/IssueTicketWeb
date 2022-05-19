@@ -117,4 +117,13 @@ class RequesterController extends Controller
         requester::destroy($requester->id);
         return redirect('/requester');
     }
+
+    public function destroyid($id){
+        $requester = requester::findOrFail($id);
+
+        $requester->delete();
+
+        return redirect('/requester')->with('mssg','Project Deleted');
+
+    }
 }
