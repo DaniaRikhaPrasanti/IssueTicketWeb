@@ -15,9 +15,15 @@ class CreateAgentsTable extends Migration
     {
         Schema::create('agents', function (Blueprint $table) {
             $table->id();
+            $table->string('Ag_Name');
+            $table->string('Ag_Email')->unique();
+            $table->string('Ag_No');
+            $table->string('Ag_Address');
+            $table->boolean('Team_Status');
             $table->timestamps();
         });
     }
+
 
     /**
      * Reverse the migrations.

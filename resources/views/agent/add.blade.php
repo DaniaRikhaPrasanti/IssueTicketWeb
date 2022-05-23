@@ -6,27 +6,14 @@
             <h3 class="mt-4">Tambah Agent</h3>
             <hr>
             <div class="form">
-                <form action="/agent/insert/" method="post" enctype="multipart/form-data">
+                <form action="/agent" method="post" enctype="multipart/form-data">
                     @csrf
-                    <label for="Ag_ID" class="form-label">ID</label>
-                    <div class="input-group mb-3">
-                        <span class="input-group-text" id="basic-addon1">
-                            <i class="fas fa-user"></i>
-                        </span>
-                        <input type="text" class="form-control @error('Ag_ID') is-invalid @enderror" id="Ag_ID" required ria-label="Username" aria-describedby="basic-addon1" value="{{ old('Ag_ID') }}">
-                        @error('Ag_ID')
-                            <div class="invalid-feedback">
-                                {{ $message }}
-                            </div>
-                        @enderror
-                    </div>
-
                     <label for="Ag_Name" class="form-label">Name</label>
                     <div class="input-group mb-3">
                         <span class="input-group-text" id="basic-addon1">
                             <i class="fas fa-user"></i>
                         </span>
-                        <input type="text" class="form-control @error('Ag_Name') is-invalid @enderror" id="Ag_Name" required ria-label="Username" aria-describedby="basic-addon1" value="{{ old('Ag_Name') }}">
+                        <input type="text" name="Ag_Name" class="form-control @error('Ag_Name') is-invalid @enderror" id="Ag_Name" required ria-label="Username" aria-describedby="basic-addon1" value="{{ old('Ag_Name') }}">
                         @error('Ag_Name')
                             <div class="invalid-feedback">
                                 {{ $message }}
@@ -39,7 +26,7 @@
                         <span class="input-group-text" id="basic-addon3">
                             <i class="fas fa-envelope"></i>
                         </span>
-                        <input type="email" class="form-control @error('Ag_Email') is-invalid @enderror" id="Ag_Email" required ria-label="Username" aria-describedby="basic-addon3" value="{{ old('Ag_Email') }}">
+                        <input type="email" name="Ag_Email" class="form-control @error('Ag_Email') is-invalid @enderror" id="Ag_Email" required ria-label="Username" aria-describedby="basic-addon3" value="{{ old('Ag_Email') }}">
                         @error('Ag_Email')
                             <div class="invalid-feedback">
                                 {{ $message }}
@@ -52,7 +39,7 @@
                         <span class="input-group-text" id="basic-addon4">
                             <i class="fas fa-phone"></i>
                         </span>
-                        <input type="tel" class="form-control @error('Ag_No') is-invalid @enderror" id="Ag_No" required  ria-label="Username" aria-describedby="basic-addon4" value="{{ old('Ag_No') }}">
+                        <input type="tel" name="Ag_No" class="form-control @error('Ag_No') is-invalid @enderror" id="Ag_No" required  ria-label="Username" aria-describedby="basic-addon4" value="{{ old('Ag_No') }}">
                         @error('Ag_No')
                             <div class="invalid-feedback">
                                 {{ $message }}
@@ -67,7 +54,7 @@
                         <span class="input-group-text" id="basic-addon5">
                             <i class="fas fa-home"></i>
                         </span>
-                        <input type="text" class="form-control @error('Ag_Address') is-invalid @enderror" id="Ag_Address" required ria-label="Username" aria-describedby="basic-addon5" value="{{ old('Ag_Address') }}" >
+                        <input type="text" name="Ag_Address" class="form-control @error('Ag_Address') is-invalid @enderror" id="Ag_Address" required ria-label="Username" aria-describedby="basic-addon5" value="{{ old('Ag_Address') }}" >
                         @error('Ag_Address')
                             <div class="invalid-feedback">
                                 {{ $message }}
@@ -77,7 +64,7 @@
                     
                     <div class="checkbox mb-3">
                         <label>
-                          <input type="checkbox" value=""> Agen termasuk team
+                          <input type="checkbox" id="Team_Status" name="Team_Status" value="1"> Agen termasuk team
                         </label>
                     </div>
 

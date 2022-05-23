@@ -14,7 +14,10 @@ class AgentController extends Controller
      */
     public function index()
     {
-        //
+        $datas = Agent::all();
+        return view('agent.list', [
+            'title' => 'agent',
+        ], compact('datas'));
     }
 
     /**
@@ -24,7 +27,10 @@ class AgentController extends Controller
      */
     public function create()
     {
-        //
+        $model = new Agent;
+        return view('agent.add', [
+            'title' => 'Agent',
+        ], compact('model'));
     }
 
     /**
@@ -35,7 +41,17 @@ class AgentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $validated = $request->validate([
+            'Ag_Name' => 'required|max:255',
+            'Ag_Email' => 'required|email',
+            'Ag_No' => 'required|numeric|min:8',
+            'Ag_Address' => 'required|max:255',
+            'Team_Status' => 'boolean',
+        ]);
+
+        Agent::create($validated);
+        return redirect('/agent')->with('success', 'Agent has been added!');
     }
 
     /**
@@ -47,6 +63,10 @@ class AgentController extends Controller
     public function show(Agent $agent)
     {
         //
+        return view('agent.details', [
+            'title' => 'Agent/Details',
+            'agent' => $agent
+        ]);
     }
 
     /**
@@ -57,7 +77,12 @@ class AgentController extends Controller
      */
     public function edit(Agent $agent)
     {
-        //
+
+        return view('agent.edit', [
+            'title' => 'agent',
+            'agent' => $agent
+
+        ]);
     }
 
     /**
@@ -70,6 +95,17 @@ class AgentController extends Controller
     public function update(Request $request, Agent $agent)
     {
         //
+        $validated = $request->validate([
+            'Ag_Name' => 'required|max:255',
+            'Ag_Email' => 'required|email',
+            'Ag_No' => 'required|numeric|min:8',
+            'Ag_Address' => 'required|max:255',
+            'Team_Status' => 'boolean',
+        ]);
+
+        Agent::where('id', $agent->id)
+            ->update($validated);
+        return redirect('/agent');
     }
 
     /**
@@ -81,5 +117,7 @@ class AgentController extends Controller
     public function destroy(Agent $agent)
     {
         //
+        $agent->delete();
+        return redirect('/agent');
     }
 }

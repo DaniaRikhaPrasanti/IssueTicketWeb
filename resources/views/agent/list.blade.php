@@ -11,7 +11,7 @@
       <div class="card">
         <!-- /.card-header -->
         <div class="card-body">
-          <a href="/agent/add" class="btn btn-primary"><i class="fas fa-plus"></i> Tambah Agent</a>
+          <a href="/agent/create" class="btn btn-primary"><i class="fas fa-plus"></i> Tambah Agent</a>
           <table id="myTable" class="table table-bordered table-hover">
             <thead>
             <tr>
@@ -25,31 +25,48 @@
             </tr>
             </thead>
             <tbody>
-            @foreach($agent as $data)
+            @foreach($datas as $key=>$value)
             <tr>
               <!-- <td>1</td>
               <td>Dian</td>
               <td>dian@gmail.com</td>
               <td>081234567890</td>
               <td>Jl. Kebon Jeruk No.1</td> -->
-              <td>{{ $data->Ag_ID }}</td>
-              <td>{{ $data->Ag_Name }}</td>
-              <td>{{ $data->Ag_Email }}</td>
-              <td>{{ $data->Ag_No }}</td>
-              <td>{{ $data->Ag_Address }}</td>
-              <td class="text-success">True</td>
+
+              <td>{{ $value->id}}</td>
+              <td>{{ $value->Ag_Name}}</td>
+              <td>{{ $value->Ag_Email}}</td>
+              <td>{{ $value->Ag_No}}</td>
+              <td>{{ $value->Ag_Address}}</td>
+              <td>
+                @if( $value->Team_Status == 1 )
+                      true
+                  @else
+                      False
+                  @endif
+              </td>
+
+              <!-- <td class="text-success">True</td> -->
               <td>
                 <div class="btn-group dropend">
                   <button type="button" class="btn btn-link" data-bs-toggle="dropdown" aria-expanded="false">
                     <i class="fas fa-ellipsis-v"></i>
                   </button>
                   <ul class="dropdown-menu dropdown-menu-end">
-                    <li><a class="dropdown-item" href="/agent/edit/{{ $data->Ag_ID }}">Edit</a></li>
-                    <li><a class="dropdown-item" href="/agent/delete/1">Delete</a></li>
+                  <li><a href="/agent/{{ $value->id }}" class="dropdown-item">Read</a></li>
+                    <li><a class="dropdown-item" href="/agent/{{$value->id}}/edit">Edit</a></li>
+                    <li>
+                        <form action="/agent/{{ $value->id }}" method="post">
+                          @csrf
+                          @method('delete')
+                          <button class="dropdown-item" onclick="return confirm('Anda ingin menghapus Agen?')">Delete</button>
+                        </form>
+                      </li>
                   </ul>
                 </div>
+              </td>
             </tr>
-            @endforeach
+          @endforeach
             </tbody>
           </table>
         </div>
