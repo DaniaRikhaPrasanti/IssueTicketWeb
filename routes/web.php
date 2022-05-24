@@ -5,6 +5,7 @@ use App\Http\Controllers\RequesterController;
 use App\Http\Controllers\AgentController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 /*
@@ -17,11 +18,21 @@ use Illuminate\Support\Facades\DB;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/login', function () {
-    return view('login.login', [
-        'title' => 'Login'
-    ]);
+
+Route::get('/loginuser', function () {
+    $title = "Login";
+    return view('login.login', compact('title'));
 });
+Route::post('/loginuser', function (Request $request) {
+    $email = $request->email;
+    $password = $request->password;
+    if (Auth::attempt(['email' => $email, 'password' => $password])) {
+        return redirect('/');
+    } else {
+        return redirect('/loginuser');
+    }
+});
+
 Route::get('/', function () {
     return view('welcome', [
         'title' => 'Requester'
@@ -142,6 +153,3 @@ Route::get('/settings/setting_admin', function () {
         'title' => 'Setting'
     ]);
 });
-
-
-
