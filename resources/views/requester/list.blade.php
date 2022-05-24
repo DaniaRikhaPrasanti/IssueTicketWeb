@@ -19,6 +19,8 @@
                 <th>Name</th>
                 <th>Jabatan</th>
                 <th>Email</th>
+                <th>Password</th>
+                <th>Company Number</th>
                 <th>Phone Number</th>
                 <th>Address</th>
                 <th>Action</th>
@@ -31,6 +33,7 @@
                 <td>{{ $requester->Req_Name }}</td>
                 <td>{{ $requester->Req_Jabatan }}</td>
                 <td>{{ $requester->Req_Email }}</td>
+                <td>{{ $requester->Req_Password }}</td>
                 <td>{{ $requester->Comp_No }}</td>
                 <td>{{ $requester->Req_No }}</td>
                 <td>{{ $requester->Req_Address }}</td>

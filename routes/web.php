@@ -16,7 +16,11 @@ use Illuminate\Support\Facades\DB;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+Route::get('/login', function () {
+    return view('login.login', [
+        'title' => 'Login'
+    ]);
+});
 Route::get('/', function () {
     return view('welcome', [
         'title' => 'Requester'

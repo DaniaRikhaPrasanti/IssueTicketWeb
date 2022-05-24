@@ -18,10 +18,14 @@ class requester extends Model
         'Req_Name',
         'Req_Jabatan',
         'Req_Email',
+        'Req_Password',
         'Comp_No',
         'Req_No',
         'Req_Address'
     ];
 
+    protected $hidden = [
+        'Req_Password'
+    ];
     
 }

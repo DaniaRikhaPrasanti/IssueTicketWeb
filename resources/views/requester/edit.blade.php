@@ -19,7 +19,7 @@
                     </div>
 
     
-                    <label for="Req_Jabatan" class="form-label">Req_Jabatan : </label>
+                    <label for="Req_Jabatan" class="form-label">Jabatan : </label>
                     <div class="input-group mb-3">
                         <span class="input-group-text" id="basic-addon2">
                             <i class="fas fa-suitcase"></i>
@@ -37,7 +37,14 @@
                         <input type="text" class="form-control" id="Req_Email"  name="Req_Email" required value="{{ $requester->Req_Email }}" ria-label="Username" aria-describedby="basic-addon3">
                     </div>
 
-                    
+                    <label for="Req_Password" class="form-label">Password : </label>
+
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon3">
+                            <i class="fas fa-envelope"></i>
+                        </span>
+                        <input type="text" class="form-control" id="Req_Password"  name="Req_Password" required value="{{ $requester->Req_Password }}" ria-label="Username" aria-describedby="basic-addon3">
+                    </div>
     
                     <label for="Req_No" class="form-label">Phone Number : </label>
 

@@ -15,7 +15,7 @@ class RequesterController extends Controller
     public function index()
     {
         return view('requester.list',[
-            'title' => 'requester',
+            'title' => 'Requester/List Requester',
             'requests' => requester::all()
         ]);
     }
@@ -28,7 +28,7 @@ class RequesterController extends Controller
     public function create()
     {
         return view('requester.add', [
-            'title' => 'Requester',
+            'title' => 'Requester/Register Requester',
         ]);
     }
 
@@ -44,6 +44,7 @@ class RequesterController extends Controller
             'Req_Name' => 'required|max:255',
             'Req_Jabatan' => 'required|max:255',
             'Req_Email' => 'required|email',
+            'Req_Password' => 'required|max:255',
             'Comp_No' => 'required|numeric|min:8',
             'Req_No' => 'required|numeric|min:8',
             'Req_Address' => 'required|max:255'
@@ -96,6 +97,7 @@ class RequesterController extends Controller
             'Req_Name' => 'required|max:255',
             'Req_Jabatan' => 'required|max:255',
             'Req_Email' => 'required|email',
+            'Req_Password' => 'required|max:255',
             'Comp_No' => 'required|numeric|min:8',
             'Req_No' => 'required|numeric|min:8',
             'Req_Address' => 'required|max:255'
