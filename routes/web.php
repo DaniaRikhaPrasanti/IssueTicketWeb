@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RequesterController;
 use App\Http\Controllers\AgentController;
+use App\Http\Controllers\HomeController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -28,8 +29,13 @@ Route::get('/', function () {
 });
 Route::resource('/requester', RequesterController::class);
 Route::get('/requester/{requester:id}', [RequesterController::class, 'show']);
-Route::get('/requester/delete/{id}',[RequesterController::class,'destroyid']);
+Route::get('/requester/delete/{id}', [RequesterController::class, 'destroyid']);
 //Route Agent
+
+Route::resource('/agent', AgentController::class);
+Auth::routes(['verify' => true]);
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
 Route::get('/agent', [AgentController::class, 'index']); //menampilkan list data agent 
 Route::get('/agent/add', [AgentController::class, 'add_agent']);
 Route::post('/agent/insert/', [AgentController::class, 'insert_agent']);
@@ -125,8 +131,8 @@ Route::get('/ticket/list_tickets', function () {
     ]);
 });
 
-Route::get('/ticket/list_tickets/details_ticket', function(){
-    return view('ticket/detail_ticket',[
+Route::get('/ticket/list_tickets/details_ticket', function () {
+    return view('ticket/detail_ticket', [
         'title' => 'List Tickets/Detail Ticket'
     ]);
 });
@@ -136,3 +142,6 @@ Route::get('/settings/setting_admin', function () {
         'title' => 'Setting'
     ]);
 });
+
+
+
