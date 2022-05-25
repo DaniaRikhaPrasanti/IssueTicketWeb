@@ -7,22 +7,15 @@
             <h3 class="mt-4">Edit Agent</h3>
             <hr>
             <div class="form">
-                <form method="POST" action="/agent/update/" >
+                <form method="POST" action="/agent/{{ $agent->id}} " >
+                    @method('put')
                     @csrf
-                    <label for="Ag_ID" class="form-label">Nama : </label>
-                    <div class="input-group mb-3">
-                        <span class="input-group-text" id="basic-addon1">
-                            <i class="fas fa-user"></i>
-                        </span>
-                        <input type="text" class="form-control" id="Ag_ID" name="Ag_ID" value="{{ $Ag_ID }}" ria-label="Username" aria-describedby="basic-addon1">
-                    </div>
-
                     <label for="Ag_Name" class="form-label">Nama : </label>
                     <div class="input-group mb-3">
                         <span class="input-group-text" id="basic-addon1">
                             <i class="fas fa-user"></i>
                         </span>
-                        <input type="text" class="form-control" id="Ag_Name" name="Ag_Name" required value="{{ $Ag_Name }}" ria-label="Username" aria-describedby="basic-addon1">
+                        <input type="text" class="form-control" id="Ag_Name" name="Ag_Name" required value="{{ $agent->Ag_Name }}" ria-label="Username" aria-describedby="basic-addon1">
                     </div>
                         
                     <label for="Ag_Email" class="form-label">Email : </label>
@@ -31,9 +24,16 @@
                         <span class="input-group-text" id="basic-addon3">
                             <i class="fas fa-envelope"></i>
                         </span>
-                        <input type="text" class="form-control" id="Ag_Email" name="Ag_Email" required value="{{ $Ag_Email }}" ria-label="Username" aria-describedby="basic-addon3">
+                        <input type="text" class="form-control" id="Ag_Email" name="Ag_Email" required value="{{ $agent->Ag_Email }}" ria-label="Username" aria-describedby="basic-addon3">
                     </div>
+                    <label for="Ag_Password" class="form-label">Password : </label>
 
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon3">
+                            <i class="fas fa-envelope"></i>
+                        </span>
+                        <input type="text" class="form-control" id="Ag_Password"  name="Ag_Password" required value="{{ $agent->Ag_Password }}" ria-label="Username" aria-describedby="basic-addon3">
+                    </div>
                     
                     <label for="Ag_No" class="form-label">Phone Number : </label>
 
@@ -41,7 +41,7 @@
                         <span class="input-group-text" id="basic-addon4">
                             <i class="fas fa-phone"></i>
                         </span>
-                        <input type="text" class="form-control" id="Ag_No" name="Ag_No" required value="{{ $Ag_No }}" ria-label="Username" aria-describedby="basic-addon4">
+                        <input type="text" class="form-control" id="Ag_No" name="Ag_No" required value="{{ $agent->Ag_No }}" ria-label="Username" aria-describedby="basic-addon4">
                     </div>
 
                     
@@ -51,12 +51,12 @@
                         <span class="input-group-text" id="basic-addon5">
                             <i class="fas fa-home"></i>
                         </span>
-                        <input type="text" class="form-control" id="Ag_Address" name="Ag_Address" required value="{{ $Ag_Address }}" ria-label="Username" aria-describedby="basic-addon5">
+                        <input type="text" class="form-control" id="Ag_Address" name="Ag_Address" required value="{{ $agent->Ag_Address }}" ria-label="Username" aria-describedby="basic-addon5">
                     </div>
 
                     <div class="checkbox mb-3">
                         <label>
-                          <input type="checkbox" value="true" name="Team_Status"> Agen termasuk team
+                          <input type="checkbox" id="Team_Status" name="Team_Status" value="{{ $agent->Team_Status }}"> Agen termasuk team
                         </label>
                     </div>
 

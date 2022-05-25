@@ -30,7 +30,7 @@ class AgentController extends Controller
         $model = new Agent;
         return view('agent.add', [
             'title' => 'Agent',
-        ], compact('model'));
+        ] , compact('model'));
     }
 
     /**
@@ -41,17 +41,18 @@ class AgentController extends Controller
      */
     public function store(Request $request)
     {
-
-        $validated = $request->validate([
+       
+       $validated = $request->validate([
             'Ag_Name' => 'required|max:255',
             'Ag_Email' => 'required|email',
+            'Ag_Password' => 'required|max:255',
             'Ag_No' => 'required|numeric|min:8',
             'Ag_Address' => 'required|max:255',
             'Team_Status' => 'boolean',
         ]);
 
         Agent::create($validated);
-        return redirect('/agent')->with('success', 'Agent has been added!');
+        return redirect('/agent')->with('success','Agent has been added!');
     }
 
     /**
@@ -77,8 +78,8 @@ class AgentController extends Controller
      */
     public function edit(Agent $agent)
     {
-
-        return view('agent.edit', [
+    
+        return view('agent.edit',[
             'title' => 'agent',
             'agent' => $agent
 
@@ -98,6 +99,7 @@ class AgentController extends Controller
         $validated = $request->validate([
             'Ag_Name' => 'required|max:255',
             'Ag_Email' => 'required|email',
+            'Ag_Password' => 'required|max:255',
             'Ag_No' => 'required|numeric|min:8',
             'Ag_Address' => 'required|max:255',
             'Team_Status' => 'boolean',
@@ -106,6 +108,7 @@ class AgentController extends Controller
         Agent::where('id', $agent->id)
             ->update($validated);
         return redirect('/agent');
+
     }
 
     /**
@@ -119,5 +122,14 @@ class AgentController extends Controller
         //
         $agent->delete();
         return redirect('/agent');
+    }
+
+    public function destroyid($id){
+        $agent = Agent::findOrFail($id);
+
+        $agent->delete();
+
+        return redirect('/agent')->with('mssg','Project Deleted');
+
     }
 }

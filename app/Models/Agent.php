@@ -9,17 +9,18 @@ use Illuminate\Notifications\Notifiable;
 class Agent extends Model
 {
     use HasFactory, Notifiable;
-    /**
+     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
-    protected $table = 'agents';
-    protected $fillable = [
-        'Ag_Name',
-        'Ag_Email',
-        'Ag_No',
-        'Ag_Address',
-        'Team_Status',
-    ];
+    protected $table = 'agents'; 
+    protected $fillable =[
+    'Ag_Name' ,
+    'Ag_Email' ,
+    'Ag_Password',
+    'Ag_No' ,
+    'Ag_Address' ,
+    'Team_Status' ,
+];
 }

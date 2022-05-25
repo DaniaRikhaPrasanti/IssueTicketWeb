@@ -18,6 +18,7 @@
               <th>Id</th>
               <th>Name</th>
               <th>Email</th>
+              <th>Password</th>
               <th>Phone Number</th>
               <th>Address</th>
               <th>Team</th>
@@ -36,6 +37,7 @@
               <td>{{ $value->id}}</td>
               <td>{{ $value->Ag_Name}}</td>
               <td>{{ $value->Ag_Email}}</td>
+              <td>{{ $value->Ag_Password }}</td>
               <td>{{ $value->Ag_No}}</td>
               <td>{{ $value->Ag_Address}}</td>
               <td>

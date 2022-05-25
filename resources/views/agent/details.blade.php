@@ -13,7 +13,7 @@
                         <span class="input-group-text" id="basic-addon1">
                             <i class="fas fa-user"></i>
                         </span>
-                        <input type="text" class="form-control" id="Ag_Name" required value="{{ $Ag_Name }}" ria-label="Username" aria-describedby="basic-addon1" disabled>
+                        <input type="text" class="form-control" id="Ag_Name" required value="{{ $agent->Ag_Name }}" ria-label="Username" aria-describedby="basic-addon1" disabled>
                     </div>
                         
                     <label for="Ag_Email" class="form-label">Email : </label>
@@ -22,17 +22,24 @@
                         <span class="input-group-text" id="basic-addon3">
                             <i class="fas fa-envelope"></i>
                         </span>
-                        <input type="text" class="form-control" id="Ag_Email" required value="{{ $Ag_Email }}" ria-label="Username" aria-describedby="basic-addon3" disabled>
+                        <input type="text" class="form-control" id="Ag_Email" required value="{{ $agent->Ag_Email }}" ria-label="Username" aria-describedby="basic-addon3" disabled>
                     </div>
 
-                    
+                    <label for="Ag_Password" class="form-label">Password : </label>
+
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon3">
+                            <i class="fas fa-envelope"></i>
+                        </span>
+                        <input type="text" class="form-control" id="Ag_Password"  name="Ag_Password" required value="{{ $agent->Ag_Password }}" ria-label="Username" aria-describedby="basic-addon3" disabled>
+                    </div>
                     <label for="Ag_No" class="form-label">Phone Number : </label>
 
                     <div class="input-group mb-3">
                         <span class="input-group-text" id="basic-addon4">
                             <i class="fas fa-phone"></i>
                         </span>
-                        <input type="text" class="form-control" id="Ag_No" required value="{{ $Ag_No }}" ria-label="Username" aria-describedby="basic-addon4" disabled>
+                        <input type="text" class="form-control" id="Ag_No" required value="{{ $agent->Ag_No }}" ria-label="Username" aria-describedby="basic-addon4" disabled>
                     </div>
 
                     
@@ -42,7 +49,7 @@
                         <span class="input-group-text" id="basic-addon5">
                             <i class="fas fa-home"></i>
                         </span>
-                        <input type="text" class="form-control" id="Ag_Address" required value="{{ $Ag_Address }}" ria-label="Username" aria-describedby="basic-addon5" disabled>
+                        <input type="text" class="form-control" id="Ag_Address" required value="{{ $agent->Ag_Address }}" ria-label="Username" aria-describedby="basic-addon5" disabled>
                     </div>
 
                     <div class="checkbox mb-3">
@@ -52,8 +59,11 @@
                     </div>
 
                     <div class="text-right mt-4">
-                        <button type="button" class="btn btn-danger">Hapus</button>
-                        <a href="/agent/details/edit/1">
+                        <a href="/agent/delete/{{ $agent->id }}">
+                            <button type="button" class="btn btn-danger" onclick="return confirm('Anda ingin menghapus Agent?')">Hapus</button>
+                            
+                        </a>
+                        <a href="/agent/{{ $agent->id }}/edit">
                             <button type="button" class="btn btn-primary mx-2">Edit</button>
                         </a>
                     </div>
