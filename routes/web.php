@@ -26,10 +26,11 @@ Route::get('/loginuser', function () {
 Route::post('/loginuser', function (Request $request) {
     $email = $request->email;
     $password = $request->password;
-    if (Auth::attempt(['email' => $email, 'password' => $password])) {
-        return redirect('/');
+    // auth using Req_Email and Req_Password in requester table
+    if (Auth::guard('requester')->attempt(['Req_Email' => $email, 'Req_Password' => $password])) {
+        return redirect("/requester");
     } else {
-        return redirect('/loginuser');
+        return redirect("/loginuser");
     }
 });
 
