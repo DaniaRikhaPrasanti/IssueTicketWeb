@@ -125,7 +125,7 @@ class RequesterController extends Controller
 
         $requester->delete();
 
-        return redirect('/requester')->with('mssg','Project Deleted');
+        return redirect('/requester')->with('mssg','Requester Deleted');
 
     }
 }

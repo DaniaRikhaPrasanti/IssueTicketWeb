@@ -49,10 +49,7 @@ Auth::routes(['verify' => true]);
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
-Route::get("/agent/delete/{id}", function ($id) {
-    DB::table('agent')->where('id', '=', $id)->delete();
-    return back();
-});
+
 
 // Route::get('/ticket/done', function () {
 //     return view('ticket.timeline_details_done', [

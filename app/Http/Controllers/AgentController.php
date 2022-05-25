@@ -129,7 +129,7 @@ class AgentController extends Controller
 
         $agent->delete();
 
-        return redirect('/agent')->with('mssg','Project Deleted');
+        return redirect('/agent')->with('mssg','Agent Deleted');
 
     }
 }
