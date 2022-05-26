@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\requester;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Crypt;
 
 class RequesterController extends Controller
 {
@@ -40,17 +41,27 @@ class RequesterController extends Controller
      */
     public function store(Request $request)
     {
-        $validated = $request->validate([
+        $request->validate([
             'Req_Name' => 'required|max:255',
             'Req_Jabatan' => 'required|max:255',
             'Req_Email' => 'required|email',
             'Req_Password' => 'required|max:255',
+            'Req_PasswordConfirmation' => 'required|max:255|same:Req_Password',
             'Comp_No' => 'required|numeric|min:8',
             'Req_No' => 'required|numeric|min:8',
             'Req_Address' => 'required|max:255'
         ]);
 
-        requester::create($validated);
+
+        requester::create([
+            'Req_Name' => $request->Req_Name,
+            'Req_Jabatan' => $request->Req_Jabatan,
+            'Req_Email' => $request->Req_Email,
+            'Req_Password' => Crypt::encrypt($request->Req_Password),
+            'Comp_No' => $request->Comp_No,
+            'Req_No' => $request->Req_No,
+            'Req_Address' => $request->Req_Address
+        ]);
         return redirect('/requester')->with('success','Requester has been added!');
     }
 
@@ -79,7 +90,14 @@ class RequesterController extends Controller
     {
         return view('requester.edit',[
             'title' => 'requester',
-            'requester' => $requester
+            'id' =>  $requester->id,
+            'Req_Name' => $requester->Req_Name,
+            'Req_Jabatan' => $requester->Req_Jabatan,
+            'Req_Email' => $requester->Req_Email,
+            'Req_Password' => Crypt::decrypt($requester->Req_Password),
+            'Comp_No' => $requester->Comp_No,
+            'Req_No' => $requester->Req_No,
+            'Req_Address' => $requester->Req_Address,
             
         ]);
     }
@@ -93,18 +111,27 @@ class RequesterController extends Controller
      */
     public function update(Request $request, requester $requester)
     {
-        $validated = $request->validate([
+        $request->validate([
             'Req_Name' => 'required|max:255',
             'Req_Jabatan' => 'required|max:255',
             'Req_Email' => 'required|email',
             'Req_Password' => 'required|max:255',
+            'Req_PasswordConfirmation' => 'required|max:255|same:Req_Password',
             'Comp_No' => 'required|numeric|min:8',
             'Req_No' => 'required|numeric|min:8',
             'Req_Address' => 'required|max:255'
         ]);
 
         requester::where('id', $requester->id)
-            ->update($validated);
+            ->update([
+                'Req_Name' => $request->Req_Name,
+            'Req_Jabatan' => $request->Req_Jabatan,
+            'Req_Email' => $request->Req_Email,
+            'Req_Password' => Crypt::encrypt($request->Req_Password),
+            'Comp_No' => $request->Comp_No,
+            'Req_No' => $request->Req_No,
+            'Req_Address' => $request->Req_Address
+        ]);
         return redirect('/requester');
     }
 

@@ -45,6 +45,18 @@
                             </div>
                         @enderror
                     </div>
+                    <label for="Ag_PasswordConfirmation" class="form-label">Password Confirmation</label>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon3">
+                            <i class="fas fa-envelope"></i>
+                        </span>
+                        <input type="password" name="Ag_PasswordConfirmation"class="form-control @error('Ag_PasswordConfirmation') is-invalid @enderror" id="Ag_PasswordConfirmation" required ria-label="Username" aria-describedby="basic-addon3"value="{{ old('Ag_PasswordConfirmation') }}">
+                        @error('Ag_PasswordConfirmation')
+                            <div class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                        @enderror
+                    </div>
                     <label for="Ag_No" class="form-label">Phone Number </label>
                     <div class="input-group mb-3">
                         <span class="input-group-text" id="basic-addon4">

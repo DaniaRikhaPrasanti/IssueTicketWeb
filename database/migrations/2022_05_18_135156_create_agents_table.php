@@ -17,7 +17,7 @@ class CreateAgentsTable extends Migration
             $table->id();
             $table->string('Ag_Name');
             $table->string('Ag_Email')->unique();
-            $table->string('Ag_Password');
+            $table->text('Ag_Password');
             $table->string('Ag_No');
             $table->string('Ag_Address');
             $table->boolean('Team_Status');

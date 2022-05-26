@@ -31,7 +31,7 @@
                         <span class="input-group-text" id="basic-addon3">
                             <i class="fas fa-envelope"></i>
                         </span>
-                        <input type="text" class="form-control" id="Ag_Password"  name="Ag_Password" required value="{{ $agent->Ag_Password }}" ria-label="Username" aria-describedby="basic-addon3" disabled>
+                        <input type="text" class="form-control" id="Ag_Password"  name="Ag_Password" required placeholder="Passwor bersifat rahasia" ria-label="Username" aria-describedby="basic-addon3" disabled>
                     </div>
                     <label for="Ag_No" class="form-label">Phone Number : </label>
 

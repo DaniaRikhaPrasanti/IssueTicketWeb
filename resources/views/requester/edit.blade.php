@@ -4,10 +4,10 @@
 <div class="card mt-3">
     <div class="row">
         <div class="container mb-5 col-10 col-md-8">
-            <h3 class="mt-4">Edit Agent</h3>
+            <h3 class="mt-4">Edit Requester</h3>
             <hr>
             <div class="form">
-                <form action="/requester/{{ $requester->id }}" method="post">
+                <form action="/requester/{{ $id }}" method="post">
                     @method('put')
                     @csrf
                     <label for="Req_Name" class="form-label">Nama : </label>
@@ -15,7 +15,7 @@
                         <span class="input-group-text" id="basic-addon1">
                             <i class="fas fa-user"></i>
                         </span>
-                        <input type="text" class="form-control" id="Req_Name" name="Req_Name" required value="{{ $requester->Req_Name }}" ria-label="Username" aria-describedby="basic-addon1" >
+                        <input type="text" class="form-control" id="Req_Name" name="Req_Name" required value="{{ $Req_Name }}" ria-label="Username" aria-describedby="basic-addon1" >
                     </div>
 
     
@@ -24,7 +24,7 @@
                         <span class="input-group-text" id="basic-addon2">
                             <i class="fas fa-suitcase"></i>
                         </span>
-                        <input type="text" class="form-control" id="Req_Jabatan" name="Req_Jabatan" required value="{{ $requester->Req_Jabatan }}" ria-label="Username" aria-describedby="basic-addon2">
+                        <input type="text" class="form-control" id="Req_Jabatan" name="Req_Jabatan" required value="{{ $Req_Jabatan }}" ria-label="Username" aria-describedby="basic-addon2">
                     </div>
                     
     
@@ -34,7 +34,7 @@
                         <span class="input-group-text" id="basic-addon3">
                             <i class="fas fa-envelope"></i>
                         </span>
-                        <input type="text" class="form-control" id="Req_Email"  name="Req_Email" required value="{{ $requester->Req_Email }}" ria-label="Username" aria-describedby="basic-addon3">
+                        <input type="text" class="form-control" id="Req_Email"  name="Req_Email" required value="{{ $Req_Email }}" ria-label="Username" aria-describedby="basic-addon3">
                     </div>
 
                     <label for="Req_Password" class="form-label">Password : </label>
@@ -43,8 +43,22 @@
                         <span class="input-group-text" id="basic-addon3">
                             <i class="fas fa-envelope"></i>
                         </span>
-                        <input type="text" class="form-control" id="Req_Password"  name="Req_Password" required value="{{ $requester->Req_Password }}" ria-label="Username" aria-describedby="basic-addon3">
+                        <input type="text" class="form-control" id="Req_Password"  name="Req_Password" required value="{{ $Req_Password }}" ria-label="Username" aria-describedby="basic-addon3">
                     </div>
+
+                    <label for="Req_PasswordConfirmation" class="form-label">Password Confirmation</label>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon3">
+                            <i class="fas fa-envelope"></i>
+                        </span>
+                        <input type="password" name="Req_PasswordConfirmation"class="form-control @error('Req_PasswordConfirmation') is-invalid @enderror" id="Req_PasswordConfirmation" required ria-label="Username" aria-describedby="basic-addon3"value="{{ old('Req_PasswordConfirmation') }}">
+                        @error('Req_PasswordConfirmation')
+                            <div class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                        @enderror
+                    </div>
+                    
     
                     <label for="Req_No" class="form-label">Phone Number : </label>
 
@@ -52,7 +66,7 @@
                         <span class="input-group-text" id="basic-addon4">
                             <i class="fas fa-phone"></i>
                         </span>
-                        <input type="text" class="form-control" id="Req_No" name="Req_No" required value="{{ $requester->Req_No }}" ria-label="Username" aria-describedby="basic-addon4">
+                        <input type="text" class="form-control" id="Req_No" name="Req_No" required value="{{ $Req_No }}" ria-label="Username" aria-describedby="basic-addon4">
                     </div>
 
                     
@@ -63,7 +77,7 @@
                         <span class="input-group-text" id="basic-addon5">
                             <i class="fas fa-home"></i>
                         </span>
-                        <input type="text" class="form-control" id="Req_Address"  name="Req_Address" required value="{{ $requester->Req_Address }}" ria-label="Username" aria-describedby="basic-addon5">
+                        <input type="text" class="form-control" id="Req_Address"  name="Req_Address" required value="{{ $Req_Address }}" ria-label="Username" aria-describedby="basic-addon5">
                     </div>
 
 
@@ -75,7 +89,7 @@
                         <span class="input-group-text" id="basic-addon5">
                             <i class="fas fa-phone"></i>
                         </span>
-                        <input type="text" class="form-control" id="Comp_No" name="Comp_No" required value="{{ $requester->Comp_No }}" ria-label="Username" aria-describedby="basic-addon5">
+                        <input type="text" class="form-control" id="Comp_No" name="Comp_No" required value="{{ $Comp_No }}" ria-label="Username" aria-describedby="basic-addon5">
                     </div>
 
                     <div class="mt-4">

@@ -33,7 +33,7 @@
                 <td>{{ $requester->Req_Name }}</td>
                 <td>{{ $requester->Req_Jabatan }}</td>
                 <td>{{ $requester->Req_Email }}</td>
-                <td>{{ $requester->Req_Password }}</td>
+                <td></td>
                 <td>{{ $requester->Comp_No }}</td>
                 <td>{{ $requester->Req_No }}</td>
                 <td>{{ $requester->Req_Address }}</td>

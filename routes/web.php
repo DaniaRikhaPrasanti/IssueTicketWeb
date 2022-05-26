@@ -44,7 +44,10 @@ Route::get('/requester/delete/{id}', [RequesterController::class, 'destroyid']);
 //Route Agent
 
 Route::resource('/agent', AgentController::class);
-Route::get('/agent/delete/{id}', [AgentController::class, 'destroyid']);
+Route::get("/agent/delete/{id}", function ($id) {
+    DB::table('agent')->where('id', '=', $id)->delete();
+    return back();
+});
 Auth::routes(['verify' => true]);
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 

@@ -37,7 +37,7 @@
               <td>{{ $value->id}}</td>
               <td>{{ $value->Ag_Name}}</td>
               <td>{{ $value->Ag_Email}}</td>
-              <td>{{ $value->Ag_Password }}</td>
+              <td></td>
               <td>{{ $value->Ag_No}}</td>
               <td>{{ $value->Ag_Address}}</td>
               <td>

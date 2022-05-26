@@ -41,7 +41,7 @@
                         <span class="input-group-text" id="basic-addon3">
                             <i class="fas fa-envelope"></i>
                         </span>
-                        <input type="text" class="form-control" id="Req_Password"  name="Req_Password" required value="{{ $requester->Req_Password }}" ria-label="Username" aria-describedby="basic-addon3" disabled>
+                        <input type="text" class="form-control" id="Req_Password"  name="Req_Password" required placeholder="password bersifat rahasi" ria-label="Username" aria-describedby="basic-addon3" disabled>
                     </div>
                     
     

@@ -61,6 +61,19 @@
                             </div>
                         @enderror
                     </div>
+                    <label for="Req_PasswordConfirmation" class="form-label">Password Confirmation</label>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon3">
+                            <i class="fas fa-envelope"></i>
+                        </span>
+                        <input type="password" name="Req_PasswordConfirmation"class="form-control @error('Req_PasswordConfirmation') is-invalid @enderror" id="Req_PasswordConfirmation" required ria-label="Username" aria-describedby="basic-addon3"value="{{ old('Req_PasswordConfirmation') }}">
+                        @error('Req_PasswordConfirmation')
+                            <div class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                        @enderror
+                    </div>
+
 
                     <label for="Req_No" class="form-label">Phone Number </label>
                     <div class="input-group mb-3">
