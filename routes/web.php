@@ -96,3 +96,9 @@ Route::get('/settings/setting_admin', function () {
         'title' => 'Setting'
     ]);
 });
+
+Route::get('/dashboard/dashboard_agent', function () {
+    return view('dashboard.dashboard_agent', [
+        'title' => 'Dashboard Agent'
+    ]);
+});
