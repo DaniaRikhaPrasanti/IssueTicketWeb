@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.appuser')
 @section("css")
 <link rel="stylesheet" href="{{ url("admin") }}/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
 <link rel="stylesheet" href="{{ url("admin") }}/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
@@ -16,7 +16,7 @@
             <!-- Filter & Add Button -->
             <div class="d-flex justify-content-between my-4" >
                 <div class="">
-                    <a href="#" class="btn btn-primary"><i class="fas fa-plus"></i> Buat Ticket</a>
+                    <a href="/ticket/create" class="btn btn-primary"><i class="fas fa-plus"></i> Buat Ticket</a>
                 </div>
                 <div class="">
                     <div class="d-flex justify-content-start">
@@ -64,8 +64,6 @@
                 </div>
             </div>
 
-
-
           <table id="" class="table table-bordered table-hover">
             <thead>
             <tr>
@@ -78,14 +76,21 @@
             </tr>
             </thead>
             <tbody>
+            @foreach($datas as $key=>$value)
             <tr>
-              <td>01/10/2022</td>
+              <!-- <td>01/10/2022</td>
               <td>Mis inputan</td>
               <td>Lambung sakit saat belum makan di bulan puasa</td>
               <td>Question</td>
               <td>
                 <span class="badge badge-danger">Pending</span>
-              </td>
+              </td> -->
+              <td>{{ $value->id}}</td>
+              <td>{{ $value->Tick_Date}}</td>
+              <td>{{ $value->Tick_Subj}}</td>
+              <td>{{ $value->Tick_Issue}}</td>
+              <td>{{ $value->Tick_Type}}</td>
+              <td>{{ $value->Tick_Status}}</td>
               <td>
                 <div class="btn-group dropend">
                   <button type="button" class="btn btn-link" data-bs-toggle="dropdown" aria-expanded="false">
@@ -97,6 +102,7 @@
                   </ul>
                 </div>
             </tr>
+            @endforeach
             </tbody>
           </table>
         </div>

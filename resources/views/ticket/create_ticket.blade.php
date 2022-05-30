@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.appuser')
 @section('contents')
 
 <div class="card mt-3">
@@ -7,13 +7,13 @@
             <h3 class="mt-4">Form Buat Ticket</h3>
             <hr>
             <div class="form">
-                <form action="POST">
+                <form action="POST" action="/requester" enctype="multipart/form-data">
                     <label for="Tick_Subj" class="form-label">Subject : </label>
                     <div class="input-group mb-3">
                         <span class="input-group-text" id="basic-addon1">
                             <i class="fas fa-comment"></i>
                         </span>
-                        <input type="text" class="form-control" id="Tick_Subj" required ria-label="Username" aria-describedby="basic-addon1" placeholder="Masukkan Subject dari ticket...">
+                        <input type="text" name="Tick_Subj" class="form-control" id="Tick_Subj" required ria-label="Username" aria-describedby="basic-addon1" placeholder="Masukkan Subject dari ticket..." value="{{ old('Tick_Subj') }}">
                     </div>
 
     
@@ -33,7 +33,7 @@
     
                     <label for="Tick_Issue" class="form-label">Issues : </label>
 
-                    <textarea class="form-control" id="Tick_Issue" rows="8" placeholder="Masukkan Isu yang dialami disini..."></textarea>
+                    <textarea class="form-control" name="Tick_Issue" id="Tick_Issue" rows="8" placeholder="Masukkan Isu yang dialami disini..."></textarea>
 
                     <div class="my-3 mb-4">
                         <div class="row">

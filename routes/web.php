@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RequesterController;
 use App\Http\Controllers\AgentController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\TicketController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -49,6 +50,10 @@ Route::get("/agent/delete/{id}", function ($id) {
     DB::table('agent')->where('id', '=', $id)->delete();
     return back();
 });
+
+Route::resource('/ticket', TicketController::class);
+
+
 Auth::routes(['verify' => true]);
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
@@ -64,6 +69,12 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::get('/ticket/close_ticket', function () {
     return view('ticket.close_ticket', [
+        'title' => 'List Tickets'
+    ]);
+});
+
+Route::get('/ticket/create_ticket', function () {
+    return view('ticket.create_ticket', [
         'title' => 'List Tickets'
     ]);
 });

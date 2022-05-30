@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.appuser')
 @section("css")
 <style>
   .timeline{list-style:none;padding:0 0 20px;position:relative;margin-top:-15px;border:1px solid #ccc}
