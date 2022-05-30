@@ -14,7 +14,7 @@
     {{-- My Style --}}
     <link rel="stylesheet" href="/css/style.css">
 
-    <title>Issue Ticket | {{ $title }}</title>
+
   </head>
   <body>
         <div class="container mt-4">

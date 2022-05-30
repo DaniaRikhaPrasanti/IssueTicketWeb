@@ -8,6 +8,8 @@ use App\Http\Controllers\TicketController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use App\Providers\RouteServiceProvider;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -19,27 +21,51 @@ use Illuminate\Support\Facades\DB;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/loginuser', function () {
-    $title = "Login";
-    return view('login.login', compact('title'));
-});
-Route::post('/loginuser', function (Request $request) {
-    $email = $request->email;
-    $password = $request->password;
-    // auth using Req_Email and Req_Password in requester table
-    if (Auth::guard('requester')->attempt(['Req_Email' => $email, 'Req_Password' => $password])) {
-        return redirect("/requester");
-    } else {
-        return redirect("/loginuser");
-    }
-});
-
 Route::get('/', function () {
-    return view('welcome', [
-        'title' => 'Requester'
-    ]);
+    return view('welcome');
 });
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+    return view('dashboard');
+})->name('dashboard');
+
+//login multi-level
+Route::group(['middleware' => 'auth'], function(){
+    Route::group(['middleware' => 'role:admin'], function(){
+        Route::get('/administrator', function(){
+            return view('/layouts.app');
+        });
+    });
+    Route::group(['middleware' => 'role:requester'], function(){
+        Route::get('/user-requester', function(){
+            return view('/layouts.appuser');
+        });
+    });
+    Route::group(['middleware' => 'role:agent'], function(){
+        Route::get('/user-agent', function(){
+            return view('/layouts.appuser');
+        });
+    });
+});
+//
+
+// Route::post('/loginuser', function (Request $request) {
+//     $email = $request->email;
+//     $password = $request->password;
+//     // auth using Req_Email and Req_Password in requester table
+//     if (Auth::guard('requester')->attempt(['Req_Email' => $email, 'Req_Password' => $password])) {
+//         return redirect("/requester");
+//     } else {
+//         return redirect("/loginuser");
+//     }
+// });
+
+// Route::get('/', function () {
+//     return view('welcome', [
+//         'title' => 'Requester'
+//     ]);
+// });
+
 Route::resource('/requester', RequesterController::class);
 Route::get('/requester/{requester:id}', [RequesterController::class, 'show']);
 Route::get('/requester/delete/{id}', [RequesterController::class, 'destroyid']);
@@ -54,8 +80,8 @@ Route::get("/agent/delete/{id}", function ($id) {
 Route::resource('/ticket', TicketController::class);
 
 
-Auth::routes(['verify' => true]);
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Auth::routes(['verify' => true]);
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
 
