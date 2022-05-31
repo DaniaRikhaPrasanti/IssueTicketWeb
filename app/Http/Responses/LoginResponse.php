@@ -3,9 +3,9 @@
 namespace App\Http\Responses;
 
 use App\Models\Role;
-use Laravel\Fortify\Contracts\LoginResponse as LoginResponseContract;
+use Laravel\Fortify\Contracts\LoginResponse as LoginResponseContracts;
 
-class LoginResponse implements LoginResponseContract{
+class LoginResponse implements LoginResponseContracts{
     public function toResponse($request){
         return $request->wantsJson()
             ? response()->json(['two_factor' => false])
