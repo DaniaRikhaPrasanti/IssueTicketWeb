@@ -48,6 +48,10 @@ Route::group(['middleware' => 'auth'], function(){
     });
 });
 //
+// verifikasi email user 
+Auth::routes(['verify' => true]);
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
 
 // Route::post('/loginuser', function (Request $request) {
 //     $email = $request->email;
@@ -77,8 +81,6 @@ Route::get('/agent/delete/{id}', [AgentController::class, 'destroy']);
 Route::resource('/ticket', TicketController::class);
 
 
-// Auth::routes(['verify' => true]);
-// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
 
