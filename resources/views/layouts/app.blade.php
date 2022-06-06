@@ -150,7 +150,7 @@
     <!-- Main content -->
     <section class="content">
       <div class="container-fluid">
-        @yield('content')
+        @yield('contents')
       </div><!-- /.container-fluid -->
     </section>
     <!-- /.content -->

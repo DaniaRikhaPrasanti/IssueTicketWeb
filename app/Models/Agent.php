@@ -21,6 +21,8 @@ class Agent extends Model
     'Ag_Password',
     'Ag_No' ,
     'Ag_Address' ,
+    'role_id',
     'Team_Status' ,
+    
 ];
 }

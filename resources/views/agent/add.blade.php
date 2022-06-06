@@ -84,10 +84,12 @@
                             </div>
                         @enderror
                     </div>
+
+                    <input type="hidden" id="role_id" value="3" name="role_id">
                     
                     <div class="checkbox mb-3">
                         <label>
-                          <input type="checkbox" id="Team_Status" name="Team_Status" id="Team_Status" value="1"> Agen termasuk team
+                          <input type="checkbox" id="Team_Status" name="Team_Status" id="Team_Status" value="1" {{old('Team_Status') == 1? 'checked':'' }}> Agen termasuk team
                         </label>
                     </div>
 

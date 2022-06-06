@@ -67,7 +67,8 @@
 
                     <div class="checkbox mb-3">
                         <label>
-                          <input type="checkbox" id="Team_Status" name="Team_Status" value="{{ $Team_Status }}"> Agen termasuk team
+                            <input type="checkbox" id="Team_Status" name="Team_Status" value="1" {{$Team_Status || old('Team_Status',0) === 1? 'checked':'' }}> Agen termasuk team
+                          <!-- <input type="checkbox" id="Team_Status" name="Team_Status" value="{{ $Team_Status }}"> Agen termasuk team -->
                         </label>
                     </div>
 

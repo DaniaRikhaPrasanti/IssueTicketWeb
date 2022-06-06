@@ -42,7 +42,7 @@
               <td>{{ $value->Ag_Address}}</td>
               <td>
                 @if( $value->Team_Status == 1 )
-                      true
+                      True
                   @else
                       False
                   @endif

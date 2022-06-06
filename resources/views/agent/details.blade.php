@@ -31,7 +31,7 @@
                         <span class="input-group-text" id="basic-addon3">
                             <i class="fas fa-envelope"></i>
                         </span>
-                        <input type="text" class="form-control" id="Ag_Password"  name="Ag_Password" required placeholder="Passwor bersifat rahasia" ria-label="Username" aria-describedby="basic-addon3" disabled>
+                        <input type="text" class="form-control" id="Ag_Password"  name="Ag_Password" required placeholder="Password bersifat rahasia" ria-label="Username" aria-describedby="basic-addon3" disabled>
                     </div>
                     <label for="Ag_No" class="form-label">Phone Number : </label>
 
@@ -54,14 +54,13 @@
 
                     <div class="checkbox mb-3">
                         <label>
-                          <input type="checkbox" value="true"> Agen termasuk team
+                            <input type="checkbox" id="Team_Status" name="Team_Status" value="1" {{$agent->Team_Status || old('Team_Status',0) === 1? 'checked':'' }} disabled> Agen termasuk team
                         </label>
                     </div>
 
                     <div class="text-right mt-4">
-                        <a href="/agent/delete/{{ $agent->id }}">
+                        <a href="/agent/delete/{{$agent->id}}">
                             <button type="button" class="btn btn-danger" onclick="return confirm('Anda ingin menghapus Agent?')">Hapus</button>
-                            
                         </a>
                         <a href="/agent/{{ $agent->id }}/edit">
                             <button type="button" class="btn btn-primary mx-2">Edit</button>

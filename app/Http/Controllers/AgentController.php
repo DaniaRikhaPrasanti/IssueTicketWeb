@@ -52,14 +52,13 @@ class AgentController extends Controller
             'Ag_Address' => 'required|max:255',
             'Team_Status' => 'boolean',
         ]);
-
         Agent::create([
             'Ag_Name' => $request->Ag_Name,
             'Ag_Email' => $request->Ag_Email,
             'Ag_Password' => Crypt::encrypt($request->Ag_Password),
             'Ag_No' => $request->Ag_No,
             'Ag_Address' => $request->Ag_Address,
-            'Team_Status' => $request->Team_Status
+            'Team_Status' => $request->boolean('Team_Status'),
         ]);
         return redirect('/agent')->with('success','Agent has been added!');
     }
@@ -96,7 +95,7 @@ class AgentController extends Controller
             'Ag_Password' => Crypt::decrypt($agent->Ag_Password),
             'Ag_No' => $agent->Ag_No,
             'Ag_Address' => $agent->Ag_Address,
-            'Team_Status' => $agent->Team_Status
+            'Team_Status' => $agent->Team_Status,
 
         ]);
     }
@@ -110,6 +109,7 @@ class AgentController extends Controller
      */
     public function update(Request $request, Agent $agent)
     {
+
         //
         $request->validate([
             'Ag_Name' => 'required|max:255',
@@ -128,7 +128,7 @@ class AgentController extends Controller
                 'Ag_Password' => Crypt::encrypt($request->Ag_Password),
                 'Ag_No' => $request->Ag_No,
                 'Ag_Address' => $request->Ag_Address,
-                'Team_Status' => $request->Team_Status
+                'Team_Status' => $request->boolean('Team_Status'),
             ]);
         return redirect('/agent');
 
@@ -143,15 +143,13 @@ class AgentController extends Controller
     public function destroy(Agent $agent)
     {
         //
-        $agent->delete();
+        Agent::destroy($agent->id);
         return redirect('/agent');
     }
 
     public function destroyid($id){
         $agent = Agent::findOrFail($id);
-
         $agent->delete();
-
         return redirect('/agent')->with('mssg','Agent Deleted');
 
     }
