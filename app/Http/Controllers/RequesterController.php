@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\requester;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Crypt;
+use Illuminate\Support\Facades\Hash;
 
 class RequesterController extends Controller
 {
@@ -61,6 +63,11 @@ class RequesterController extends Controller
             'Comp_No' => $request->Comp_No,
             'Req_No' => $request->Req_No,
             'Req_Address' => $request->Req_Address
+        ]);
+        User::create([
+            'name' => $request->Req_Name,
+            'email' => $request->Req_Email,
+            'password' => Hash::make($request->Req_Password),
         ]);
         return redirect('/requester')->with('success','Requester has been added!');
     }
@@ -125,12 +132,18 @@ class RequesterController extends Controller
         requester::where('id', $requester->id)
             ->update([
                 'Req_Name' => $request->Req_Name,
-            'Req_Jabatan' => $request->Req_Jabatan,
-            'Req_Email' => $request->Req_Email,
-            'Req_Password' => Crypt::encrypt($request->Req_Password),
-            'Comp_No' => $request->Comp_No,
-            'Req_No' => $request->Req_No,
-            'Req_Address' => $request->Req_Address
+                'Req_Jabatan' => $request->Req_Jabatan,
+                'Req_Email' => $request->Req_Email,
+                'Req_Password' => Crypt::encrypt($request->Req_Password),
+                'Comp_No' => $request->Comp_No,
+                'Req_No' => $request->Req_No,
+                'Req_Address' => $request->Req_Address
+        ]);
+        User::where('email', $requester->Req_Email)
+            ->update([
+                'name' => $request->Req_Name,
+                'email' => $request->Req_Email,
+                'password' => Hash::make($request->Req_Password),
         ]);
         return redirect('/requester');
     }
@@ -144,11 +157,13 @@ class RequesterController extends Controller
     public function destroy(requester $requester)
     {
         requester::destroy($requester->id);
+        $del = User::where('email', $agent->Req_Email);
+        $del->delete();
         return redirect('/requester');
     }
 
-    public function destroyid($id){
-        $requester = requester::findOrFail($id);
+    public function destroyid($Req_Email){
+        $requester = requester::findOrFail($Req_Email);
 
         $requester->delete();
 

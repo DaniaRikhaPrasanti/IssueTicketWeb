@@ -59,7 +59,7 @@
                     </div>
 
                     <div class="text-right mt-4">
-                        <a href="/agent/delete/{{$agent->id}}">
+                        <a href="/agent/{{ $agent->id }}">
                             <button type="button" class="btn btn-danger" onclick="return confirm('Anda ingin menghapus Agent?')">Hapus</button>
                         </a>
                         <a href="/agent/{{ $agent->id }}/edit">

@@ -68,11 +68,11 @@ Route::group(['middleware' => 'auth'], function(){
 
 Route::resource('/requester', RequesterController::class);
 Route::get('/requester/{requester:id}', [RequesterController::class, 'show']);
-Route::get('/requester/delete/{id}', [RequesterController::class, 'destroyid']);
+Route::get('/requester/delete/{Req_Email}', [RequesterController::class, 'destroyid']);
 //Route Agent
 
 Route::resource('/agent', AgentController::class);
-Route::get('/agent/delete/{id}', [AgentController::class, 'destroyid']);
+Route::get('/agent/delete/{id}', [AgentController::class, 'destroy']);
 
 Route::resource('/ticket', TicketController::class);
 

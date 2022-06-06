@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Agent;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Crypt;
+use Illuminate\Support\Facades\Hash;
 
 class AgentController extends Controller
 {
@@ -59,6 +61,11 @@ class AgentController extends Controller
             'Ag_No' => $request->Ag_No,
             'Ag_Address' => $request->Ag_Address,
             'Team_Status' => $request->boolean('Team_Status'),
+        ]);
+        User::create([
+            'name' => $request->Ag_Name,
+            'email' => $request->Ag_Email,
+            'password' => Hash::make($request->Ag_Password),
         ]);
         return redirect('/agent')->with('success','Agent has been added!');
     }
@@ -130,6 +137,13 @@ class AgentController extends Controller
                 'Ag_Address' => $request->Ag_Address,
                 'Team_Status' => $request->boolean('Team_Status'),
             ]);
+
+        User::where('email', $agent->Ag_Email)
+            ->update([
+                'name' => $request->Ag_Name,
+                'email' => $request->Ag_Email,
+                'password' => Hash::make($request->Ag_Password),
+        ]);
         return redirect('/agent');
 
     }
@@ -144,12 +158,16 @@ class AgentController extends Controller
     {
         //
         Agent::destroy($agent->id);
+        $del = User::where('email', $agent->Ag_Email);
+        $del->delete();
         return redirect('/agent');
     }
 
-    public function destroyid($id){
-        $agent = Agent::findOrFail($id);
+    public function destroyid($Ag_Email){
+        $agent = Agent::where('Ag_Email', $Ag_Email);
         $agent->delete();
+        $del = User::where('email', $Ag_Email);
+        $del->delete();
         return redirect('/agent')->with('mssg','Agent Deleted');
 
     }
