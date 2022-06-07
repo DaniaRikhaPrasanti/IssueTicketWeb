@@ -15,6 +15,11 @@ class RequesterController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+        $this->middleware('role:requester||admin');
+    }
+
     public function index()
     {
         return view('requester.list',[
@@ -51,7 +56,8 @@ class RequesterController extends Controller
             'Req_PasswordConfirmation' => 'required|max:255|same:Req_Password',
             'Comp_No' => 'required|numeric|min:8',
             'Req_No' => 'required|numeric|min:8',
-            'Req_Address' => 'required|max:255'
+            'Req_Address' => 'required|max:255',
+            'role_id' => 'required'
         ]);
 
 
@@ -62,13 +68,17 @@ class RequesterController extends Controller
             'Req_Password' => Crypt::encrypt($request->Req_Password),
             'Comp_No' => $request->Comp_No,
             'Req_No' => $request->Req_No,
-            'Req_Address' => $request->Req_Address
+            'Req_Address' => $request->Req_Address,
+            'role_id' => $request->role_id,
         ]);
         User::create([
             'name' => $request->Req_Name,
             'email' => $request->Req_Email,
             'password' => Hash::make($request->Req_Password),
+            'role_id' => $request->role_id,
+
         ]);
+        // $request->dd();
         return redirect('/requester')->with('success','Requester has been added!');
     }
 
@@ -157,17 +167,17 @@ class RequesterController extends Controller
     public function destroy(requester $requester)
     {
         requester::destroy($requester->id);
-        $del = User::where('email', $agent->Req_Email);
+        $del = User::where('email', $requester->Req_Email);
         $del->delete();
         return redirect('/requester');
     }
 
-    public function destroyid($Req_Email){
-        $requester = requester::findOrFail($Req_Email);
+    // public function destroyid($Req_Email){
+    //     $requester = requester::where('Req_Email', $Req_Email);
+    //     $requester->delete();
+    //     $del = User::where('email', $Req_Email);
+    //     $del->delete();
+    //     return redirect('/requester')->with('mssg','requester Deleted');
 
-        $requester->delete();
-
-        return redirect('/requester')->with('mssg','Requester Deleted');
-
-    }
+    // }
 }

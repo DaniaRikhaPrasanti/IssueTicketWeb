@@ -24,12 +24,12 @@
                         </div>
                     @enderror
                 </div>
-                <div class="form-check">
+                <!-- <div class="form-check">
                     <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" name="team" checked>
                     <label class="form-check-label" for="flexCheckChecked">
                       Team
                     </label>
-                  </div>
+                  </div> -->
               <button class="w-10 btn btn-lg btn-primary mt-3" type="submit">Login</button>
             </form>
           </main>

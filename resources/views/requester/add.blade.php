@@ -115,6 +115,9 @@
                             </div>
                         @enderror
                     </div>
+                    
+                    <!-- auto fill role_id -->
+                    <input type="hidden" name="role_id"class="form-control" id="role_id" required ria-label="Username" aria-describedby="basic-addon5" value="2">
             
                     <div class="mt-4">
                         <a href="/requester" class="btn btn-outline-danger ">Cancel</a>

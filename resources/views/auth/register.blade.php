@@ -61,6 +61,10 @@
                             </div>
                         </div>
 
+                        
+                    <!-- auto fill role_id -->
+                    <input type="hidden" name="role_id"class="form-control" id="role_id" required ria-label="Username" aria-describedby="basic-addon5" value="1">
+
                         <div class="row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">

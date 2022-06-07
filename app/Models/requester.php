@@ -21,7 +21,8 @@ class requester extends Model
         'Req_Password',
         'Comp_No',
         'Req_No',
-        'Req_Address'
+        'Req_Address',
+        'role_id',
     ];
 
     protected $hidden = [

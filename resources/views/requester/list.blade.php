@@ -50,7 +50,7 @@
                         <a href="/requester/{{ $requester->id }}/edit" class="dropdown-item">Edit</a>
                       </li>
                       <li>
-                        <form action="/requester/{{ $requester->Req_Email }}" method="post">
+                        <form action="/requester/{{ $requester->id }}" method="post">
                           @csrf
                           @method('delete')
                           <button class="dropdown-item" onclick="return confirm('Anda ingin menghapus Requester?')">Delete</button>

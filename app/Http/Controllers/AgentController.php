@@ -15,6 +15,11 @@ class AgentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+        $this->middleware('role:agent||admin');
+    }
+
     public function index()
     {
         $datas = Agent::all();
@@ -53,6 +58,7 @@ class AgentController extends Controller
             'Ag_No' => 'required|numeric|min:8',
             'Ag_Address' => 'required|max:255',
             'Team_Status' => 'boolean',
+            'role_id' => 'required'
         ]);
         Agent::create([
             'Ag_Name' => $request->Ag_Name,
@@ -61,12 +67,15 @@ class AgentController extends Controller
             'Ag_No' => $request->Ag_No,
             'Ag_Address' => $request->Ag_Address,
             'Team_Status' => $request->boolean('Team_Status'),
+            'role_id' => $request->role_id,
         ]);
         User::create([
             'name' => $request->Ag_Name,
             'email' => $request->Ag_Email,
             'password' => Hash::make($request->Ag_Password),
+            'role_id' => $request->role_id,
         ]);
+        // $request->dd();
         return redirect('/agent')->with('success','Agent has been added!');
     }
 
@@ -163,12 +172,12 @@ class AgentController extends Controller
         return redirect('/agent');
     }
 
-    public function destroyid($Ag_Email){
-        $agent = Agent::where('Ag_Email', $Ag_Email);
-        $agent->delete();
-        $del = User::where('email', $Ag_Email);
-        $del->delete();
-        return redirect('/agent')->with('mssg','Agent Deleted');
+    // public function destroyid($Ag_Email){
+    //     $agent = Agent::where('Ag_Email', $Ag_Email);
+    //     $agent->delete();
+    //     $del = User::where('email', $Ag_Email);
+    //     $del->delete();
+    //     return redirect('/agent')->with('mssg','Agent Deleted');
 
-    }
+    // }
 }

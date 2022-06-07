@@ -85,7 +85,8 @@
                         @enderror
                     </div>
 
-                    <input type="hidden" id="role_id" value="3" name="role_id">
+                    <!-- auto fill role_id -->
+                    <input type="hidden" name="role_id"class="form-control" id="role_id" required ria-label="Username" aria-describedby="basic-addon5" value="3">
                     
                     <div class="checkbox mb-3">
                         <label>

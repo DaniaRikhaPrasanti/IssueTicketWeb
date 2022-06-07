@@ -77,16 +77,11 @@
                         <input type="text" class="form-control" name="Comp_No" id="Comp_No" required value="{{ $requester->Comp_No }}" ria-label="Username" aria-describedby="basic-addon5" disabled>
                     </div>
                     {{-- ERROR DELETE TIDAK BERFUNGSI --}}
-                    <div class="text-right mt-4">
-                        
-                        
-                        
-                        <a href="/requester/delete/{{$requester->id}}">
+                    <div class="text-right mt-4"> 
+                        <!-- <a href="/requester/{{ $requester->id }}">
                             <button type="button" class="btn btn-danger" onclick="return confirm('Anda ingin menghapus Requester?')">Hapus</button>
                             
-                        </a>
-                        
-                        
+                        </a> -->
                         <a href="/requester/{{ $requester->id }}/edit">
                             <button type="button" class="btn btn-primary mx-2">Edit</button>
                         </a>

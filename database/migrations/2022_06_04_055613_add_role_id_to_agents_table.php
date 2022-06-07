@@ -14,8 +14,7 @@ class AddRoleIdToAgentsTable extends Migration
     public function up()
     {
         Schema::table('agents', function (Blueprint $table) {
-            $table->unsignedBigInteger('role_id')->nullable();
-            $table->foreign('role_id')->references('id')->on('agents')->onDelete('set null');
+            $table->foreignId('role_id')->constrained();
         });
     }
 

@@ -14,8 +14,7 @@ class AddRoleIdToRequestersTable extends Migration
     public function up()
     {
         Schema::table('requesters', function (Blueprint $table) {
-            $table->unsignedBigInteger('role_id')->nullable();
-            $table->foreign('role_id')->references('id')->on('requesters')->onDelete('set null');
+            $table->foreignId('role_id')->constrained();
         });
     }
 
