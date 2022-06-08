@@ -52,6 +52,7 @@ Route::group(['middleware' => 'auth'], function(){
 Auth::routes(['verify' => true]);
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+Route::get('/kirimemail', [App\Http\Controllers\EmailController::class, 'index']);
 
 // Route::post('/loginuser', function (Request $request) {
 //     $email = $request->email;

@@ -50,6 +50,9 @@
                         <a href="/requester/{{ $requester->id }}/edit" class="dropdown-item">Edit</a>
                       </li>
                       <li>
+                        <a href="/kirimemail" class="dropdown-item">Kirim email</a>
+                      </li>
+                      <li>
                         <form action="/requester/{{ $requester->id }}" method="post">
                           @csrf
                           @method('delete')
