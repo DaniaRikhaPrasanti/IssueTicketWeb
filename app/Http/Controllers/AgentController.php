@@ -7,6 +7,8 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Hash;
+use App\Mail\Email;
+use Illuminate\Support\Facades\Mail;
 
 class AgentController extends Controller
 {
@@ -75,6 +77,17 @@ class AgentController extends Controller
             'password' => Hash::make($request->Ag_Password),
             'role_id' => $request->role_id,
         ]);
+        $data = [
+            'title' => 'Selamat datang',
+            'email' => $request->Ag_Email,
+            'password' => $request->Ag_Password,
+            'url' => 'https://issueticketweb.id',
+
+        ];
+
+		Mail::to($request->Ag_Email)->send(new Email($data));
+
+
         // $request->dd();
         return redirect('/agent')->with('success','Agent has been added!');
     }

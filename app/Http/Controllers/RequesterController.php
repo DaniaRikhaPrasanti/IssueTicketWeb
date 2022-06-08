@@ -7,6 +7,8 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Hash;
+use App\Mail\Email;
+use Illuminate\Support\Facades\Mail;
 
 class RequesterController extends Controller
 {
@@ -78,6 +80,17 @@ class RequesterController extends Controller
             'role_id' => $request->role_id,
 
         ]);
+        $data = [
+            'title' => 'Selamat datang',
+            'email' => $request->Req_Email,
+            'password' => $request->Req_Password,
+            'url' => 'http://127.0.0.1:8000/login',
+
+        ];
+
+		Mail::to($request->Req_Email)->send(new Email($data));
+
+
         // $request->dd();
         return redirect('/requester')->with('success','Requester has been added!');
     }
