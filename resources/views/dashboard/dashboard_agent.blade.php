@@ -4,19 +4,10 @@
     <div class="container-fluid mb-5">
         <h3 class="mt-4">Ticket Statistics</h3>
         <hr>
-        <div class="row">
-            <div class="card card-success">
-                <div class="card-header">
-                    <h3 class="card-title">Bar Chart</h3>
-                </div>
-                <div class="card-body">
-                    <div class="chart">
-                        <canvas id="barChart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
-                    </div>
-                </div>
-
+        <div class="row pl-5">
+            <div class="chart">
+                <canvas id="barChart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 50%;"></canvas>
             </div>
-
         </div>
     </div>
 </div>
@@ -106,6 +97,49 @@
 
 </div>
 
+@endsection
+
+@section("script")
+<script src="{{ url("admin") }}/plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="{{ url("admin") }}/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+<script src="{{ url("admin") }}/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+<script src="{{ url("admin") }}/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
+<script>
+    const labels = [
+      'January',
+      'February',
+      'March',
+      'April',
+      'May',
+      'June',
+    ];
+
+    const data = {
+      labels: labels,
+      datasets: [{
+        label: 'Jumlah Tiket',
+        backgroundColor: 'rgb(58, 120, 238)',
+        borderColor: 'rgb(255, 99, 132)',
+        data: [0, 10, 5, 2, 20, 45, 45],
+      }]
+    };
+
+    const config = {
+      type: 'bar',
+      data: data,
+      options: {}
+    };
+</script>
+
+<script>
+    const barChart = new Chart(
+      document.getElementById('barChart'),
+      config
+    );
+  </script>
 
 @endsection
 
