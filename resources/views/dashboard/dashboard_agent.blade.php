@@ -4,9 +4,54 @@
     <div class="container-fluid mb-5">
         <h3 class="mt-4">Ticket Statistics</h3>
         <hr>
-        <div class="row pl-5">
-            <div class="chart">
-                <canvas id="barChart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 50%;"></canvas>
+        <div class="row pl-5 mt-5">
+            <div class="chart col-9">
+                <canvas id="barChart" class="mr-5" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
+            </div>
+            <div class="col-3 mt-3 mb-5">
+                <div class="mb-4">
+                    <div class="d-flex justify-content-start">
+                        <div class="mr-3">
+                            By
+                        </div>
+                        <div class="">
+                            <div class="btn-group">
+                                <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Bulan
+                                </button>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                    <a class="dropdown-item" href="#">Hari</a>
+                                    <a class="dropdown-item" href="#">Bulan</a>
+                                    <a class="dropdown-item" href="#">Tahun</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="invalidCheck2" required>
+                    <label class="form-check-label" for="invalidCheck2">Resolved</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="invalidCheck2" required>
+                    <label class="form-check-label" for="invalidCheck2">Pending</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="invalidCheck2" required>
+                    <label class="form-check-label" for="invalidCheck2">Open</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="invalidCheck2" required>
+                    <label class="form-check-label" for="invalidCheck2">Work In Progress</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="invalidCheck2" required>
+                    <label class="form-check-label" for="invalidCheck2">Work Done</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="invalidCheck2" required>
+                    <label class="form-check-label" for="invalidCheck2">Feature Requested</label>
+                </div>
             </div>
         </div>
     </div>
@@ -60,7 +105,7 @@
                 <tbody>
                   <tr>
                     <th scope="row">
-                        <p class="fw-lighter">Resolver</p>
+                        <p class="fw-lighter">Resolved</p>
                         <p class="fs-1 mt-2 mb-2 text-success">20</p>
                         <p class="fw-lighter">Ticket already resolved</p>
                     </th>
@@ -123,7 +168,7 @@
         label: 'Jumlah Tiket',
         backgroundColor: 'rgb(58, 120, 238)',
         borderColor: 'rgb(255, 99, 132)',
-        data: [0, 10, 5, 2, 20, 45, 45],
+        data: [0, 10, 5, 2, 20, 45, 100],
       }]
     };
 
