@@ -52,7 +52,6 @@ Route::group(['middleware' => 'auth'], function(){
 Auth::routes(['verify' => true]);
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('/kirimemail', [App\Http\Controllers\EmailController::class, 'index']);
 
 // Route::post('/loginuser', function (Request $request) {
 //     $email = $request->email;
@@ -95,18 +94,6 @@ Route::resource('/ticket', TicketController::class);
 
 Route::get('/ticket/close_ticket', function () {
     return view('ticket.close_ticket', [
-        'title' => 'List Tickets'
-    ]);
-});
-
-Route::get('/ticket/create_ticket', function () {
-    return view('ticket.create_ticket', [
-        'title' => 'List Tickets'
-    ]);
-});
-
-Route::get('/ticket/list_tickets', function () {
-    return view('ticket.list_tickets', [
         'title' => 'List Tickets'
     ]);
 });

@@ -76,7 +76,7 @@
             </tr>
             </thead>
             <tbody>
-            @foreach($datas as $key=>$value)
+            @foreach($tickets as $ticket)
             <tr>
               <!-- <td>01/10/2022</td>
               <td>Mis inputan</td>
@@ -85,20 +85,28 @@
               <td>
                 <span class="badge badge-danger">Pending</span>
               </td> -->
-              <td>{{ $value->id}}</td>
-              <td>{{ $value->Tick_Date}}</td>
-              <td>{{ $value->Tick_Subj}}</td>
-              <td>{{ $value->Tick_Issue}}</td>
-              <td>{{ $value->Tick_Type}}</td>
-              <td>{{ $value->Tick_Status}}</td>
+              <td>{{ $ticket->updated_at}}</td>
+              <td>{{ $ticket->Tick_Subj}}</td>
+              <td>{{ $ticket->Tick_Issue}}</td>
+              <td>{{ $ticket->Tick_Type}}</td>
+              <td><button type="button" class="btn 
+                @if ($ticket->Tick_Status == 'Pending') btn-danger 
+                @else ($ticket->Tick_Status == 'Open') btn-success 
+                @endif">{{ $ticket->Tick_Status}}</button></td>
               <td>
                 <div class="btn-group dropend">
                   <button type="button" class="btn btn-link" data-bs-toggle="dropdown" aria-expanded="false">
                     <i class="fas fa-ellipsis-v"></i>
                   </button>
                   <ul class="dropdown-menu dropdown-menu-end">
-                    <li><a class="dropdown-item" href="#">Edit</a></li>
-                    <li><a class="dropdown-item" href="#">Delete</a></li>
+                    <li><a class="dropdown-item" href="/ticket/{{ $ticket->id }}">Detail</a></li>
+                    <li>
+                      <form action="/ticket/{{ $ticket->id }}" method="post">
+                        @csrf
+                        @method('delete')
+                        <button class="dropdown-item" onclick="return confirm('Anda ingin menghapus Ticket?')">Delete</button>
+                      </form>
+                    </li>
                   </ul>
                 </div>
             </tr>

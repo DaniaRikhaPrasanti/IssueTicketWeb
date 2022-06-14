@@ -17,11 +17,10 @@ class CreateTicketTable extends Migration
             $table->id();
             $table->string('Tick_Req');
             $table->string('Tick_Subj');
-            $table->string('Tick_Type');
-            $table->string('Tick_Issue');
-            $table->string('Tick_Attach');
             $table->string('Tick_Status');
-            $table->string('Tick_Date');
+            $table->string('Tick_Issue');
+            $table->string('Tick_Attach')->nullable();
+            $table->string('Tick_Type');
             $table->string('Tick_Priority');
             $table->string('Res_Date');
             $table->timestamps();

@@ -14,12 +14,16 @@ class Ticket extends Model
      *
      * @var array
      */
-    protected $table = 'ticket'; 
+    protected $table = 'ticket';
+    //kolom yang dapat di input 
     protected $fillable =[
-    'Tick_Date' ,
-    'Tick_Subj' ,
+    'Tick_Req' ,
     'Tick_Issue',
     'Tick_Type' ,
-    'Tick_Status' ,
+    'Tick_Attach',
+    'Tick_Subj' ,
+    'Tick_Status',
+    'Tick_Priority' ,
+    'Res_Date',
     ];
 }
