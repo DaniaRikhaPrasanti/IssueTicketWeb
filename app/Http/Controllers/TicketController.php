@@ -19,7 +19,7 @@ class TicketController extends Controller
         $tickets = Ticket::select('*')->distinct()->get();
         return view('ticketrequester.list_tickets', [
             'title' => 'List Tickets',
-            'tickets' => $ticket
+            'tickets' => $tickets
         ]);
 
 
