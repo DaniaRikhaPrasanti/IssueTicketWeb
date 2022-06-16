@@ -47,7 +47,7 @@
                                 </div>
                                 <div class="timeline-body">
                                     {{-- <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui quisquam, ex . . . <br><small class="text-primary"><a href="#">Read more</a></small></p> --}}
-                                    <p>{{ $tk->Ticket_Issue }}<br><small class="text-primary"><a href="#">Read more</a></small></p>
+                                    <p>{{ $tk->Tick_Issue }}<br><small class="text-primary"><a href="#">Read more</a></small></p>
                                 </div>
                             </div>
                         </li>
