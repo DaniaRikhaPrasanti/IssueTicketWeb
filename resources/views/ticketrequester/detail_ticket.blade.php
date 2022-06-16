@@ -34,21 +34,24 @@
         <div class="card-body">
             <div class="container mb-3 col-10 col-md-12">
                 <h5>Timeline</h5>
-                    <ul class="timeline mt-2
-                    ">
+                    <ul class="timeline mt-2">
+                        @foreach ($ticketDetil as $td)
                         <li>
                             <div class="timeline-badge bg-danger">
-                                <small class="text-light">Pending</small>
+                                <small class="text-light">{{ $td->Tick_Status }}</small>
                             </div>
                             <div class="timeline-panel">
                                 <div class="timeline-heading">
-                                    <h6 class="timeline-title text-muted">11/05/2022</h6>
+                                    {{-- <h6 class="timeline-title text-muted">{{ 11/05/2022 }}</h6> --}}
+                                    <h6 class="timeline-title text-muted">{{ date("D/M/Y", $td->created_at) }}</h6>
                                 </div>
                                 <div class="timeline-body">
-                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui quisquam, ex . . . <br><small class="text-primary"><a href="#">Read more</a></small></p>
+                                    {{-- <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui quisquam, ex . . . <br><small class="text-primary"><a href="#">Read more</a></small></p> --}}
+                                    <p>{{ $td->Ticket_Issue }}<br><small class="text-primary"><a href="#">Read more</a></small></p>
                                 </div>
                             </div>
                         </li>
+                        @endforeach
                     </ul>
                 <h5>Subject</h5>
                 <div class="input-group mb-3">

@@ -83,10 +83,23 @@ class TicketController extends Controller
      */
     public function show(Ticket $ticket)
     {
+        // select * from ticket where id = $id and tick_req = Auth::user()->name 
+        $ticketDetail = Ticket::where('id', $ticket->id)
+            ->where('Tick_Req', $ticket->Tick_Req)
+            ->where('Tick_Subj', $ticket->Tick_Subj)
+            ->where('Tick_Issue', $ticket->Tick_Issue)
+            ->orderBy('id', 'desc')
+            ->get();
         return view('ticketrequester.detail_ticket', [
             'title' => 'Detail Ticket',
-            'ticket' => $ticket
+            'ticket' => $ticketDetail
         ]);
+
+        // old
+        // return view('ticketrequester.detail_ticket', [
+        //     'title' => 'Detail Ticket',
+        //     'ticket' => $ticket
+        // ]);
     }
 
     /**
