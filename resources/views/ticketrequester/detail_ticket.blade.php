@@ -35,19 +35,19 @@
             <div class="container mb-3 col-10 col-md-12">
                 <h5>Timeline</h5>
                     <ul class="timeline mt-2">
-                        @foreach ($ticketDetail as $td)
+                        @foreach ($ticket as $tk)
                         <li>
                             <div class="timeline-badge bg-danger">
-                                <small class="text-light">{{ $td->Tick_Status }}</small>
+                                <small class="text-light">{{ $tk->Tick_Status }}</small>
                             </div>
                             <div class="timeline-panel">
                                 <div class="timeline-heading">
                                     {{-- <h6 class="timeline-title text-muted">{{ 11/05/2022 }}</h6> --}}
-                                    <h6 class="timeline-title text-muted">{{ date("D/M/Y", $td->created_at) }}</h6>
+                                    <h6 class="timeline-title text-muted">{{ date("D/M/Y", $tk->created_at) }}</h6>
                                 </div>
                                 <div class="timeline-body">
                                     {{-- <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui quisquam, ex . . . <br><small class="text-primary"><a href="#">Read more</a></small></p> --}}
-                                    <p>{{ $td->Ticket_Issue }}<br><small class="text-primary"><a href="#">Read more</a></small></p>
+                                    <p>{{ $tk->Ticket_Issue }}<br><small class="text-primary"><a href="#">Read more</a></small></p>
                                 </div>
                             </div>
                         </li>
@@ -55,18 +55,18 @@
                     </ul>
                 <h5>Subject</h5>
                 <div class="input-group mb-3">
-                    <input type="text" name="Tick_Subj" class="form-control" required value="{{ $ticket->Tick_Subj }}" ria-label="Username" aria-describedby="basic-addon1" disabled>
+                    <input type="text" name="Tick_Subj" class="form-control" required value="{{ $ticket[0]->Tick_Subj }}" ria-label="Username" aria-describedby="basic-addon1" disabled>
                 </div>
 
                 <h5>Issues</h5>
-                <textarea class="form-control" id="Tick_Issue" name="Tick_Issue" rows="8"  disabled>{{ $ticket->Tick_Issue }}
+                <textarea class="form-control" id="Tick_Issue" name="Tick_Issue" rows="8"  disabled>{{ $ticket[0]->Tick_Issue }}
                 </textarea>
 
                 <div class="my-3 mb-4">
                     <div class="row">
                         <div class="col-sm-10 col-md-8 col-lg-6">
                             <h5>Attachment</h5>
-                              <img src="{{ asset('storage/' . $ticket->Tick_Attach) }}"  alt="Gambar Attachment">
+                              <img src="{{ asset('storage/' . $ticket[0]->Tick_Attach) }}"  alt="Gambar Attachment">
                         </div>
                     </div>
                 </div>
