@@ -43,7 +43,7 @@
                             <div class="timeline-panel">
                                 <div class="timeline-heading">
                                     {{-- <h6 class="timeline-title text-muted">{{ 11/05/2022 }}</h6> --}}
-                                    <h6 class="timeline-title text-muted">{{ date("D/M/Y", $tk->created_at) }}</h6>
+                                    <h6 class="timeline-title text-muted">{{ date_format($tk->created_at, "d/m/Y") }}</h6>
                                 </div>
                                 <div class="timeline-body">
                                     {{-- <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui quisquam, ex . . . <br><small class="text-primary"><a href="#">Read more</a></small></p> --}}
