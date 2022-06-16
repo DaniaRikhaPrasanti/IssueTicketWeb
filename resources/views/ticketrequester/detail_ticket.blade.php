@@ -37,9 +37,23 @@
                     <ul class="timeline mt-2">
                         @foreach ($ticket as $tk)
                         <li>
+                            @if($tk->Tick_Status == "Pending")
                             <div class="timeline-badge bg-danger">
                                 <small class="text-light">{{ $tk->Tick_Status }}</small>
                             </div>
+                            @elseif ($tk->Tick_Status == "Requested")
+                            <div class="timeline-badge bg-warning">
+                                <small class="text-light">{{ $tk->Tick_Status }}</small>
+                            </div>
+                            @elseif ($tk->Tick_Status == "Open" || $tk->Tick_Status == "Work In Progres" || $tk->Tick_Status == "Work Done")
+                            <div class="timeline-badge bg-primary">
+                                <small class="text-light">{{ $tk->Tick_Status }}</small>
+                            </div>
+                            @elseif ($tk->Tick_Status == "Resolved")
+                            <div class="timeline-badge bg-success">
+                                <small class="text-light">{{ $tk->Tick_Status }}</small>
+                            </div>
+                            @endif
                             <div class="timeline-panel">
                                 <div class="timeline-heading">
                                     {{-- <h6 class="timeline-title text-muted">{{ 11/05/2022 }}</h6> --}}
