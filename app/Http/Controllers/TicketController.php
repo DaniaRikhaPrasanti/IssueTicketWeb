@@ -15,7 +15,8 @@ class TicketController extends Controller
      */
     public function index()
     {
-        $ticket = Ticket::all()->distinct()->get();
+        // select distinct all ticket from ticket table
+        $tickets = Ticket::select('*')->distinct()->get();
         return view('ticketrequester.list_tickets', [
             'title' => 'List Tickets',
             'tickets' => $ticket
