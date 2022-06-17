@@ -5,6 +5,7 @@ use App\Http\Controllers\RequesterController;
 use App\Http\Controllers\AgentController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\TicketController;
+use App\Http\Controllers\TicketConvController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -79,6 +80,7 @@ Route::resource('/agent', AgentController::class);
 // Route::get('/agent/delete/{id}', [AgentController::class, 'destroy']);
 
 Route::resource('/ticket', TicketController::class);
+Route::resource('/ticketconv', TicketConvController::class);
 
 
 
