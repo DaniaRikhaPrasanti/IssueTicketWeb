@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
+use App\Models\requester;
+use App\Models\Agent;
 
 class HomeController extends Controller
 {
@@ -11,9 +14,21 @@ class HomeController extends Controller
      *
      * @return void
      */
+    protected function redirectTo()
+    {
+        if (auth()->user()->role_id == 1) {
+            return view('layouts.app');
+        }
+        else if(auth()->user()->role_id == 2){
+            return view('layouts.appuser');
+        }
+        else{
+            return view('layouts.appuser');
+        }
+    }
     public function __construct()
     {
-        $this->middleware(['auth','verified']);
+        $this->middleware(['auth']);
     }
 
     /**
@@ -21,8 +36,5 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
-    {
-        return view('home');
-    }
+
 }

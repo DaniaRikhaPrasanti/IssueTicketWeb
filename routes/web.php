@@ -26,32 +26,31 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return view('dashboard');
-})->name('dashboard');
+// Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+//     return view('dashboard');
+// })->name('dashboard');
 
 //login multi-level
-Route::group(['middleware' => 'auth'], function(){
-    Route::group(['middleware' => 'role:admin'], function(){
-        Route::get('/administrator', function(){
-            return view('/layouts.app');
-        });
-    });
-    Route::group(['middleware' => 'role:requester'], function(){
-        Route::get('/user-requester', function(){
-            return view('/layouts.appuser');
-        });
-    });
-    Route::group(['middleware' => 'role:agent'], function(){
-        Route::get('/user-agent', function(){
-            return view('/layouts.appuser');
-        });
-    });
-});
-//
-// verifikasi email user 
 Auth::routes(['verify' => true]);
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'redirectTo'])->name('home');
+// Route::group(['middleware' => 'auth'], function(){
+//     Route::group(['middleware' => 'role:admin'], function(){
+//         Route::get('/administrator', function(){
+//             return view('/layouts.app');
+//         });
+//     });
+//     Route::group(['middleware' => 'role:requester'], function(){
+//         Route::get('/user-requester', function(){
+//             return view('/layouts.appuser');
+//         });
+//     });
+//     Route::group(['middleware' => 'role:agent'], function(){
+//         Route::get('/user-agent', function(){
+//             return view('/layouts.appuser');
+//         });
+//     });
+// });
+//
 
 
 // Route::post('/loginuser', function (Request $request) {
