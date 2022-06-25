@@ -35,7 +35,7 @@
          @csrf
         <div class="card-body">
             <div class="container mb-3 col-10 col-md-12">
-                <h5>Timeline</h5>
+                <!-- <h5>Timeline</h5>
                     <ul class="timeline mt-2">
                         <li>
                             <div class="timeline-badge bg-danger">
@@ -61,10 +61,12 @@
                                 </div>
                             </div>
                         </li>
-                    </ul>
+                    </ul> -->
 
-                    <label for="Tick_Status" class="form-label">Status :  </label>
-                    <div class="input-group mb-3">
+                    
+
+                    <!-- <label for="Tick_Status" class="form-label">Status :  </label>
+                    <div class="input-group mb-3"> -->
                         <!-- <span class="input-group-text" id="basic-addon2">
                             <i class="fas fa-book"></i>
                         </span> -->
@@ -83,7 +85,7 @@
                         </div>
                         </div> -->
 
-                        <div class="dropdown">
+                        <!-- <div class="dropdown">
                         <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             WIP
                         </button>
@@ -93,7 +95,21 @@
                             <a class="dropdown-item" href="https://www.malasngoding.com/category/codeigniter">CodeIgniter</a>
                         </div>
                     </div>
+                    </div> -->
 
+
+
+                    <label for="Log_Title" class="form-label">Title </label>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon2">
+                            <i class="fas fa-suitcase"></i>
+                        </span>
+                        <input type="text" name="Log_Title" class="form-control @error('Log_Title') is-invalid @enderror" id="Log_Title" required  ria-label="Username" aria-describedby="basic-addon2"value="{{ old('Log_Title') }}">
+                        @error('Log_Title')
+                            <div class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                        @enderror
                     </div>
                
 
@@ -125,6 +141,13 @@
                             </div>
                         </div>
                     </div>
+
+                    <div class="mt-4">
+                        <a href="/requester" class="btn btn-outline-danger ">Cancel</a>
+                        <!-- Button trigger modal -->
+                        <button type="button" class="btn btn-outline-primary mx-2 float-right" data-bs-toggle="modal" data-bs-target="#add">
+                            Save
+                        </button>
 
                     <!-- Modal -->
                     <div class="modal fade" id="add" tabindex="-1" aria-labelledby="add" aria-hidden="true">

@@ -63,6 +63,14 @@
                                     {{-- <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui quisquam, ex . . . <br><small class="text-primary"><a href="#">Read more</a></small></p> --}}
                                     <p>{{ $tk->Tick_Issue }}<br><small class="text-primary"><a href="#">Read more</a></small></p>
                                 </div>
+                                <!-- <div class="float-right" style="float: right; margin-right: 60px ">
+                                <button type="button" class="btn btn-outline-info">Save</button>
+                                </div> -->
+                                @can('button-respond')
+                                <a href="/ticketconv/create">
+	                            <button type="button" class="btn btn-outline-info" style="float: right; margin-right: 35px; margin-top: 15px">Respond</button>
+                                @endcan
+	                            </a>
                             </div>
                         </li>
                         @endforeach

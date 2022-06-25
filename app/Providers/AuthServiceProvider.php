@@ -4,6 +4,11 @@ namespace App\Providers;
 
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Gate;
+use App\Models\User;
+
+define("admin", 1);
+define("requester", 2);
+define("agent", 3);
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -24,6 +29,10 @@ class AuthServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->registerPolicies();
+
+        Gate::define('button-respond', function (User $users) {
+            return in_array($users->role_id, [admin,agent]);
+        });
 
         //
     }

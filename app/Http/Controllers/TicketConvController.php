@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\TicketConv;
 use Illuminate\Http\Request;
+use Auth;
 
 class TicketConvController extends Controller
 {
@@ -49,6 +50,25 @@ class TicketConvController extends Controller
     public function store(Request $request)
     {
         //
+        $request->validate([
+            'Log_Title' => 'required|max:255',
+            'Log_Desc' => 'required|max:255',
+        ]);
+        $ticketimages = '';
+        if ($request->file('Log_Attachment')) {
+            $ticketimages = $request->file('Log_Attachment')->store('ticket-images');
+        }
+
+        TicketConv::create([
+            'Log_Creator' => Auth::user()->name,
+            'Log_Title' => $request->Log_Title,
+            'Log_Desc' => $request->Log_Desc,
+            'Log_Attachment' => $ticketimages,
+            'Tick_Status' => 'WIP',
+        ]);
+
+        return redirect('/ticketconv')->with('success', 'Response has been added!');
+
     }
 
     /**
@@ -60,6 +80,8 @@ class TicketConvController extends Controller
     public function show(TicketConv $ticketConv)
     {
         //
+
+        
     }
 
     /**
