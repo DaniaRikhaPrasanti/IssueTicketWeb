@@ -59,7 +59,7 @@ class TicketController extends Controller
         //menyimpan gambar di public/storage/ticket-image
         $ticketimages = '';
         if ($request->file('Tick_Attach')) {
-            $ticketimages = $request->file('Tick_Attach')->store('ticket-images');
+            $ticketimages = $request->file('Tick_Attach')->store('public/ticket-images');
         }
         Ticket::create([
             'Tick_Req' => Auth::user()->name,
