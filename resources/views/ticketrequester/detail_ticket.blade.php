@@ -38,9 +38,11 @@
                         @foreach ($ticket as $tk)
                         <li>
                             @if($tk->Tick_Status == "Pending")
+                            <a href="/ticket/{{ $tk->id }}/detail">
                             <div class="timeline-badge bg-danger">
                                 <small class="text-light">{{ $tk->Tick_Status }}</small>
                             </div>
+                            </a>
                             @elseif ($tk->Tick_Status == "Requested")
                             <div class="timeline-badge bg-warning">
                                 <small class="text-light">{{ $tk->Tick_Status }}</small>
