@@ -22,6 +22,7 @@ use App\Providers\RouteServiceProvider;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -79,6 +80,8 @@ Route::resource('/agent', AgentController::class);
 // Route::get('/agent/delete/{id}', [AgentController::class, 'destroy']);
 
 Route::resource('/ticket', TicketController::class);
+Route::get('/ticket/{ticket}/detail', [TicketController::class, "ticketDetail"]);
+
 Route::resource('/ticketconv', TicketConvController::class);
 
 

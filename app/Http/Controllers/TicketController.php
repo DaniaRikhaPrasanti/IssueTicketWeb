@@ -136,4 +136,9 @@ class TicketController extends Controller
         Ticket::destroy($ticket->id);
         return redirect('/ticket');
     }
+
+    public function ticketDetail(Ticket $ticket)
+    {
+        return view("ticketagent.detail_timeline_ticket");
+    }
 }
