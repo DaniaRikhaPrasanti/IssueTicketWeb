@@ -139,6 +139,6 @@ class TicketController extends Controller
 
     public function ticketDetail(Ticket $ticket)
     {
-        return view("ticketagent.detail_timeline_ticket");
+        return view("ticketagent.detail_timeline_ticket", compact('ticket'));
     }
 }

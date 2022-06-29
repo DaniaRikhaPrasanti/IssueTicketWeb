@@ -40,21 +40,21 @@
                   <div class="input-group-prepend">
                     <span class="input-group-text" id="basic-addon3">$</span>
                   </div>
-                  <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+                  <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3" readonly value="{{ $ticket->Tick_Req }}">
                 </div>
                 <label for="basic-url">Title</label>
                 <div class="input-group mb-3">
                   <div class="input-group-prepend">
                     <span class="input-group-text" id="basic-addon3">$</span>
                   </div>
-                  <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+                  <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3" readonly>
                 </div>
                 <label for="basic-url">Issues</label>
                 <div class="input-group mb-3">
                   <div class="input-group-prepend">
                     <span class="input-group-text" id="basic-addon3">$</span>
                   </div>
-                  <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+                  <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3" readonly value="{{ $ticket->Tick_Issue }}">
                 </div>
               </div>
 
