@@ -59,7 +59,7 @@
               </div>
 
               <div class="col-md-12">
-                <img src="#" alt="img-fluid">
+                <img src="{{ asset('storage/'.$ticket->Tick_Attach) }}" alt="img-fluid">
               </div>
 
               <a href="#" class="btn btn-outline-danger">Delete Ticket</a>
