@@ -83,6 +83,7 @@ Route::resource('/ticket', TicketController::class);
 Route::get('/ticket/{ticket}/detail', [TicketController::class, "ticketDetail"]);
 
 Route::resource('/ticketconv', TicketConvController::class);
+Route::get('/ticketconvform/{ticket}', [TicketConvController::class, "ticketConv"]);
 
 
 

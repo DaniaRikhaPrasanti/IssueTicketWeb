@@ -40,6 +40,13 @@ class TicketConvController extends Controller
         ]);
     }
     
+    public function ticketConv($id)
+    {
+        return view('ticketconv.add_response', [
+            'title' => 'Respond Tickets - Question',
+            'ticket_id' => $id,
+        ]);
+    }
 
     /**
      * Store a newly created resource in storage.
@@ -64,7 +71,8 @@ class TicketConvController extends Controller
             'Log_Title' => $request->Log_Title,
             'Log_Desc' => $request->Log_Desc,
             'Log_Attachment' => $ticketimages,
-            'Tick_Status' => 'WIP',
+            'status' => 'Open',
+            'ticket_id' => $request->ticket_id,
         ]);
 
         return redirect('/ticketconv')->with('success', 'Response has been added!');
@@ -80,9 +88,15 @@ class TicketConvController extends Controller
     public function show(TicketConv $ticketConv)
     {
         //
+        TicketConv::with('get_ticket')->findOrfail($id);
 
+        return view('ticketconv.add_response', [
+            'title' => 'Agent/Details',
+            'ticket_convs' => $ticket_convs
+        ]);
         
     }
+    
 
     /**
      * Show the form for editing the specified resource.
@@ -93,6 +107,7 @@ class TicketConvController extends Controller
     public function edit(TicketConv $ticketConv)
     {
         //
+    
     }
 
     /**

@@ -32,72 +32,12 @@
           <p class="card-title">Detail Ticket - Question</p>
         </div>
         <form method="post" action="/ticketconv" enctype="multipart/form-data">
-         @csrf
+        @method('put') 
+        @csrf
         <div class="card-body">
             <div class="container mb-3 col-10 col-md-12">
-                <!-- <h5>Timeline</h5>
-                    <ul class="timeline mt-2">
-                        <li>
-                            <div class="timeline-badge bg-danger">
-                                <small class="text-light">Pending</small>
-                            </div>
-                            <div class="timeline-panel">
-                                <div class="timeline-heading">
-                                    <h6 class="timeline-title text-muted">11/05/2022</h6>
-                                </div>
-                                <div class="timeline-body">
-                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui quisquam, ex . . . <br></p>
-                                </div>
-                            </div>
-                            <div class="timeline-badge bg-danger">
-                                <small class="text-light">Pending</small>
-                            </div>
-                            <div class="timeline-panel">
-                                <div class="timeline-heading">
-                                    <h6 class="timeline-title text-muted">12/05/2022</h6>
-                                </div>
-                                <div class="timeline-body">
-                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui quisquam, ex . . . <br><small class="text-primary"><a href="#">Read more</a></small></p>
-                                </div>
-                            </div>
-                        </li>
-                    </ul> -->
 
-                    
-
-                    <!-- <label for="Tick_Status" class="form-label">Status :  </label>
-                    <div class="input-group mb-3"> -->
-                        <!-- <span class="input-group-text" id="basic-addon2">
-                            <i class="fas fa-book"></i>
-                        </span> -->
-                        <!-- <select name="Tick_Status" id="Tick_Status" class="form-control">
-                            <option value="Question">Question</option>
-                            <option value="Incident">Incident</option>
-                            <option value="Problem">Problem</option>
-                            <option value="Feature Request">Feature Request</option>
-                        </select> -->
-                        <!-- <div class="dropdown">
-                        <button onclick="myFunction()" class="dropbtn">Dropdown</button>
-                        <div id="Tick_Status" class="dropdown-content">
-                            <a href="#">Link 1</a>
-                            <a href="#">Link 2</a>
-                            <a href="#">Link 3</a>
-                        </div>
-                        </div> -->
-
-                        <!-- <div class="dropdown">
-                        <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            WIP
-                        </button>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item" href="https://www.malasngoding.com/category/html">HTML</a>
-                            <a class="dropdown-item" href="https://www.malasngoding.com/category/bootstrap-4">Bootstrap 4</a>
-                            <a class="dropdown-item" href="https://www.malasngoding.com/category/codeigniter">CodeIgniter</a>
-                        </div>
-                    </div>
-                    </div> -->
-
-
+            <input class="form-control form-control-md" type="text" id="ticket_id" name="ticket_id" value="{{$ticket_id}}" hidden>
 
                     <label for="Log_Title" class="form-label">Title </label>
                     <div class="input-group mb-3">

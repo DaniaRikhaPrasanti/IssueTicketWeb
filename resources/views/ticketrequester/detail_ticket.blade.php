@@ -67,7 +67,7 @@
                                 <button type="button" class="btn btn-outline-info">Save</button>
                                 </div> -->
                                 @can('button-respond')
-                                <a href="/ticketconv/create">
+                                <a href="/ticketconvform/{{ $id_ticket }}">
 	                            <button type="button" class="btn btn-outline-info" style="float: right; margin-right: 35px; margin-top: 15px">Respond</button>
                                 @endcan
 	                            </a>

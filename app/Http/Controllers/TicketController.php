@@ -92,7 +92,8 @@ class TicketController extends Controller
             ->get();
         return view('ticketrequester.detail_ticket', [
             'title' => 'Detail Ticket',
-            'ticket' => $ticketDetail
+            'ticket' => $ticketDetail,
+            'id_ticket' => $ticket->id,
         ]);
 
         // old
