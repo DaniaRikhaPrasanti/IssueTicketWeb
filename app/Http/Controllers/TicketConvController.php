@@ -132,4 +132,9 @@ class TicketConvController extends Controller
     {
         //
     }
+
+    public function test(TicketConv $ticketConv)
+    {
+        return view('ticketconv.after_pending');
+    }
 }

@@ -19,6 +19,9 @@
   .timeline-badge>
   .glyphicon{margin-right:0px;color:#fff}
   .timeline-body>h4{margin-bottom:0!important}
+  .badgecustom{font-size:1.1em;text-align:center;margin-right:--25px;border:1px solid #d4d4d4;padding:0.3rem;width:10%;margin-bottom:1.2%}
+  .judul{color:#555B6B;font-size:1.1rem;font-weight:bold;margin:0}
+  .ket{margin:0;padding:0.5rem 0;color:#A0A4A8;font-size:1.3rem}
 </style>
 @endsection
 @section('contents')
@@ -29,11 +32,11 @@
       <div class="card">
         <!-- /.card-header -->
         <div class="card-header">
-          <p class="card-title">Detail Ticket - Question</p>
+          <p class="card-title" style="font-weight:600;font-size:1.5rem;color:#555B6B;">Detail Ticket - Question</p>
         </div>
         <div class="card-body">
             <div class="container mb-3 col-10 col-md-12">
-                <h5>Timeline</h5>
+                <h5 style="color:#555B6B">Timeline</h5>
                     <ul class="timeline mt-2">
                         @foreach ($ticket as $tk)
                         <li>
@@ -54,7 +57,7 @@
                                 <small class="text-light">{{ $tk->Tick_Status }}</small>
                             </div>
                             @endif
-                            <div class="timeline-panel">
+                            <div class="timeline-panel" style="width:90%">
                                 <div class="timeline-heading">
                                     {{-- <h6 class="timeline-title text-muted">{{ 11/05/2022 }}</h6> --}}
                                     <h6 class="timeline-title text-muted">{{ date_format($tk->created_at, "d/m/Y") }}</h6>
@@ -67,27 +70,56 @@
                                 <button type="button" class="btn btn-outline-info">Save</button>
                                 </div> -->
                                 @can('button-respond')
+
                                 <a href="/ticketconvform/{{ $id_ticket }}">
 	                            <button type="button" class="btn btn-outline-info" style="float: right; margin-right: 35px; margin-top: 15px">Respond</button>
+
                                 @endcan
 	                            </a>
                             </div>
                         </li>
                         @endforeach
                     </ul>
-                <h5>Subject</h5>
-                <div class="input-group mb-3">
-                    <input type="text" name="Tick_Subj" class="form-control" required value="{{ $ticket[0]->Tick_Subj }}" ria-label="Username" aria-describedby="basic-addon1" disabled>
+
+                <p class="judul">Status</p>
+                    @foreach ($ticket as $tk)
+                        @if($tk->Tick_Status == "Pending")
+                        <div class="badgecustom bg-danger" href="/ticket/{{ $tk->id }}/detail">
+                            <p style="margin:0;padding:0;display:inline-block;font-weight:bold;color:rgba(255, 255, 255, 0.87);">{{ $tk->Tick_Status }}</p>
+                            <i class="fa fa-solid fa-angle-down"></i>
+                        </div>
+                        @elseif ($tk->Tick_Status == "Requested")
+                        <div class="timeline-badge bg-warning">
+                            <small class="text-light">{{ $tk->Tick_Status }}</small>
+                        </div>
+                        @elseif ($tk->Tick_Status == "Open" || $tk->Tick_Status == "Work In Progres" || $tk->Tick_Status == "Work Done")
+                        <div class="timeline-badge bg-primary">
+                            <small class="text-light">{{ $tk->Tick_Status }}</small>
+                        </div>
+                        @elseif ($tk->Tick_Status == "Resolved")
+                        <div class="timeline-badge bg-success">
+                            <small class="text-light">{{ $tk->Tick_Status }}</small>
+                        </div>
+                        @endif
+                    @endforeach
+
+                <h5 class="judul">Subject</h5>
+                <div class="input-group mb-3" style="border:1px solid #CED4DA;background-color:#E9ECEF;border-radius:5px;vertical-align:baseline;align-items:center">
+                    <i class="fa fa-duotone fa-filter" style="margin-left:1%;color:#A0A4A8;"></i>
+                    <p class="ket">{{ $ticket[0]->Tick_Subj }}</p>
                 </div>
 
-                <h5>Issues</h5>
-                <textarea class="form-control" id="Tick_Issue" name="Tick_Issue" rows="8"  disabled>{{ $ticket[0]->Tick_Issue }}
-                </textarea>
+                <h5 class="judul">Issues</h5>
+                <div class="input-group mb-3" style="border:1px solid #CED4DA;background-color:#E9ECEF;border-radius:5px;height:200px">
+                    <p class="ket" style="padding-left:1%">{{ $ticket[0]->Tick_Issue }}</p>
+                </div>
 
                 <div class="my-3 mb-4">
                     <div class="row">
                         <div class="col-sm-10 col-md-8 col-lg-6">
-                            <h5>Attachment</h5>
+                            <h5 class="judul">Attachment</h5>
+                              <img src="{{ asset('storage/' . $ticket[0]->Tick_Attach) }}"  alt="Gambar Attachment">
+                              <img src="{{ asset('storage/' . $ticket[0]->Tick_Attach) }}"  alt="Gambar Attachment">
                               <img src="{{ asset('storage/' . $ticket[0]->Tick_Attach) }}"  alt="Gambar Attachment">
                         </div>
                     </div>
