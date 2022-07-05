@@ -119,3 +119,4 @@ Route::get('/dashboard/dashboard_agent', function () {
         'title' => 'Dashboard Agent'
     ]);
 });
+
