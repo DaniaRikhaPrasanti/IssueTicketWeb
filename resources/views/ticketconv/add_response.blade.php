@@ -32,7 +32,7 @@
           <p class="card-title">Detail Ticket - Question</p>
         </div>
         <form method="post" action="/ticketconv" enctype="multipart/form-data">
-        @method('put') 
+
         @csrf
         <div class="card-body">
             <div class="container mb-3 col-10 col-md-12">
