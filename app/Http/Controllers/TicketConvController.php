@@ -68,10 +68,10 @@ class TicketConvController extends Controller
 
         TicketConv::create([
             'Log_Creator' => Auth::user()->name,
+            'Tick_Status' => 'Pending',
             'Log_Title' => $request->Log_Title,
             'Log_Desc' => $request->Log_Desc,
             'Log_Attachment' => $ticketimages,
-            'status' => 'Open',
             'ticket_id' => $request->ticket_id,
         ]);
 
@@ -96,6 +96,7 @@ class TicketConvController extends Controller
         ]);
         
     }
+    
     
 
     /**

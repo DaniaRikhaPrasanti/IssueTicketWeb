@@ -26,4 +26,10 @@ class Ticket extends Model
     'Tick_Priority' ,
     'Res_Date',
     ];
+
+    public function ticketconv()
+    {
+        return $this->belongsTo(TicketConv::class, 'ticket_id', 'id');
+        
+    }
 }

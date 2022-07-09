@@ -22,12 +22,15 @@ class TicketConv extends Model
     'Log_Title' ,
     'Log_Desc',
     'Log_Attachment' ,
-    'ticket_status_id' ,
+    'Tick_Status',
 
     ];
 
     public function get_ticket()
     {
-        return $this->belongsTo(Ticket::class, 'ticket_id', 'id');
+        return $this->hasMany(Ticket::class, 'ticket_id', 'id');
+        
     }
+
+    
 }

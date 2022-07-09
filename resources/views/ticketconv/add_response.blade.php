@@ -38,6 +38,7 @@
             <div class="container mb-3 col-10 col-md-12">
 
             <input class="form-control form-control-md" type="text" id="ticket_id" name="ticket_id" value="{{$ticket_id}}" hidden>
+           
 
                     <label for="Log_Title" class="form-label">Title </label>
                     <div class="input-group mb-3">
