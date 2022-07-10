@@ -19,6 +19,7 @@ class TicketConv extends Model
     protected $fillable =[
     'ticket_id' ,
     'Log_Creator' ,
+    'Log_Creator_Type' ,
     'Log_Title' ,
     'Log_Desc',
     'Log_Attachment' ,
@@ -28,7 +29,7 @@ class TicketConv extends Model
 
     public function get_ticket()
     {
-        return $this->hasMany(Ticket::class, 'ticket_id', 'id');
+        return $this->belongsTo(Ticket::class, 'ticket_id', 'id');
         
     }
 

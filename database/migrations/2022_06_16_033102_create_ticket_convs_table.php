@@ -18,7 +18,6 @@ class CreateTicketConvsTable extends Migration
             $table->string('Tick_Status');
             $table->string('Log_Title');
             $table->string('Log_Desc');
-            $table->string('Log_Date');
             $table->string('Log_Creator');
             $table->string('Log_Creator_Type');
             $table->string('Log_Attachment');

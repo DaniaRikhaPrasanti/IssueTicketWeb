@@ -36,11 +36,8 @@
         @csrf
         <div class="card-body">
             <div class="container mb-3 col-10 col-md-12">
-
-            <input class="form-control form-control-md" type="text" id="ticket_id" name="ticket_id" value="{{$ticket_id}}" hidden>
-           
-
-                    <label for="Log_Title" class="form-label">Title </label>
+                <input class="form-control form-control-md" type="text" id="ticket_id" name="ticket_id" value="{{ $ticket_id }}" hidden>
+                <label for="Log_Title" class="form-label">Title </label>
                     <div class="input-group mb-3">
                         <span class="input-group-text" id="basic-addon2">
                             <i class="fas fa-suitcase"></i>
@@ -99,6 +96,7 @@
                                 </div>
                                 <div class="text-center mb-4">
                                     <button type="button" class="btn btn-danger mx-2" data-bs-dismiss="modal">Tidak</button>
+                                    
                                     <button type="submit" class="btn btn-primary mx-2">Iya</button>
                                 </div>
                             </div>

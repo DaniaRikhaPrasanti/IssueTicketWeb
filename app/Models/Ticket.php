@@ -29,7 +29,7 @@ class Ticket extends Model
 
     public function ticketconv()
     {
-        return $this->belongsTo(TicketConv::class, 'ticket_id', 'id');
+        return $this->hasMany(TicketConv::class, 'ticket_id', 'id');
         
     }
 }

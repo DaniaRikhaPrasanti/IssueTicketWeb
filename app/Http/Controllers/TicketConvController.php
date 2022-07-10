@@ -6,6 +6,7 @@ use App\Models\TicketConv;
 use Illuminate\Http\Request;
 use Auth;
 
+
 class TicketConvController extends Controller
 {
     /**
@@ -15,11 +16,11 @@ class TicketConvController extends Controller
      */
     public function index()
     {
-        //
-        return view('ticketconv.add_response', [
-            'title' => 'Respond Tickets - Question',
-            'ticketconv' => TicketConv::all()
-        ]);
+        
+        // return view('ticketrequester.detail_ticket', [
+        //     'title' => 'Respond Tickets - Question',
+        //     'ticketconv' => TicketConv::all()
+        // ]);
     }
 
     /**
@@ -68,6 +69,7 @@ class TicketConvController extends Controller
 
         TicketConv::create([
             'Log_Creator' => Auth::user()->name,
+            'Log_Creator_Type' =>  Auth::user()->role_id,
             'Tick_Status' => 'Pending',
             'Log_Title' => $request->Log_Title,
             'Log_Desc' => $request->Log_Desc,
@@ -75,7 +77,7 @@ class TicketConvController extends Controller
             'ticket_id' => $request->ticket_id,
         ]);
 
-        return redirect('/ticketconv')->with('success', 'Response has been added!');
+        return redirect('/ticket')->with('success', 'Response has been added!');
 
     }
 
@@ -85,14 +87,14 @@ class TicketConvController extends Controller
      * @param  \App\Models\TicketConv  $ticketConv
      * @return \Illuminate\Http\Response
      */
-    public function show(TicketConv $ticketConv)
+    public function show($id)
     {
-        //
-        TicketConv::with('get_ticket')->findOrfail($id);
-
-        return view('ticketconv.add_response', [
-            'title' => 'Agent/Details',
-            'ticket_convs' => $ticket_convs
+        // TicketConv::with('get_ticket')->findOrfail($id);
+        $ticketConv = TicketConv::where('id', $id)->first();
+        // dd($ticketConv);
+        return view('ticketrequester.timeline_convdetails', [
+            'title' => 'Timeline Detail ',
+            'ticketConv' => $ticketConv
         ]);
         
     }

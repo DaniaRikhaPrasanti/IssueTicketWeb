@@ -12,4 +12,9 @@ class Role extends Model
         'name',
         'redirect_to'
     ];
+    public function user()
+    {
+        return $this->hasMany(User::class, 'role_id');
+        
+    }
 }

@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Ticket;
-use Illuminate\Http\Request;
 use Auth;
+use App\Models\Ticket;
+use App\Models\TicketConv;
+use Illuminate\Http\Request;
 
 class TicketController extends Controller
 {
@@ -94,6 +95,7 @@ class TicketController extends Controller
             'title' => 'Detail Ticket',
             'ticket' => $ticketDetail,
             'id_ticket' => $ticket->id,
+            'ticketconv' => TicketConv::all()
         ]);
 
         // old
