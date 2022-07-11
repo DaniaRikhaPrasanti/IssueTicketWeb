@@ -1,5 +1,7 @@
 @extends('layouts.app')
 @section('contents')
+
+<!-- Graph -->
 <div class="card mt-3">
     <div class="container-fluid mb-5">
         <h3 class="mt-4">Ticket Statistics</h3>
@@ -58,6 +60,7 @@
 </div>
 
 <div class="row">
+    <!-- Recent Ticket -->
     <div class="card mt-3 mr-3 ml-2 col-sm">
         <div class="container-fluid mb-2">
             <h3 class="mt-4">Recent Tickets</h3>
@@ -68,6 +71,7 @@
                 <tr>
                     <th>Date</th>
                     <th>Requester</th>
+                    <th>Organization</th>
                     <th>Subject</th>
                     <th>Issue</th>
                     <th>Type</th>
@@ -77,6 +81,7 @@
                 <tr>
                     <td>01/10/2022</td>
                     <td>user.name@gmail.com</td>
+                    <td>Khong Guan</td>
                     <td>Delay proses</td>
                     <td>Lambung sakit saat belum makan di bulan puasa</td>
                     <td>Question</td>
@@ -84,6 +89,7 @@
                 <tr>
                     <td>01/10/2022</td>
                     <td>user.name@gmail.com</td>
+                    <td>Biskuat</td>
                     <td>Delay proses</td>
                     <td>Lambung sakit saat belum makan di bulan puasa</td>
                     <td>Question</td>
@@ -91,6 +97,15 @@
                 <tr>
                     <td>01/10/2022</td>
                     <td>user.name@gmail.com</td>
+                    <td>Choki choki</td>
+                    <td>Delay proses</td>
+                    <td>Lambung sakit saat belum makan di bulan puasa</td>
+                    <td>Question</td>
+                </tr>
+                <tr>
+                    <td>01/10/2022</td>
+                    <td>user.name@gmail.com</td>
+                    <td>Gadgetin</td>
                     <td>Delay proses</td>
                     <td>Lambung sakit saat belum makan di bulan puasa</td>
                     <td>Question</td>
@@ -99,6 +114,8 @@
           </table>
     </div>
 
+
+    <!-- Ticket Count -->
     <div class="card mt-3 mr-2 ml-3 col-sm">
         <div class="row">
             <table class="table col-sm table-hover">
