@@ -16,6 +16,7 @@ class requester extends Model
      */
     protected $fillable = [
         'Req_Name',
+        'Req_Organization',
         'Req_Jabatan',
         'Req_Email',
         'Req_Password',

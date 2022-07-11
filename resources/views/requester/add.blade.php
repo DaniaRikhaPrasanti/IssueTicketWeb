@@ -21,6 +21,19 @@
                         @enderror
                     </div>
 
+                    <label for="Req_Organization" class="form-label">Organization</label>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1">
+                            <i class="fas fa-user"></i>
+                        </span>
+                        <input type="text" name="Req_Organization" class="form-control @error('Req_Organization') is-invalid @enderror" id="Req_Organization" required ria-label="Username" aria-describedby="basic-addon1"value="{{ old('Req_Organization') }}">
+                        @error('Req_Organization')
+                            <div class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                        @enderror
+                    </div>
+
     
                     <label for="Req_Jabatan" class="form-label">Jabatan </label>
                     <div class="input-group mb-3">

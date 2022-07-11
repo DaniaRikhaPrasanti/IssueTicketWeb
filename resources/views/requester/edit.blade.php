@@ -18,6 +18,14 @@
                         <input type="text" class="form-control" id="Req_Name" name="Req_Name" required value="{{ $Req_Name }}" ria-label="Username" aria-describedby="basic-addon1" >
                     </div>
 
+                    <label for="Req_Organization" class="form-label">Organization : </label>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1">
+                            <i class="fas fa-user"></i>
+                        </span>
+                        <input type="text" class="form-control" id="Req_Organization" name="Req_Organization" required value="{{ $Req_Organization }}" ria-label="Username" aria-describedby="basic-addon1" >
+                    </div>
+
     
                     <label for="Req_Jabatan" class="form-label">Jabatan : </label>
                     <div class="input-group mb-3">

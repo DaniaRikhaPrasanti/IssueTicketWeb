@@ -16,6 +16,7 @@ class CreateRequestersTable extends Migration
         Schema::create('requesters', function (Blueprint $table) {
             $table->id();
             $table->string('Req_Name');
+            $table->string('Req_Organization');
             $table->text('Req_Password');
             $table->string('Req_Jabatan');
             $table->string('Req_Email')->unique();

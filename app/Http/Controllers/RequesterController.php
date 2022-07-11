@@ -52,6 +52,7 @@ class RequesterController extends Controller
     {
         $request->validate([
             'Req_Name' => 'required|max:255',
+            'Req_Organization' => 'required|max:255',
             'Req_Jabatan' => 'required|max:255',
             'Req_Email' => 'required|email',
             'Req_Password' => 'required|max:255',
@@ -65,6 +66,7 @@ class RequesterController extends Controller
 
         requester::create([
             'Req_Name' => $request->Req_Name,
+            'Req_Organization' => $request->Req_Organization,
             'Req_Jabatan' => $request->Req_Jabatan,
             'Req_Email' => $request->Req_Email,
             'Req_Password' => Crypt::encrypt($request->Req_Password),
@@ -122,6 +124,7 @@ class RequesterController extends Controller
             'title' => 'requester',
             'id' =>  $requester->id,
             'Req_Name' => $requester->Req_Name,
+            'Req_Organization' => $requester->Req_Organization,
             'Req_Jabatan' => $requester->Req_Jabatan,
             'Req_Email' => $requester->Req_Email,
             'Req_Password' => Crypt::decrypt($requester->Req_Password),
@@ -143,6 +146,7 @@ class RequesterController extends Controller
     {
         $request->validate([
             'Req_Name' => 'required|max:255',
+            'Req_Organization' => 'required|max:255',
             'Req_Jabatan' => 'required|max:255',
             'Req_Email' => 'required|email',
             'Req_Password' => 'required|max:255',
@@ -155,6 +159,7 @@ class RequesterController extends Controller
         requester::where('id', $requester->id)
             ->update([
                 'Req_Name' => $request->Req_Name,
+                'Req_Organization' => $request->Req_Organization,
                 'Req_Jabatan' => $request->Req_Jabatan,
                 'Req_Email' => $request->Req_Email,
                 'Req_Password' => Crypt::encrypt($request->Req_Password),

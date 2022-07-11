@@ -17,6 +17,7 @@
               <tr>
                 <th>Id</th>
                 <th>Name</th>
+                <th>Organization</th>
                 <th>Jabatan</th>
                 <th>Email</th>
                 <th>Password</th>
@@ -31,6 +32,7 @@
               <tr >
                 <td>{{ $loop->iteration }}</td>
                 <td>{{ $requester->Req_Name }}</td>
+                <td>{{ $requester->Req_Organization }}</td>
                 <td>{{ $requester->Req_Jabatan }}</td>
                 <td>{{ $requester->Req_Email }}</td>
                 <td></td>
