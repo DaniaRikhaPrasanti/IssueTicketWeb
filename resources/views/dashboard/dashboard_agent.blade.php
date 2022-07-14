@@ -174,26 +174,16 @@
 
 
 <script>
+
+    const labels = <?php echo json_encode($namabulan) ?>;
+
     const data = {
-      labels: [
-      'January',
-      'February',
-      'March',
-      'April',
-      'May',
-      'June',
-      'July',
-      'August',
-      'September',
-      'October',
-      'November',
-      'December'
-    ],
+      labels: labels,
       datasets: [{
         label: 'Jumlah Tiket',
         backgroundColor: 'rgb(58, 120, 238)',
         borderColor: 'rgb(255, 99, 132)',
-        data: [15, 10, 5, 2, 20, 45, 30, 40, 10, 2, 7, 3, 100,],
+        data: <?php echo json_encode($ticketperbulan) ?>,
       }]
     };
 
@@ -209,7 +199,7 @@
       document.getElementById('barChart'),
       config
     );
-</script>
+  </script>
 
 <script>
     $('#myTable').DataTable({

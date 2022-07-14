@@ -13,18 +13,68 @@ class DashboardController extends Controller
     public function index()
     {
         // select distinct all ticket from ticket table
-        $tickets = Ticket::select('*')->distinct()->get();
+        $tickets = Ticket::select('*')
+            ->whereIn('id', [1, 2, 3])
+            ->get();
 
         // Chart Sort
+        $bulanke = ['January',
+                    'February',
+                    'March',
+                    'April',
+                    'May',
+                    'June',
+                    'July',
+                    'August',
+                    'September',
+                    'October',
+                    'November',
+                    'December'];
 
-        // $ticketperbulan = Ticket::select(DB::raw("COUNT(*) as ticketperbulan"))
-        //     ->whereYear('created_at',date('Y'))
-        //     ->groupBy(DB::raw("Month(created_at)"))
-        //     ->pluck('ticketperbulan');
+        $tahun = Ticket::select(DB::raw("date_part('year', created_at) as tahun"))
+            ->groupBy(DB::raw("date_part('year', created_at)"))
+            ->pluck('tahun');
+            //dd($tahun);
 
-        // $bulan = Ticket::select(DB::raw("MONTHNAME(created_at) as bulan"))
-        //     ->GroupBy(DB::raw("MONTHNAME(created_at)"))
-        //     ->pluck('bulan');
+        $bulan = Ticket::select(DB::raw("date_part('month', created_at) as bulan"))
+            ->whereYear('created_at',date('Y'))
+            ->groupBy(DB::raw("date_part('month', created_at)"))
+            ->pluck('bulan');
+            //dd($bulan);
+
+        $namabulan = array(0,0,0,0,0,0,0,0,0,0,0,0);
+        foreach($bulan as $index => $month){
+            $namabulan[$month - 1] = $bulanke[$index];
+        }
+
+        $ticketperbulan = Ticket::select(DB::raw("COUNT(*) as ticketperbulan"))
+            ->groupBy(DB::raw("date_part('month', created_at)"))
+            ->pluck('ticketperbulan');
+            //dd($ticketperbulan);
+
+        $ticketperbulanresolved = Ticket::select(DB::raw("COUNT(*) as ticketperbulanresolved"))
+            ->where('Tick_Status','=','Resolved')
+            ->groupBy(DB::raw("date_part('month', created_at)"))
+            ->pluck('ticketperbulanresolved');
+            //dd($ticketperbulanresolved);
+
+        $ticketperbulanpending = Ticket::select(DB::raw("COUNT(*) as ticketperbulanpending"))
+            ->where('Tick_Status','=','Pending')
+            ->groupBy(DB::raw("date_part('month', created_at)"))
+            ->pluck('ticketperbulanpending');
+            //dd($ticketperbulanpending);
+
+        $ticketperbulanwip = Ticket::select(DB::raw("COUNT(*) as ticketperbulanwip"))
+            ->where('Tick_Status','=','WIP')
+            ->groupBy(DB::raw("date_part('month', created_at)"))
+            ->pluck('ticketperbulanwip');
+            //dd($ticketperbulanwip);
+
+        $ticketperbulanrequest = Ticket::select(DB::raw("COUNT(*) as ticketperbulanrequest"))
+            ->where('Tick_Status','=','Requested')
+            ->groupBy(DB::raw("date_part('month', created_at)"))
+            ->pluck('ticketperbulanrequest');
+            //dd($ticketperbulanrequest);
 
         //Ticket Count
         $resolvedcount = Ticket::select(DB::raw("COUNT(*) as resolvedcount"))
@@ -47,8 +97,8 @@ class DashboardController extends Controller
             'title' => 'List Tickets',
             'tickets' => $tickets,
 
-            // "ticketperbulan" => $ticketperbulan,
-            // "bulan" => $bulan,
+            "ticketperbulan" => $ticketperbulan,
+            "namabulan" => $namabulan,
 
             "resolvedcount" => $resolvedcount,
             "pendingcount" => $pendingcount,
