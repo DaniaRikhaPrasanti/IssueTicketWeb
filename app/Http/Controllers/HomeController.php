@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Ticket;
 use Illuminate\Http\Request;
 use App\Models\requester;
 use App\Models\Agent;
@@ -17,13 +18,17 @@ class HomeController extends Controller
     protected function redirectTo()
     {
         if (auth()->user()->role_id == 1) {
-            return view('layouts.app');
+            return view('dashboard.dashboard_agent');
         }
         else if(auth()->user()->role_id == 2){
-            return view('layouts.appuser');
+            $tickets = Ticket::select('*')->distinct()->get();
+            return view('ticketrequester.list_tickets', [
+                'title' => 'List Tickets',
+                'tickets' => $tickets
+            ]);
         }
         else{
-            return view('layouts.appuser');
+            return view('dashboard.dashboard_agent');
         }
     }
     public function __construct()
