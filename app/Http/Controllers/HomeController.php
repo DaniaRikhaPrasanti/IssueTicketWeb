@@ -18,7 +18,7 @@ class HomeController extends Controller
     protected function redirectTo()
     {
         if (auth()->user()->role_id == 1) {
-            return view('dashboard.dashboard_agent');
+            return redirect('dashboard/dashboard_agent',);
         }
         else if(auth()->user()->role_id == 2){
             $tickets = Ticket::select('*')->distinct()->get();
@@ -28,7 +28,7 @@ class HomeController extends Controller
             ]);
         }
         else{
-            return view('dashboard.dashboard_agent');
+            return redirect('dashboard/dashboard_agent');
         }
     }
     public function __construct()
