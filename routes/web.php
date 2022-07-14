@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RequesterController;
 use App\Http\Controllers\AgentController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\TicketController;
 use App\Http\Controllers\TicketConvController;
 use Illuminate\Http\Request;
@@ -115,9 +116,7 @@ Route::get('/settings/setting_admin', function () {
     ]);
 });
 
-Route::get('/dashboard/dashboard_agent', function () {
-    return view('dashboard.dashboard_agent', [
-        'title' => 'Dashboard Agent'
-    ]);
-});
+
+
+Route::resource('/dashboard/dashboard_agent', DashboardController::class);
 

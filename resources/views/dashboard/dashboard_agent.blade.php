@@ -1,4 +1,6 @@
-@extends('layouts.app')
+@extends('layouts.appuser')
+<link rel="stylesheet" href="{{ url("admin") }}/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+<link rel="stylesheet" href="{{ url("admin") }}/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
 @section('contents')
 
 <!-- Graph -->
@@ -71,45 +73,47 @@
                 <tr>
                     <th>Date</th>
                     <th>Requester</th>
-                    <th>Organization</th>
                     <th>Subject</th>
-                    <th>Issue</th>
                     <th>Type</th>
+                    <th>Status</th>
+                    <th>Action</th>
                 </tr>
             </thead>
             <tbody>
+            @foreach($tickets as $ticket)
                 <tr>
-                    <td>01/10/2022</td>
-                    <td>user.name@gmail.com</td>
-                    <td>Khong Guan</td>
-                    <td>Delay proses</td>
-                    <td>Lambung sakit saat belum makan di bulan puasa</td>
-                    <td>Question</td>
+                    <td>{{ $ticket->updated_at}}</td>
+                    <td>{{ $ticket->Tick_Req}}</td>
+                    <td>{{ $ticket->Tick_Subj}}</td>
+                    <td>{{ $ticket->Tick_Type}}</td>
+                    <td><button type="button" class="btn
+                        @if ($ticket->Tick_Status == 'Pending') btn-danger
+                        @elseif ($ticket->Tick_Status == 'Requested') btn-warning
+                        @elseif ($ticket->Tick_Status == 'WIP') btn-success
+                        @elseif ($ticket->Tick_Status == 'Resolved') btn-success
+                        @endif">
+                        {{ $ticket->Tick_Status}}
+                        </button>
+                    </td>
+                    <td>
+                        <div class="btn-group dropend">
+                          <button type="button" class="btn btn-link" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fas fa-ellipsis-v"></i>
+                          </button>
+                          <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="/ticket/{{ $ticket->id }}">Detail</a></li>
+                            <li>
+                              <form action="/ticket/{{ $ticket->id }}" method="post">
+                                @csrf
+                                @method('delete')
+                                <button class="dropdown-item" onclick="return confirm('Anda ingin menghapus Ticket?')">Delete</button>
+                              </form>
+                            </li>
+                          </ul>
+                        </div>
+                    </td>
                 </tr>
-                <tr>
-                    <td>01/10/2022</td>
-                    <td>user.name@gmail.com</td>
-                    <td>Biskuat</td>
-                    <td>Delay proses</td>
-                    <td>Lambung sakit saat belum makan di bulan puasa</td>
-                    <td>Question</td>
-                </tr>
-                <tr>
-                    <td>01/10/2022</td>
-                    <td>user.name@gmail.com</td>
-                    <td>Choki choki</td>
-                    <td>Delay proses</td>
-                    <td>Lambung sakit saat belum makan di bulan puasa</td>
-                    <td>Question</td>
-                </tr>
-                <tr>
-                    <td>01/10/2022</td>
-                    <td>user.name@gmail.com</td>
-                    <td>Gadgetin</td>
-                    <td>Delay proses</td>
-                    <td>Lambung sakit saat belum makan di bulan puasa</td>
-                    <td>Question</td>
-                </tr>
+            @endforeach
             </tbody>
           </table>
     </div>
@@ -123,14 +127,14 @@
                   <tr>
                     <th scope="row">
                         <p class="fw-lighter">Resolved</p>
-                        <p class="fs-1 mt-2 mb-2 text-success">20</p>
+                        <p class="fs-1 mt-2 mb-2 text-success">{{ $resolvedcount }}</p>
                         <p class="fw-lighter">Ticket already resolved</p>
                     </th>
                   </tr>
                   <tr>
                     <th scope="row">
                         <p class="fw-lighter">Work in Progress</p>
-                        <p class="fs-1 mt-2 mb-2 text-info">32</p>
+                        <p class="fs-1 mt-2 mb-2 text-info">{{ $wipcount }}</p>
                         <p class="fw-lighter">Tickets are being reviewed</p>
                     </th>
                   </tr>
@@ -141,14 +145,14 @@
                   <tr>
                     <th scope="row">
                         <p class="fw-lighter">Pending</p>
-                        <p class="fs-1 mt-2 mb-2 text-danger">12</p>
+                        <p class="fs-1 mt-2 mb-2 text-danger">{{ $pendingcount }}</p>
                         <p class="fw-lighter">Tickets are still waiting</p>
                     </th>
                   </tr>
                   <tr>
                     <th scope="row">
                         <p class="fw-lighter">Requested</p>
-                        <p class="fs-1 mt-2 mb-2 text-warning">1</p>
+                        <p class="fs-1 mt-2 mb-2 text-warning">{{ $requestedcount }}</p>
                         <p class="fw-lighter">Ticket feature are requested</p>
                     </th>
                   </tr>
@@ -170,22 +174,26 @@
 
 
 <script>
-    const labels = [
+    const data = {
+      labels: [
       'January',
       'February',
       'March',
       'April',
       'May',
       'June',
-    ];
-
-    const data = {
-      labels: labels,
+      'July',
+      'August',
+      'September',
+      'October',
+      'November',
+      'December'
+    ],
       datasets: [{
         label: 'Jumlah Tiket',
         backgroundColor: 'rgb(58, 120, 238)',
         borderColor: 'rgb(255, 99, 132)',
-        data: [0, 10, 5, 2, 20, 45, 100],
+        data: [15, 10, 5, 2, 20, 45, 30, 40, 10, 2, 7, 3, 100,],
       }]
     };
 
@@ -201,7 +209,19 @@
       document.getElementById('barChart'),
       config
     );
-  </script>
+</script>
+
+<script>
+    $('#myTable').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": true,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false,
+      "responsive": true,
+    });
+</script>
 
 @endsection
 
