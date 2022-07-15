@@ -20,7 +20,7 @@
                         </div>
                         <div class="">
                             <div class="btn-group">
-                                <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     Bulan
                                 </button>
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -80,7 +80,7 @@
                 </tr>
             </thead>
             <tbody>
-            @foreach($tickets as $ticket)
+            @foreach($newticket as $ticket)
                 <tr>
                     <td>{{ $ticket->updated_at}}</td>
                     <td>{{ $ticket->Tick_Req}}</td>

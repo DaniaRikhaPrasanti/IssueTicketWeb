@@ -12,10 +12,12 @@ class DashboardController extends Controller
 
     public function index()
     {
-        // select distinct all ticket from ticket table
-        $tickets = Ticket::select('*')
-            ->whereIn('id', [1, 2, 3])
+
+        $newticket = Ticket::select('*')
+            ->orderBy('updated_at', 'desc')
+            ->limit(3)
             ->get();
+            //dd($newticket);
 
         // Chart Sort
         $bulanke = ['January',
@@ -46,8 +48,10 @@ class DashboardController extends Controller
         foreach($bulan as $index => $month){
             $namabulan[$month - 1] = $bulanke[$index];
         }
+        //dd($namabulan);
 
         $ticketperbulan = Ticket::select(DB::raw("COUNT(*) as ticketperbulan"))
+            ->whereYear('created_at',date('Y'))
             ->groupBy(DB::raw("date_part('month', created_at)"))
             ->pluck('ticketperbulan');
             //dd($ticketperbulan);
@@ -95,7 +99,7 @@ class DashboardController extends Controller
 
         return view('dashboard.dashboard_agent', [
             'title' => 'List Tickets',
-            'tickets' => $tickets,
+            'newticket' => $newticket,
 
             "ticketperbulan" => $ticketperbulan,
             "namabulan" => $namabulan,

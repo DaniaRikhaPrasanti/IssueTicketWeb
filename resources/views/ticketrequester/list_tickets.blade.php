@@ -25,7 +25,7 @@
                         </div>
                         <div class="">
                             <div class="btn-group">
-                                <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     All
                                 </button>
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -44,7 +44,7 @@
                         </div>
                         <div class="">
                             <div class="btn-group">
-                                <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     All
                                 </button>
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -89,9 +89,9 @@
               <td>{{ $ticket->Tick_Subj}}</td>
               <td>{{ $ticket->Tick_Issue}}</td>
               <td>{{ $ticket->Tick_Type}}</td>
-              <td><button type="button" class="btn 
-                @if ($ticket->Tick_Status == 'Pending') btn-danger 
-                @else ($ticket->Tick_Status == 'Open') btn-success 
+              <td><button type="button" class="btn
+                @if ($ticket->Tick_Status == 'Pending') btn-danger
+                @else ($ticket->Tick_Status == 'Open') btn-success
                 @endif">{{ $ticket->Tick_Status}}</button></td>
               <td>
                 <div class="btn-group dropend">
