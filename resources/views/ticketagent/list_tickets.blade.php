@@ -1,7 +1,7 @@
 @extends('layouts.appuser')
 @section("css")
-<link rel="stylesheet" href="{{ secure_asset("admin") }}/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
-<link rel="stylesheet" href="{{ secure_asset("admin") }}/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+<link rel="stylesheet" href="{{ asset("admin") }}/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+<link rel="stylesheet" href="{{ asset("admin") }}/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
 {{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.3/css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css"> --}}
 @endsection
@@ -118,10 +118,10 @@
 @endsection
 
 @section("script")
-<script src="{{ secure_asset("admin") }}/plugins/datatables/jquery.dataTables.min.js"></script>
-<script src="{{ secure_asset("admin") }}/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
-<script src="{{ secure_asset("admin") }}/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
-<script src="{{ secure_asset("admin") }}/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+<script src="{{ asset("admin") }}/plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="{{ asset("admin") }}/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+<script src="{{ asset("admin") }}/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+<script src="{{ asset("admin") }}/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
 
 {{-- <script type="text/javascript" charset="utf8" src="https://code.jquery.com/jquery-3.5.1.js" ></script>
 <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js" ></script>
