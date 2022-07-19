@@ -17,10 +17,13 @@ class TicketController extends Controller
     public function index()
     {
         // select distinct all ticket from ticket table
-        $tickets = Ticket::select('*')->distinct()->get();
+        //$tickets = Ticket::select('*')->distinct()->get();
+        $tickets = Ticket::where('Tick_Req', auth()->user()->name)->get();
+        //dd($tickets);
         return view('ticketrequester.list_tickets', [
             'title' => 'List Tickets',
             'tickets' => $tickets
+
         ]);
 
 
@@ -91,12 +94,14 @@ class TicketController extends Controller
             ->where('Tick_Issue', $ticket->Tick_Issue)
             ->orderBy('id', 'desc')
             ->get();
-        
+        //menampilkan tiketconv berdasarkan tiket_id
+        $ticketconv = TicketConv::where('ticket_id',$ticket->id)->get();
+        //dd($ticketconv);
         return view('ticketrequester.detail_ticket', [
             'title' => 'Detail Ticket',
             'tickets' => $ticketDetail,
             'id_ticket' => $ticket->id,
-            'ticketconv' => TicketConv::all()
+            'ticketconv' =>  $ticketconv
         ]);
 
         // old
