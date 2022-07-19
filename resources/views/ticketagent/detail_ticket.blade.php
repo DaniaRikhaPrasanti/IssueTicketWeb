@@ -1,24 +1,83 @@
 @extends('layouts.appuser')
 @section("css")
 <style>
-  .timeline{list-style:none;padding:0 0 20px;position:relative;margin-top:-15px;border:1px solid #ccc}
-  .timeline:before{top:30px;bottom:25px;position:absolute;content:" ";width:3px;background-color:#ccc;left:25px;margin-right:-1.5px}.timeline>li,.timeline>li>.timeline-panel{margin-bottom:5px;position:relative}.timeline>li:after,.timeline>li:before{content:" ";display:table}.timeline>li:after{clear:both}.timeline>li>.timeline-panel{margin-left:96px;float:left;top:19px;padding:4px 10px 8px 15px;border-radius:5px;width:45%}.timeline>li>.timeline-badge{color:#fff;width:72px;height:36px;font-size:1.2em;text-align:center;position:absolute;top:26px;left:9px;margin-right:-25px;background-color:#fff;z-index:100;border-radius:5px;border:1px solid #d4d4d4}.timeline>li.timeline-inverted>.timeline-panel{float:left}
-  .timeline>li.timeline-inverted>
-  .timeline-panel:before{border-right-width:0;border-left-width:15px;right:-15px;left:auto}
-  .timeline>li.timeline-inverted>
-  .timeline-panel:after{border-right-width:0;border-left-width:14px;right:-14px;left:auto}
-  .timeline-badge.primary{background-color:#2e6da4!important}
-  .timeline-badge.success{background-color:#3f903f!important}
-  .timeline-badge.warning{background-color:#f0ad4e!important}
-  .timeline-badge.danger{background-color:#d9534f!important}
-  .timeline-badge.info{background-color:#5bc0de!important}
-  .timeline-title{margin-top:0;color:inherit}
-  .timeline-body>p,
-  .timeline-body>ul{margin-bottom:0;margin-top:0}
-  .timeline-body>p+p{margin-top:5px}
-  .timeline-badge>
   .glyphicon{margin-right:0px;color:#fff}
-  .timeline-body>h4{margin-bottom:0!important}
+  .badgecustom{font-size:1.1em;text-align:center;margin-right:--25px;border:1px solid #d4d4d4;padding:0.3rem;width:10%;margin-bottom:1.2%}
+  .judul{color:#555B6B;font-size:1.1rem;font-weight:bold;margin:0}
+  .ket{margin:0;padding:0.5rem 0;color:#A0A4A8;font-size:1.3rem}
+  .timelineticketconv{list-style:none;padding:0 0 20px;position:relative;margin-top:-15px;border:1px solid #ccc; max-height:200px; overflow-y:auto}
+  .vertical-timeline {
+    width: 100%;
+    position: relative;
+    padding: 1rem 0 1rem;
+    
+}
+
+.vertical-timeline::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 42px;
+    height: 100%;
+    width: 4px;
+    background: #e9ecef;
+    border-radius: .25rem;
+}
+
+.vertical-timeline-element {
+    position: relative;
+}
+
+.vertical-timeline--animate .vertical-timeline-element-icon.bounce-in {
+    visibility: visible;
+    animation: cd-bounce-1 .8s;
+}
+.vertical-timeline-element-icon {
+    position: absolute;
+    top: 0;
+    left: 20px;
+}
+
+.vertical-timeline-element-icon .badge-dot-xl {
+    box-shadow: 0 0 0 5px #fff;
+}
+
+.badge:empty {
+    display: none;
+}
+
+
+.vertical-timeline-element-content {
+    position: relative;
+    margin-left: 90px;
+    font-size: .8rem;
+}
+
+.vertical-timeline-element-content .timeline-title {
+    font-size: .8rem;
+    text-transform: uppercase;
+    margin: 0 0 .5rem;
+    padding: 2px 0 0;
+    font-weight: bold;
+}
+
+.vertical-timeline-element-content .vertical-timeline-element-date {
+    display: block;
+    position: absolute;
+    left: -90px;
+    top: 0;
+    padding-right: 10px;
+    text-align: right;
+    color: #adb5bd;
+    font-size: .7619rem;
+    white-space: nowrap;
+}
+
+.vertical-timeline-element-content:after {
+    content: "";
+    display: table;
+    clear: both;
+}
 </style>
 @endsection
 @section('contents')
@@ -29,39 +88,82 @@
       <div class="card">
         <!-- /.card-header -->
         <div class="card-header">
-          <p class="card-title">Detail Ticket - Question</p>
+          <p class="card-title" style="font-weight:600;font-size:1.5rem;color:#555B6B;">Detail Ticket - Question</p>
         </div>
         <div class="card-body">
-            <div class="container mb-3 col-10 col-md-12">
-                <h5>Timeline</h5>
-                    <ul class="timeline mt-2
-                    ">
+            <div class="container mb-3">
+                <h5 style="color:#555B6B">Timeline TicketConv</h5>
+                    <ul class="timelineticketconv mt-3">
+                        
                         <li>
-                            <div class="timeline-badge bg-danger">
-                                <small class="text-light">Pending</small>
+                            
+                            @foreach ($ticketconv as $tk)
+                            <div class="vertical-timeline vertical-timeline--animate vertical-timeline--one-column">
+                                <div class="vertical-timeline-item vertical-timeline-element">
+                                    <div>
+                                        <span class="vertical-timeline-element-icon bounce-in">
+                                            @if($tk->Tick_Status == 1 )
+                                            <i class="badge badge-danger">Pending</i>
+                                            @elseif($tk->Tick_Status == 2 )
+                                            <i class="badge badge-warning">Open</i>
+                                            @elseif($tk->Tick_Status == 3 )
+                                            <i class="badge badge-primary">WIP</i>
+                                            @elseif($tk->Tick_Status == 4 )
+                                            <i class="badge badge-primary">Work Done</i>
+                                            @elseif($tk->Tick_Status == 5 )
+                                            <i class="badge badge-primary">Resolved</i>
+                                            @elseif($tk->Tick_Status == 6 )
+                                            <i class="badge badge-success">Closed</i>
+                                            @else
+                                            <i class="badge badge-danger">{{ $tk->Tick_Status}}</i>
+                                            @endif
+                                        </span>
+                                        <div class="vertical-timeline-element-content bounce-in">
+                                            <h6 class="timeline-title-ticketconv text-muted">{{ date_format($tk->created_at, "d/m/Y") }}</h6>
+                                            <p>{{ $tk->Log_Desc }}<br><small class="text-primary">
+                                                <a href="/ticketconv/{{ $tk->id }}">Read more</a>
+                                            </small></p>
+                                        </div>
+                                    </div>
+                            </div>                     
                             </div>
-                            <div class="timeline-panel">
-                                <div class="timeline-heading">
-                                    <h6 class="timeline-title text-muted">11/05/2022</h6>
-                                </div>
-                                <div class="timeline-body">
-                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui quisquam, ex . . . <br><small class="text-primary"><a href="#">Read more</a></small></p>
-                                </div>
-                            </div>
+                            @endforeach
+
+                            <a href="/ticketconvform/{{ $id_ticket }}">
+	                            <button type="button" class="btn btn-outline-info" style="float: right; margin-right: 35px; margin-top: 15px">Respond</button>
+	                        </a>
                         </li>
                     </ul>
-                <h5>Reply</h5>
-                <textarea class="form-control" id="Tick_Issue" rows="8" placeholder="Masukkan Isu yang dialami disini..."></textarea>
+
+                <p class="judul">Status</p>
+                    @foreach ($tickets as $ticket)
+                    <button type="button" class="btn
+                    @if ($ticket->ticket_status_id == 1) btn-danger 
+                    @elseif ($ticket->ticket_status_id == 2) btn-primary 
+                    @elseif ($ticket->ticket_status_id == 3) btn-primary 
+                    @elseif ($ticket->ticket_status_id == 4) btn-primary 
+                    @elseif ($ticket->ticket_status_id == 5) btn-success 
+                    @else btn-secondary 
+                    @endif">{{ $ticket->TicketStatus->status }}</button>
+                    @endforeach
+
+                <h5 class="judul">Subject</h5>
+                <div class="input-group mb-3" style="border:1px solid #CED4DA;background-color:#E9ECEF;border-radius:5px;vertical-align:baseline;align-items:center">
+                    <i class="fa fa-duotone fa-filter" style="margin-left:1%;color:#A0A4A8;"></i>
+                    <p class="ket">{{ $ticket->Tick_Subj }}</p>
+                </div>
+
+                <h5 class="judul">Issues</h5>
+                <div class="input-group mb-3" style="border:1px solid #CED4DA;background-color:#E9ECEF;border-radius:5px;height:200px">
+                    <p class="ket" style="padding-left:1%">{{ $ticket->Tick_Issue }}</p>
+                </div>
+
                 <div class="my-3 mb-4">
                     <div class="row">
                         <div class="col-sm-10 col-md-8 col-lg-6">
-                            <h5>Attachment</h5>
-                            <div class="border1 border-info">
-                                <div class="p-3">
-                                    <input class="form-control form-control-md" type="file" id="Tick_Attach">
-                                    <div id="attachmenthelp" class="form-text">Upload bukti pendukung masalah yang anda hadapi</div>
-                                </div>
-                            </div>
+                            <h5 class="judul">Attachment</h5>
+                              <img src="{{ asset('storage/' . $ticket->Tick_Attach) }}"  alt="Gambar Attachment">
+                              
                         </div>
                     </div>
                 </div>

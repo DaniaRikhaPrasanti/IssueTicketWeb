@@ -90,9 +90,13 @@
               <td>{{ $ticket->Tick_Issue}}</td>
               <td>{{ $ticket->Tick_Type}}</td>
               <td><button type="button" class="btn
-                @if ($ticket->Tick_Status == 'Pending') btn-danger
-                @else ($ticket->Tick_Status == 'Open') btn-success
-                @endif">{{ $ticket->Tick_Status}}</button></td>
+                @if ($ticket->ticket_status_id == 1) btn-danger 
+                @elseif ($ticket->ticket_status_id == 2) btn-primary 
+                @elseif ($ticket->ticket_status_id == 3) btn-primary 
+                @elseif ($ticket->ticket_status_id == 4) btn-primary 
+                @elseif ($ticket->ticket_status_id == 5) btn-success 
+                @else btn-secondary 
+                @endif">{{ $ticket->TicketStatus->status }}</button></td>
               <td>
                 <div class="btn-group dropend">
                   <button type="button" class="btn btn-link" data-bs-toggle="dropdown" aria-expanded="false">

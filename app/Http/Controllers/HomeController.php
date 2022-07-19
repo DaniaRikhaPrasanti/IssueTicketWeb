@@ -21,7 +21,7 @@ class HomeController extends Controller
             return redirect('dashboard/dashboard_agent',);
         }
         else if(auth()->user()->role_id == 2){
-            $tickets = Ticket::select('*')->distinct()->get();
+            $tickets = Ticket::where('Tick_Req', auth()->user()->name)->get();
             return view('ticketrequester.list_tickets', [
                 'title' => 'List Tickets',
                 'tickets' => $tickets
@@ -29,6 +29,11 @@ class HomeController extends Controller
         }
         else{
             return redirect('dashboard/dashboard_agent');
+            // $tickets = Ticket::select('*')->distinct()->get();
+            // return view('ticketagent.list_tickets', [
+            //     'title' => 'List Tickets',
+            //     'tickets' => $tickets
+            // ]);
         }
     }
     public function __construct()

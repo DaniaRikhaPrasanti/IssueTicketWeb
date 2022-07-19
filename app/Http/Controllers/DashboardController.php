@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Ticket;
 use App\Models\TicketConv;
+use App\Models\TicketStatus;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -20,18 +21,7 @@ class DashboardController extends Controller
             //dd($newticket);
 
         // Chart Sort
-        $bulanke = ['January',
-                    'February',
-                    'March',
-                    'April',
-                    'May',
-                    'June',
-                    'July',
-                    'August',
-                    'September',
-                    'October',
-                    'November',
-                    'December'];
+        $bulanke = ['January', 'February', 'March','April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
         $tahun = Ticket::select(DB::raw("date_part('year', created_at) as tahun"))
             ->groupBy(DB::raw("date_part('year', created_at)"))
@@ -54,55 +44,56 @@ class DashboardController extends Controller
             ->whereYear('created_at',date('Y'))
             ->groupBy(DB::raw("date_part('month', created_at)"))
             ->pluck('ticketperbulan');
-            //dd($ticketperbulan);
+           //dd($ticketperbulan);
 
         $ticketperbulanresolved = Ticket::select(DB::raw("COUNT(*) as ticketperbulanresolved"))
-            ->where('Tick_Status','=','Resolved')
+            ->where('ticket_status_id','=','5')
             ->groupBy(DB::raw("date_part('month', created_at)"))
             ->pluck('ticketperbulanresolved');
             //dd($ticketperbulanresolved);
 
         $ticketperbulanpending = Ticket::select(DB::raw("COUNT(*) as ticketperbulanpending"))
-            ->where('Tick_Status','=','Pending')
+            ->where('ticket_status_id','=','1')
             ->groupBy(DB::raw("date_part('month', created_at)"))
             ->pluck('ticketperbulanpending');
             //dd($ticketperbulanpending);
 
         $ticketperbulanwip = Ticket::select(DB::raw("COUNT(*) as ticketperbulanwip"))
-            ->where('Tick_Status','=','WIP')
+            ->where('ticket_status_id','=','3')
             ->groupBy(DB::raw("date_part('month', created_at)"))
             ->pluck('ticketperbulanwip');
             //dd($ticketperbulanwip);
 
         $ticketperbulanrequest = Ticket::select(DB::raw("COUNT(*) as ticketperbulanrequest"))
-            ->where('Tick_Status','=','Requested')
+            ->where('ticket_status_id','=','0')
             ->groupBy(DB::raw("date_part('month', created_at)"))
             ->pluck('ticketperbulanrequest');
             //dd($ticketperbulanrequest);
 
-        //Ticket Count
+        // //Ticket Count
         $resolvedcount = Ticket::select(DB::raw("COUNT(*) as resolvedcount"))
-            ->where('Tick_Status','=','Resolved')
+            ->where('ticket_status_id','=','5')
             ->value('resolvedcount');
 
         $pendingcount = Ticket::select(DB::raw("COUNT(*) as pendingcount"))
-            ->where('Tick_Status','=','Pending')
+            ->where('ticket_status_id','=','1')
             ->value('pendingcount');
+            //dd($pendingcount);
 
         $wipcount = Ticket::select(DB::raw("COUNT(*) as pendingcount"))
-            ->where('Tick_Status','=','WIP')
+            ->where('ticket_status_id','=','3')
             ->value('pendingcount');
 
         $requestedcount = Ticket::select(DB::raw("COUNT(*) as requestedcount"))
-            ->where('Tick_Status','=','Requested')
+            ->where('ticket_status_id','=','0')
             ->value('requestedcount');
 
         return view('dashboard.dashboard_agent', [
             'title' => 'List Tickets',
             'newticket' => $newticket,
+            "namabulan" => $namabulan,
 
             "ticketperbulan" => $ticketperbulan,
-            "namabulan" => $namabulan,
 
             "resolvedcount" => $resolvedcount,
             "pendingcount" => $pendingcount,

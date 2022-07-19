@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\TicketConv;
+use App\Models\Ticket;
+use App\Models\TicketStatus;
 use Illuminate\Http\Request;
 use Auth;
 
@@ -66,11 +68,14 @@ class TicketConvController extends Controller
         if ($request->file('Log_Attachment')) {
             $ticketimages = $request->file('Log_Attachment')->store('ticket-images');
         }
-
+        //mengambil data tiket_id
+        $ticketstatusconv = Ticket::where('id',$request->ticket_id)->first();
+        // $ticketstatus = TicketStatus::where('id', $ticketstatusconv)->first();
+        // dd($ticketstatusconv);
         TicketConv::create([
             'Log_Creator' => Auth::user()->name,
             'Log_Creator_Type' =>  Auth::user()->role_id,
-            'Tick_Status' => 'Pending',
+            'Tick_Status' => $ticketstatusconv->ticket_status_id,
             'Log_Title' => $request->Log_Title,
             'Log_Desc' => $request->Log_Desc,
             'Log_Attachment' => $ticketimages,
@@ -89,7 +94,7 @@ class TicketConvController extends Controller
      */
     public function show($id)
     {
-        // TicketConv::with('get_ticket')->findOrfail($id);
+        // memerikSa id tiket_conv dengan id yang dikirim unutk ditampilkan ke timeline tiketconv 
         $ticketConv = TicketConv::where('id', $id)->first();
         // dd($ticketConv);
         return view('ticketrequester.timeline_convdetails', [

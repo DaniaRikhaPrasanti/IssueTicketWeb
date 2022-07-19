@@ -15,14 +15,14 @@ class CreateTicketTable extends Migration
     {
         Schema::create('ticket', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('ticket_status_id');
             $table->string('Tick_Req');
             $table->string('Tick_Subj');
-            $table->string('Tick_Status');
             $table->string('Tick_Issue');
             $table->string('Tick_Attach')->nullable();
             $table->string('Tick_Type');
-            $table->string('Tick_Priority');
-            $table->string('Res_Date');
+            $table->string('Tick_Priority')->nullable();
+            $table->string('Res_Date')->nullable();
             $table->timestamps();
         });
     }
