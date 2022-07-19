@@ -1,6 +1,6 @@
 @extends('layouts.appuser')
-<link rel="stylesheet" href="{{ url("admin") }}/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
-<link rel="stylesheet" href="{{ url("admin") }}/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+<link rel="stylesheet" href="{{ asset("admin") }}/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+<link rel="stylesheet" href="{{ asset("admin") }}/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
 @section('contents')
 
 <!-- Graph -->
@@ -166,10 +166,10 @@
 @endsection
 
 @section("script")
-<script src="{{ url("admin") }}/plugins/datatables/jquery.dataTables.min.js"></script>
-<script src="{{ url("admin") }}/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
-<script src="{{ url("admin") }}/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
-<script src="{{ url("admin") }}/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+<script src="{{ asset("admin") }}/plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="{{ asset("admin") }}/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+<script src="{{ asset("admin") }}/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+<script src="{{ asset("admin") }}/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 
