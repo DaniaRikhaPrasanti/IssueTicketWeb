@@ -16,20 +16,15 @@ class Ticket extends Model
      */
     protected $table = 'ticket';
     //kolom yang dapat di input 
-    protected $fillable =[
-    'Tick_Req' ,
-    'Tick_Issue',
-    'Tick_Type' ,
-    'Tick_Attach',
-    'Tick_Subj' ,
-    'Tick_Status',
-    'Tick_Priority' ,
-    'Res_Date',
-    ];
+    protected $guarded =['id'];
 
     public function ticketconv()
     {
         return $this->hasMany(TicketConv::class, 'ticket_id', 'id');
         
+    }
+    public function TicketStatus()
+    {
+        return $this->belongsTo(TicketStatus::class,'ticket_status_id');
     }
 }

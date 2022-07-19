@@ -96,19 +96,27 @@
                     <ul class="timelineticketconv mt-3">
                         
                         <li>
+                            
                             @foreach ($ticketconv as $tk)
                             <div class="vertical-timeline vertical-timeline--animate vertical-timeline--one-column">
                                 <div class="vertical-timeline-item vertical-timeline-element">
                                     <div>
                                         <span class="vertical-timeline-element-icon bounce-in">
-                                            <i class="badge  
-                                            @if($tk->Tick_Status == "Pending")badge-danger
-                                            @elseif($tk->Tick_Status == "Requested")badge-warning
-                                            @elseif ($tk->Tick_Status == "Open" || $tk->Tick_Status == "Work In Progres" || $tk->Tick_Status == "Work Done")badge-primary
-                                            @elseif($tk->Tick_Status == "Resolved")badge-success
-                                            @else badge-danger
-                                            @endif">{{ $tk->Tick_Status}}
-                                            </i>
+                                            @if($tk->Tick_Status == 1 )
+                                            <i class="badge badge-danger">Pending</i>
+                                            @elseif($tk->Tick_Status == 2 )
+                                            <i class="badge badge-warning">Open</i>
+                                            @elseif($tk->Tick_Status == 3 )
+                                            <i class="badge badge-primary">WIP</i>
+                                            @elseif($tk->Tick_Status == 4 )
+                                            <i class="badge badge-primary">Work Done</i>
+                                            @elseif($tk->Tick_Status == 5 )
+                                            <i class="badge badge-primary">Resolved</i>
+                                            @elseif($tk->Tick_Status == 6 )
+                                            <i class="badge badge-success">Closed</i>
+                                            @else
+                                            <i class="badge badge-danger">{{ $tk->Tick_Status}}</i>
+                                            @endif
                                         </span>
                                         <div class="vertical-timeline-element-content bounce-in">
                                             <h6 class="timeline-title-ticketconv text-muted">{{ date_format($tk->created_at, "d/m/Y") }}</h6>
@@ -117,7 +125,7 @@
                                             </small></p>
                                         </div>
                                     </div>
-                                </div>                                
+                            </div>                     
                             </div>
                             @endforeach
 
@@ -128,45 +136,34 @@
                     </ul>
 
                 <p class="judul">Status</p>
-                    @foreach ($ticket as $tk)
-                        @if($tk->Tick_Status == "Pending")
-                        <div class="badgecustom bg-danger" href="/ticket/{{ $tk->id }}/detail">
-                            <p style="margin:0;padding:0;display:inline-block;font-weight:bold;color:rgba(255, 255, 255, 0.87);">{{ $tk->Tick_Status }}</p>
-                            <i class="fa fa-solid fa-angle-down"></i>
-                        </div>
-                        @elseif ($tk->Tick_Status == "Requested")
-                        <div class="timeline-badge bg-warning">
-                            <small class="text-light">{{ $tk->Tick_Status }}</small>
-                        </div>
-                        @elseif ($tk->Tick_Status == "Open" || $tk->Tick_Status == "Work In Progres" || $tk->Tick_Status == "Work Done")
-                        <div class="timeline-badge bg-primary">
-                            <small class="text-light">{{ $tk->Tick_Status }}</small>
-                        </div>
-                        @elseif ($tk->Tick_Status == "Resolved")
-                        <div class="timeline-badge bg-success">
-                            <small class="text-light">{{ $tk->Tick_Status }}</small>
-                        </div>
-                        @endif
+                    @foreach ($tickets as $ticket)
+                    <button type="button" class="btn
+                    @if ($ticket->ticket_status_id == 1) btn-danger 
+                    @elseif ($ticket->ticket_status_id == 2) btn-primary 
+                    @elseif ($ticket->ticket_status_id == 3) btn-primary 
+                    @elseif ($ticket->ticket_status_id == 4) btn-primary 
+                    @elseif ($ticket->ticket_status_id == 5) btn-success 
+                    @else btn-secondary 
+                    @endif">{{ $ticket->TicketStatus->status }}</button>
                     @endforeach
 
                 <h5 class="judul">Subject</h5>
                 <div class="input-group mb-3" style="border:1px solid #CED4DA;background-color:#E9ECEF;border-radius:5px;vertical-align:baseline;align-items:center">
                     <i class="fa fa-duotone fa-filter" style="margin-left:1%;color:#A0A4A8;"></i>
-                    <p class="ket">{{ $ticket[0]->Tick_Subj }}</p>
+                    <p class="ket">{{ $ticket->Tick_Subj }}</p>
                 </div>
 
                 <h5 class="judul">Issues</h5>
                 <div class="input-group mb-3" style="border:1px solid #CED4DA;background-color:#E9ECEF;border-radius:5px;height:200px">
-                    <p class="ket" style="padding-left:1%">{{ $ticket[0]->Tick_Issue }}</p>
+                    <p class="ket" style="padding-left:1%">{{ $ticket->Tick_Issue }}</p>
                 </div>
 
                 <div class="my-3 mb-4">
                     <div class="row">
                         <div class="col-sm-10 col-md-8 col-lg-6">
                             <h5 class="judul">Attachment</h5>
-                              <img src="{{ asset('storage/' . $ticket[0]->Tick_Attach) }}"  alt="Gambar Attachment">
-                              <img src="{{ asset('storage/' . $ticket[0]->Tick_Attach) }}"  alt="Gambar Attachment">
-                              <img src="{{ asset('storage/' . $ticket[0]->Tick_Attach) }}"  alt="Gambar Attachment">
+                              <img src="{{ asset('storage/' . $ticket->Tick_Attach) }}"  alt="Gambar Attachment">
+                              
                         </div>
                     </div>
                 </div>

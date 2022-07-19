@@ -16,22 +16,11 @@ class TicketConv extends Model
      */
     protected $table = 'ticket_convs';
     //kolom yang dapat di input 
-    protected $fillable =[
-    'ticket_id' ,
-    'Log_Creator' ,
-    'Log_Creator_Type' ,
-    'Log_Title' ,
-    'Log_Desc',
-    'Log_Attachment' ,
-    'Tick_Status',
-
-    ];
-
+    protected $guarded =['id'];
     public function get_ticket()
     {
         return $this->belongsTo(Ticket::class, 'ticket_id', 'id');
         
     }
-
     
 }

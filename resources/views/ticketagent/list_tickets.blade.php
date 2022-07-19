@@ -68,7 +68,6 @@
             <thead>
             <tr>
               <th>Date</th>
-              <th>Requester</th>
               <th>Subject</th>
               <th>Issue</th>
               <th>Type</th>
@@ -86,20 +85,32 @@
               <td>
                 <span class="badge badge-danger">Pending</span>
               </td> -->
-              <td>{{ $ticket->Tick_Date}}</td>
-              <td>{{ $ticket->Tick_Req}}</td>
+              <td>{{ $ticket->updated_at}}</td>
               <td>{{ $ticket->Tick_Subj}}</td>
               <td>{{ $ticket->Tick_Issue}}</td>
               <td>{{ $ticket->Tick_Type}}</td>
-              <td>{{ $ticket->Tick_Status}}</td>
+              <td><button type="button" class="btn
+                @if ($ticket->ticket_status_id == 1) btn-danger 
+                @elseif ($ticket->ticket_status_id == 2) btn-primary 
+                @elseif ($ticket->ticket_status_id == 3) btn-primary 
+                @elseif ($ticket->ticket_status_id == 4) btn-primary 
+                @elseif ($ticket->ticket_status_id == 5) btn-success 
+                @else btn-secondary 
+                @endif">{{ $ticket->TicketStatus->status }}</button></td>
               <td>
                 <div class="btn-group dropend">
                   <button type="button" class="btn btn-link" data-bs-toggle="dropdown" aria-expanded="false">
                     <i class="fas fa-ellipsis-v"></i>
                   </button>
                   <ul class="dropdown-menu dropdown-menu-end">
-                    <li><a class="dropdown-item" href="#">Edit</a></li>
-                    <li><a class="dropdown-item" href="#">Delete</a></li>
+                    <li><a class="dropdown-item" href="/ticket/{{ $ticket->id }}">Detail</a></li>
+                    <li>
+                      <form action="/ticket/{{ $ticket->id }}" method="post">
+                        @csrf
+                        @method('delete')
+                        <button class="dropdown-item" onclick="return confirm('Anda ingin menghapus Ticket?')">Delete</button>
+                      </form>
+                    </li>
                   </ul>
                 </div>
             </tr>

@@ -29,8 +29,20 @@ class UserSeeder extends Seeder
                 'role_id' =>'2'
             ],
             [
+                'name' => 'keduarequester',
+                'email' => 'reqkedua@gmail.com',
+                'password' => Hash::make('12345678'),
+                'role_id' =>'2'
+            ],
+            [
                 'name' => 'agent',
                 'email' => 'ag@gmail.com',
+                'password' => Hash::make('12345678'),
+                'role_id' =>'3'
+            ],
+            [
+                'name' => 'agentkedua',
+                'email' => 'agkedua@gmail.com',
                 'password' => Hash::make('12345678'),
                 'role_id' =>'3'
             ],

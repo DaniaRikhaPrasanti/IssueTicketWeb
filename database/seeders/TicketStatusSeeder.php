@@ -14,29 +14,23 @@ class TicketStatusSeeder extends Seeder
      */
     public function run()
     {
-        $t_status = [
-            [
-                'status' => 'Pending'
-            ],
-            [
-                'status' => 'Open'
-            ],
-            [
-                'status' => 'WIP'
-            ],
-            [
-                'status' => 'Work Done'
-            ],
-            [
-                'status' => 'Resolved'
-            ],
-            [
-                'status' => 'Closed'
-            ],
-        ];
-
-        foreach($t_status as $status){
-            TicketStatus::create($status);
-        }
+        TicketStatus::create([
+            'status' => 'Pending'
+        ]);
+        TicketStatus::create([
+            'status' => 'Open'
+        ]);
+        TicketStatus::create([
+            'status' => 'WIP'
+        ]);
+        TicketStatus::create([
+            'status' => 'Work Done'
+        ]);
+        TicketStatus::create([
+            'status' => 'Resolved'
+        ]);
+        TicketStatus::create([
+            'status' => 'Closed'
+        ]);
     }
 }

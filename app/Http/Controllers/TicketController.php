@@ -68,7 +68,7 @@ class TicketController extends Controller
             'Tick_Issue' => $request->Tick_Issue,
             'Tick_Type' => $request->Tick_Type,
             'Tick_Attach' => $ticketimages,
-            'Tick_Status' => 'Pending',
+            'ticket_status_id' => 1,
             'Tick_Priority' => 'A',
             'Res_Date' => 'A',
         ]);
@@ -91,9 +91,10 @@ class TicketController extends Controller
             ->where('Tick_Issue', $ticket->Tick_Issue)
             ->orderBy('id', 'desc')
             ->get();
+        
         return view('ticketrequester.detail_ticket', [
             'title' => 'Detail Ticket',
-            'ticket' => $ticketDetail,
+            'tickets' => $ticketDetail,
             'id_ticket' => $ticket->id,
             'ticketconv' => TicketConv::all()
         ]);
