@@ -16,9 +16,6 @@
             <!-- Filter & Add Button -->
             <div class="d-flex justify-content-between my-4" >
                 <div class="">
-                    <a href="/ticket/create" class="btn btn-primary"><i class="fas fa-plus"></i> Buat Ticket</a>
-                </div>
-                <div class="">
                     <div class="d-flex justify-content-start">
                         <div class="mx-3">
                             Status
@@ -68,6 +65,7 @@
             <thead>
             <tr>
               <th>Date</th>
+              <th>Requester</th>
               <th>Subject</th>
               <th>Issue</th>
               <th>Type</th>
@@ -86,6 +84,7 @@
                 <span class="badge badge-danger">Pending</span>
               </td> -->
               <td>{{ $ticket->updated_at}}</td>
+              <td>{{ $ticket->Tick_Req}}</td>
               <td>{{ $ticket->Tick_Subj}}</td>
               <td>{{ $ticket->Tick_Issue}}</td>
               <td>{{ $ticket->Tick_Type}}</td>

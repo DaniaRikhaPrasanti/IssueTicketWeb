@@ -6,8 +6,6 @@
         <div class="container mb-5 col-10 col-md-8">
             <div>
             <span><h3 class="mt-4">{{ $title }}</span>
-            <span style ="background-color: red; border-radius: 4px; padding: 7px; color: white; 
-            font-family: Verdana, Geneva, Tahoma, sans-serif; font-size: 15px; margin-left: 20px; center;"> Pending </span>
             </div>
             <hr>
             <div class="form">

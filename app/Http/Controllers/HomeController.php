@@ -28,7 +28,12 @@ class HomeController extends Controller
             ]);
         }
         else{
-            return redirect('dashboard/dashboard_agent');
+            // return redirect('dashboard/dashboard_agent');
+            $tickets = Ticket::select('*')->distinct()->get();
+            return view('ticketagent.list_tickets', [
+                'title' => 'List Tickets',
+                'tickets' => $tickets
+            ]);
         }
     }
     public function __construct()
