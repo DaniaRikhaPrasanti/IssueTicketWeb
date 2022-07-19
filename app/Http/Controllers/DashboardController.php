@@ -20,18 +20,7 @@ class DashboardController extends Controller
             //dd($newticket);
 
         // Chart Sort
-        $bulanke = ['January',
-                    'February',
-                    'March',
-                    'April',
-                    'May',
-                    'June',
-                    'July',
-                    'August',
-                    'September',
-                    'October',
-                    'November',
-                    'December'];
+        $bulanke = ['January', 'February', 'March','April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
         $tahun = Ticket::select(DB::raw("date_part('year', created_at) as tahun"))
             ->groupBy(DB::raw("date_part('year', created_at)"))
