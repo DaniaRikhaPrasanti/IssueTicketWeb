@@ -65,6 +65,7 @@ class TicketController extends Controller
         if ($request->file('Tick_Attach')) {
             $ticketimages = $request->file('Tick_Attach')->store('ticket-images');
         }
+        //$organisasi
         Ticket::create([
             'Tick_Req' => Auth::user()->name,
             'Tick_Subj' => $request->Tick_Subj,
