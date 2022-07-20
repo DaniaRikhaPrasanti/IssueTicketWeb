@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Auth;
 use App\Models\Ticket;
 use App\Models\TicketConv;
+use App\Models\TicketStatus;
 use Illuminate\Http\Request;
 
 class TicketController extends Controller
@@ -20,11 +21,18 @@ class TicketController extends Controller
         //$tickets = Ticket::select('*')->distinct()->get();
         $tickets = Ticket::where('Tick_Req', auth()->user()->name)->get();
         //dd($tickets);
-        return view('ticketrequester.list_tickets', [
-            'title' => 'List Tickets',
-            'tickets' => $tickets
+        if (auth()->user()->role_id == 2) {
+            return view('ticketrequester.list_tickets', [
+                'title' => 'List Tickets',
+                'tickets' => $tickets
 
-        ]);
+            ]);
+        }else{
+            return view('ticketagent.list_tickets', [
+                'title' => 'List Tickets',
+                'tickets' => $tickets
+            ]);
+        }
 
 
         // old
@@ -97,13 +105,25 @@ class TicketController extends Controller
             ->get();
         //menampilkan tiketconv berdasarkan tiket_id
         $ticketconv = TicketConv::where('ticket_id',$ticket->id)->get();
+        $ticket_status = TicketStatus::all();
         //dd($ticketconv);
-        return view('ticketrequester.detail_ticket', [
-            'title' => 'Detail Ticket',
-            'tickets' => $ticketDetail,
-            'id_ticket' => $ticket->id,
-            'ticketconv' =>  $ticketconv
-        ]);
+        if (auth()->user()->role_id == 2) {
+            return view('ticketrequester.detail_ticket', [
+                'title' => 'Detail Ticket',
+                'tickets' => $ticketDetail,
+                'id_ticket' => $ticket->id,
+                'ticketconv' =>  $ticketconv,
+                'ticket_status' => $ticket_status,
+            ]);
+        }else{
+            return view('ticketagent.detail_ticket', [
+                'title' => 'Detail Ticket',
+                'tickets' => $ticketDetail,
+                'id_ticket' => $ticket->id,
+                'ticketconv' =>  $ticketconv,
+                'ticket_status' => $ticket_status,
+            ]);
+        }
 
         // old
         // return view('ticketrequester.detail_ticket', [
