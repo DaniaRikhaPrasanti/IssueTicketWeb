@@ -19,18 +19,25 @@ class TicketController extends Controller
     {
         // select distinct all ticket from ticket table
         //$tickets = Ticket::select('*')->distinct()->get();
+        $tickets_admin = Ticket::all();
         $tickets = Ticket::where('Tick_Req', auth()->user()->name)->get();
-        //dd($tickets);
+        // dd($tickets);
+        // dd($tickets_admin);
         if (auth()->user()->role_id == 2) {
             return view('ticketrequester.list_tickets', [
                 'title' => 'List Tickets',
                 'tickets' => $tickets
 
             ]);
-        }else{
+        }else if (auth()->user()->role_id == 3){
             return view('ticketagent.list_tickets', [
                 'title' => 'List Tickets',
                 'tickets' => $tickets
+            ]);
+        }else{
+            return view('ticketagent.list_tickets', [
+                'title' => 'List Tickets',
+                'tickets' => $tickets_admin
             ]);
         }
 
@@ -73,6 +80,10 @@ class TicketController extends Controller
         if ($request->file('Tick_Attach')) {
             $ticketimages = $request->file('Tick_Attach')->store('ticket-images');
         }
+        // $status = 1;
+        // if ($request->number('status')){
+        //     $status = $request->number('status')->store('status');
+        // }
         Ticket::create([
             'Tick_Req' => Auth::user()->name,
             'Tick_Subj' => $request->Tick_Subj,
@@ -151,7 +162,14 @@ class TicketController extends Controller
      */
     public function update(Request $request, Ticket $ticket)
     {
-        //
+        $request->validate([
+            'ticket_status_id' => 'required',
+        ]);
+        Ticket::where('id', $ticket->id)
+            ->update([
+                'ticket_status_id' => $request->status,
+            ]);
+        return redirect('/ticket');
     }
 
     /**

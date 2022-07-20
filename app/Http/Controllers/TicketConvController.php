@@ -135,9 +135,9 @@ class TicketConvController extends Controller
      * @param  \App\Models\TicketConv  $ticketConv
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, TicketConv $ticketConv)
+    public function update(Request $request, TicketConv $ticket)
     {
-        //
+
     }
 
     /**

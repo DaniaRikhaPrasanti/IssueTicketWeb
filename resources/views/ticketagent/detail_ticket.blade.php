@@ -1,4 +1,4 @@
-@extends('layouts.appuser')
+@extends('layouts.app')
 @section("css")
 <style>
   .glyphicon{margin-right:0px;color:#fff}
@@ -134,9 +134,9 @@
 	                        </a>
                         </li>
                     </ul>
-
+                <form method="post" action="{{ route('ticket.update') }}" enctype="multipart/form-data">
                 <p class="judul">Status</p>
-                <select name="status" id="status" class="btn-danger">
+                <select name="status" type="number" id="status" class="btn-danger">
                     @foreach ($ticket_status as $ticket)
                         <option value="{{ $ticket->id }}">{{ $ticket->status }}</option>
                     @endforeach
@@ -174,7 +174,21 @@
                 </div>
                 <button type="reset" class="btn btn-outline-danger">Delete</button>
                 <div class="float-right">
-                    <button type="button" class="btn btn-outline-info">Save</button>
+                    <button type="button" class="btn btn-outline-info" data-bs-toggle="modal" data-bs-target="#add">Save</button>
+                </div>
+                <!-- Modal -->
+                <div class="modal fade" id="add" tabindex="-1" aria-labelledby="add" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-body text-center">
+                        Anda ingin memperbarui Status ?
+                        </div>
+                        <div class="text-center mb-4">
+                            <button type="button" class="btn btn-danger mx-2" data-bs-dismiss="modal">Tidak</button>
+                            <button type="submit" class="btn btn-primary mx-2">Iya</button>
+                        </div>
+                    </div>
+                    </div>
                 </div>
             </div>
         </div>
