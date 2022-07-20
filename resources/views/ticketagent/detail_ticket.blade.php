@@ -136,7 +136,12 @@
                     </ul>
 
                 <p class="judul">Status</p>
-                    @foreach ($tickets as $ticket)
+                <select name="status" id="status" class="btn-danger">
+                    @foreach ($ticket_status as $ticket)
+                        <option value="{{ $ticket->id }}">{{ $ticket->status }}</option>
+                    @endforeach
+                </select>
+                    <!-- @foreach ($tickets as $ticket)
                     <button type="button" class="btn
                     @if ($ticket->ticket_status_id == 1) btn-danger 
                     @elseif ($ticket->ticket_status_id == 2) btn-primary 
@@ -145,7 +150,7 @@
                     @elseif ($ticket->ticket_status_id == 5) btn-success 
                     @else btn-secondary 
                     @endif">{{ $ticket->TicketStatus->status }}</button>
-                    @endforeach
+                    @endforeach -->
 
                 <h5 class="judul">Subject</h5>
                 <div class="input-group mb-3" style="border:1px solid #CED4DA;background-color:#E9ECEF;border-radius:5px;vertical-align:baseline;align-items:center">

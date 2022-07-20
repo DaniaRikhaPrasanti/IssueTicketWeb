@@ -136,16 +136,16 @@
                     </ul>
 
                 <p class="judul">Status</p>
-                    @foreach ($tickets as $ticket)
-                    <button type="button" class="btn
-                    @if ($ticket->ticket_status_id == 1) btn-danger 
-                    @elseif ($ticket->ticket_status_id == 2) btn-primary 
-                    @elseif ($ticket->ticket_status_id == 3) btn-primary 
-                    @elseif ($ticket->ticket_status_id == 4) btn-primary 
-                    @elseif ($ticket->ticket_status_id == 5) btn-success 
-                    @else btn-secondary 
-                    @endif">{{ $ticket->TicketStatus->status }}</button>
-                    @endforeach
+                @foreach ($tickets as $ticket)
+                <button type="button" class="btn
+                @if ($ticket->ticket_status_id == 1) btn-danger 
+                @elseif ($ticket->ticket_status_id == 2) btn-primary 
+                @elseif ($ticket->ticket_status_id == 3) btn-primary 
+                @elseif ($ticket->ticket_status_id == 4) btn-primary 
+                @elseif ($ticket->ticket_status_id == 5) btn-success 
+                @else btn-secondary 
+                @endif">{{ $ticket->TicketStatus->status }}</button>
+                @endforeach
 
                 <h5 class="judul">Subject</h5>
                 <div class="input-group mb-3" style="border:1px solid #CED4DA;background-color:#E9ECEF;border-radius:5px;vertical-align:baseline;align-items:center">

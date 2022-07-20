@@ -25,7 +25,7 @@ use App\Providers\RouteServiceProvider;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth/login');
 });
 
 // Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
@@ -78,6 +78,7 @@ Route::get('/requester/{requester:id}', [RequesterController::class, 'show']);
 //Route Agent
 
 Route::resource('/agent', AgentController::class);
+// Route::get('/requester/{requester:id}', [AgentController::class, 'show2']);
 // Route::get('/agent/delete/{id}', [AgentController::class, 'destroy']);
 
 Route::resource('/ticket', TicketController::class);
