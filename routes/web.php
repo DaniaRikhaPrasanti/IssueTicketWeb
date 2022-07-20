@@ -25,7 +25,7 @@ use App\Providers\RouteServiceProvider;
 */
 
 Route::get('/', function () {
-    return view('auth/login');
+    return view('/auth/login');
 });
 
 // Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
