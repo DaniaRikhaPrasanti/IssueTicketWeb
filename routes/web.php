@@ -83,6 +83,7 @@ Route::resource('/agent', AgentController::class);
 
 Route::resource('/ticket', TicketController::class);
 Route::get('/ticket/{ticket}/detail', [TicketController::class, "ticketDetail"]);
+Route::post('/ticket/update', [TicketController::class, 'update'])->name('ticket.update');
 
 Route::resource('/ticketconv', TicketConvController::class);
 Route::get('/ticketconvform/{ticket}', [TicketConvController::class, "ticketConv"]);
@@ -116,7 +117,6 @@ Route::get('/settings/setting_admin', function () {
         'title' => 'Setting'
     ]);
 });
-
 
 
 Route::resource('/dashboard/dashboard_agent', DashboardController::class);

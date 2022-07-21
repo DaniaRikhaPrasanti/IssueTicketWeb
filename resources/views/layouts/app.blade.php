@@ -110,33 +110,45 @@
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
+               
+          <li class="nav-item mt-2">
+            <a href="/dashboard/dashboard_agent" class="nav-link">
+              <i class="nav-icon fas fa-chart-line"></i>
+              <p>
+              Dashboard
+              </p>
+            </a>
+          </li>
+          <span class="border-bottom"></span>
           <li class="nav-item">
-            <a href="/requester" class="nav-link">
-              <i class="nav-icon fas fa-user"></i>
-              <p>
-                Requester
-              </p>
-            </a>
-          </li>
-          <span class="border-bottom"></span>
-          <li class="nav-item mt-2">
-            <a href="/agent" class="nav-link">
-              <i class="nav-icon fas fa-user-secret"></i>
-              <p>
-                Agent
-              </p>
-            </a>
-          </li>
-          <span class="border-bottom"></span>
-          <li class="nav-item mt-2">
             <a href="/ticket" class="nav-link">
               <i class="nav-icon fas fa-users"></i>
               <p>
-              Ticket
+                Ticket
               </p>
             </a>
           </li>
-          <span class="border-bottom"></span>
+          @if (auth()->user()->role_id == 1)
+            <span class="border-bottom"></span>
+            <li class="nav-item mt-2">
+              <a href="/requester" class="nav-link">
+                <i class="nav-icon fas fa-user"></i>
+                <p>
+                  Requester
+                </p>
+              </a>
+            </li>
+            <span class="border-bottom"></span>
+            <li class="nav-item mt-2">
+              <a href="/agent" class="nav-link">
+                <i class="nav-icon fas fa-user-secret"></i>
+                <p>
+                  Agent
+                </p>
+              </a>
+            </li>
+            <span class="border-bottom"></span>
+          @endif
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
