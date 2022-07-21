@@ -32,7 +32,7 @@ class TicketController extends Controller
         }else if (auth()->user()->role_id == 3){
             return view('ticketagent.list_tickets', [
                 'title' => 'List Tickets',
-                'tickets' => $tickets
+                'tickets' => $tickets_admin
             ]);
         }else{
             return view('ticketagent.list_tickets', [
