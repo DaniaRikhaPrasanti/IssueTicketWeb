@@ -111,6 +111,7 @@ class TicketController extends Controller
             ->orderBy('id', 'desc')
             ->get();
         //menampilkan tiketconv berdasarkan tiket_id
+        $ticket_user = Ticket::where('id', $ticket->id)->get();
         $ticketconv = TicketConv::where('ticket_id',$ticket->id)->get();
         $ticket_status = TicketStatus::all();
         //dd($ticketconv);
@@ -161,6 +162,7 @@ class TicketController extends Controller
         Ticket::where('id', $id)
             ->update([
                 'ticket_status_id' => $request->status,
+                'Tick_Priority' => $request->priority,
             ]);
         return redirect('/ticket');
     }

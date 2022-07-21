@@ -83,7 +83,7 @@ Route::resource('/agent', AgentController::class);
 
 Route::resource('/ticket', TicketController::class);
 Route::get('/ticket/{ticket}/detail', [TicketController::class, "ticketDetail"]);
-Route::put('/ticket/update/{id}', [TicketController::class, 'update'])->name('ticket.update');
+Route::put('/ticket/update/{id}', [TicketController::class, 'update'])->name('ticket.update'); //similar to post, but can have parameters
 
 Route::resource('/ticketconv', TicketConvController::class);
 Route::get('/ticketconvform/{ticket}', [TicketConvController::class, "ticketConv"]);

@@ -138,12 +138,23 @@
                 enctype="multipart/form-data">
                 @method('put')
                 @csrf
-                <p class="judul">Status</p>
-                <select name="status" type="number" id="status" class="btn-danger">
-                    @foreach ($ticket_status as $ticket)
-                        <option value="{{ $ticket->id }}">{{ $ticket->status }}</option>
-                    @endforeach
-                </select>
+                <div style="display:inline-block;width:20%">
+                    <p class="judul">Status</p>
+                    <select name="status" type="number" id="status" class="btn-danger">
+                        @foreach ($ticket_status as $ticket)
+                            <option value="{{ $ticket->id }}">{{ $ticket->status }}</option>
+                        @endforeach
+                    </select>
+                </div>
+                <div style="display:inline-block;width:40%" >
+                    <p class="judul">Priority</p>
+                    <select class="btn-default" name="priority" type="text" id="priority">
+                        <option value="Low">Low</option>
+                        <option value="Medium">Medium</option>
+                        <option value="High">High</option>
+                        <option value="Critical">Critical</option>
+                    </select>
+                </div>
                     <!-- @foreach ($tickets as $ticket)
                     <button type="button" class="btn
                     @if ($ticket->ticket_status_id == 1) btn-danger 
@@ -155,7 +166,7 @@
                     @endif">{{ $ticket->TicketStatus->status }}</button>
                     @endforeach -->
 
-                <h5 class="judul">Subject</h5>
+                <h5 class="judul" style="padding-top:1.5%">Subject</h5>
                 <div class="input-group mb-3" style="border:1px solid #CED4DA;background-color:#E9ECEF;border-radius:5px;vertical-align:baseline;align-items:center">
                     <i class="fa fa-duotone fa-filter" style="margin-left:1%;color:#A0A4A8;"></i>
                     <p class="ket">{{ $ticket->Tick_Subj }}</p>
