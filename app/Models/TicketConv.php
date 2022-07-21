@@ -14,6 +14,15 @@ class TicketConv extends Model
      *
      * @var array
      */
+    protected $fillable = [
+        'Log_Creator',
+        'Log_Creator_Type',
+        'Tick_Status',
+        'Log_Title',
+        'Log_Desc',
+        'Log_Attachment',
+        'ticket_id',
+    ];
     protected $table = 'ticket_convs';
     //kolom yang dapat di input 
     protected $guarded =['id'];
