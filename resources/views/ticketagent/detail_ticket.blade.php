@@ -136,8 +136,8 @@
                     </ul>
                 <form method="post" action="{{ route('ticket.update', $id_ticket) }}" 
                 enctype="multipart/form-data">
-                @method('put')
                 @csrf
+                @method('put')
                 <div style="display:inline-block;width:20%">
                     <p class="judul">Status</p>
                     <select name="status" type="number" id="status" class="btn-danger">
