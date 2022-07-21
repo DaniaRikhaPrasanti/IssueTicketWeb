@@ -27,4 +27,8 @@ class Ticket extends Model
     {
         return $this->belongsTo(TicketStatus::class,'ticket_status_id');
     }
+    public function requester()
+    {
+        return $this->belongsTo(requester::class,'requester_id');
+    }
 }

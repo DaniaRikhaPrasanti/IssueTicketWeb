@@ -134,7 +134,10 @@
 	                        </a>
                         </li>
                     </ul>
-                <form method="post" action="{{ route('ticket.update') }}" enctype="multipart/form-data">
+                <form method="post" action="{{ route('ticket.update', $id_ticket) }}" 
+                enctype="multipart/form-data">
+                @method('put')
+                @csrf
                 <p class="judul">Status</p>
                 <select name="status" type="number" id="status" class="btn-danger">
                     @foreach ($ticket_status as $ticket)

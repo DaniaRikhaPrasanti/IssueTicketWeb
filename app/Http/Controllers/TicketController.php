@@ -131,12 +131,6 @@ class TicketController extends Controller
                 'ticket_status' => $ticket_status,
             ]);
         }
-
-        // old
-        // return view('ticketrequester.detail_ticket', [
-        //     'title' => 'Detail Ticket',
-        //     'ticket' => $ticket
-        // ]);
     }
 
     /**
@@ -147,7 +141,7 @@ class TicketController extends Controller
      */
     public function edit(Ticket $ticket)
     {
-        //
+        
     }
 
     /**
@@ -157,12 +151,14 @@ class TicketController extends Controller
      * @param  \App\Models\Ticket  $ticket
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Ticket $ticket)
-    {
+    public function update(Request $request, $id)
+    {   
+        //validasi form update
         $request->validate([
-            'ticket_status_id' => 'required',
+            'status' => 'required',
         ]);
-        Ticket::where('id', $ticket->id)
+        //update status tiket di tabel tiket
+        Ticket::where('id', $id)
             ->update([
                 'ticket_status_id' => $request->status,
             ]);
