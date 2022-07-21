@@ -104,7 +104,17 @@ class TicketConvController extends Controller
         
     }
     
-    
+    public function show2($id)
+    {
+        // memerikSa id tiket_conv dengan id yang dikirim unutk ditampilkan ke timeline tiketconv 
+        $ticketConv = TicketConv::where('id', $id)->first();
+        // dd($ticketConv);
+        return view('ticketagent.timeline_convdetails', [
+            'title' => 'Timeline Detail ',
+            'ticketConv' => $ticketConv
+        ]);
+        
+    }
 
     /**
      * Show the form for editing the specified resource.
@@ -125,9 +135,9 @@ class TicketConvController extends Controller
      * @param  \App\Models\TicketConv  $ticketConv
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, TicketConv $ticketConv)
+    public function update(Request $request, TicketConv $ticket)
     {
-        //
+
     }
 
     /**

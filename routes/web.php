@@ -25,52 +25,14 @@ use App\Providers\RouteServiceProvider;
 */
 
 Route::get('/', function () {
-    return view('welcome');
-});
+    return view('/home');
+})->middleware(['auth']);
 
-// Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-//     return view('dashboard');
-// })->name('dashboard');
 
 //login multi-level
 Auth::routes(['verify' => true]);
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'redirectTo'])->name('home');
-// Route::group(['middleware' => 'auth'], function(){
-//     Route::group(['middleware' => 'role:admin'], function(){
-//         Route::get('/administrator', function(){
-//             return view('/layouts.app');
-//         });
-//     });
-//     Route::group(['middleware' => 'role:requester'], function(){
-//         Route::get('/user-requester', function(){
-//             return view('/layouts.appuser');
-//         });
-//     });
-//     Route::group(['middleware' => 'role:agent'], function(){
-//         Route::get('/user-agent', function(){
-//             return view('/layouts.appuser');
-//         });
-//     });
-// });
-//
 
-
-// Route::post('/loginuser', function (Request $request) {
-//     $email = $request->email;
-//     $password = $request->password;
-//     // auth using Req_Email and Req_Password in requester table
-//     if (Auth::guard('requester')->attempt(['Req_Email' => $email, 'Req_Password' => $password])) {
-//         return redirect("/requester");
-//     } else {
-//         return redirect("/loginuser");
-//     }
-// });
-
-// Route::get('/', function () {
-//     return view('welcome', [
-//         'title' => 'Requester'
-//     ]);
-// });
 
 Route::resource('/requester', RequesterController::class);
 Route::get('/requester/{requester:id}', [RequesterController::class, 'show']);
@@ -78,10 +40,12 @@ Route::get('/requester/{requester:id}', [RequesterController::class, 'show']);
 //Route Agent
 
 Route::resource('/agent', AgentController::class);
+// Route::get('/requester/{requester:id}', [AgentController::class, 'show2']);
 // Route::get('/agent/delete/{id}', [AgentController::class, 'destroy']);
 
 Route::resource('/ticket', TicketController::class);
 Route::get('/ticket/{ticket}/detail', [TicketController::class, "ticketDetail"]);
+Route::put('/ticket/update/{id}', [TicketController::class, 'update'])->name('ticket.update'); //similar to post, but can have parameters
 
 Route::resource('/ticketconv', TicketConvController::class);
 Route::get('/ticketconvform/{ticket}', [TicketConvController::class, "ticketConv"]);
@@ -115,7 +79,6 @@ Route::get('/settings/setting_admin', function () {
         'title' => 'Setting'
     ]);
 });
-
 
 
 Route::resource('/dashboard/dashboard_agent', DashboardController::class);

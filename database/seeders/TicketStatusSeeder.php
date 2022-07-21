@@ -21,7 +21,7 @@ class TicketStatusSeeder extends Seeder
             'status' => 'Open'
         ]);
         TicketStatus::create([
-            'status' => 'WIP'
+            'status' => 'Work In Progress'
         ]);
         TicketStatus::create([
             'status' => 'Work Done'

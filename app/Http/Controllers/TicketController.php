@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Auth;
 use App\Models\Ticket;
 use App\Models\TicketConv;
+use App\Models\TicketStatus;
 use Illuminate\Http\Request;
 
 class TicketController extends Controller
@@ -18,13 +19,27 @@ class TicketController extends Controller
     {
         // select distinct all ticket from ticket table
         //$tickets = Ticket::select('*')->distinct()->get();
+        $tickets_admin = Ticket::all();
         $tickets = Ticket::where('Tick_Req', auth()->user()->name)->get();
-        //dd($tickets);
-        return view('ticketrequester.list_tickets', [
-            'title' => 'List Tickets',
-            'tickets' => $tickets
+        // dd($tickets);
+        // dd($tickets_admin);
+        if (auth()->user()->role_id == 2) {
+            return view('ticketrequester.list_tickets', [
+                'title' => 'List Tickets',
+                'tickets' => $tickets
 
-        ]);
+            ]);
+        }else if (auth()->user()->role_id == 3){
+            return view('ticketagent.list_tickets', [
+                'title' => 'List Tickets',
+                'tickets' => $tickets_admin
+            ]);
+        }else{
+            return view('ticketagent.list_tickets', [
+                'title' => 'List Tickets',
+                'tickets' => $tickets_admin
+            ]);
+        }
 
 
         // old
@@ -65,6 +80,7 @@ class TicketController extends Controller
         if ($request->file('Tick_Attach')) {
             $ticketimages = $request->file('Tick_Attach')->store('ticket-images');
         }
+        
         Ticket::create([
             'Tick_Req' => Auth::user()->name,
             'Tick_Subj' => $request->Tick_Subj,
@@ -95,20 +111,27 @@ class TicketController extends Controller
             ->orderBy('id', 'desc')
             ->get();
         //menampilkan tiketconv berdasarkan tiket_id
+        $ticket_user = Ticket::where('id', $ticket->id)->get();
         $ticketconv = TicketConv::where('ticket_id',$ticket->id)->get();
+        $ticket_status = TicketStatus::all();
         //dd($ticketconv);
-        return view('ticketrequester.detail_ticket', [
-            'title' => 'Detail Ticket',
-            'tickets' => $ticketDetail,
-            'id_ticket' => $ticket->id,
-            'ticketconv' =>  $ticketconv
-        ]);
-
-        // old
-        // return view('ticketrequester.detail_ticket', [
-        //     'title' => 'Detail Ticket',
-        //     'ticket' => $ticket
-        // ]);
+        if (auth()->user()->role_id == 2) {
+            return view('ticketrequester.detail_ticket', [
+                'title' => 'Detail Ticket',
+                'tickets' => $ticketDetail,
+                'id_ticket' => $ticket->id,
+                'ticketconv' =>  $ticketconv,
+                'ticket_status' => $ticket_status,
+            ]);
+        }else{
+            return view('ticketagent.detail_ticket', [
+                'title' => 'Detail Ticket',
+                'tickets' => $ticketDetail,
+                'id_ticket' => $ticket->id,
+                'ticketconv' =>  $ticketconv,
+                'ticket_status' => $ticket_status,
+            ]);
+        }
     }
 
     /**
@@ -119,7 +142,7 @@ class TicketController extends Controller
      */
     public function edit(Ticket $ticket)
     {
-        //
+        
     }
 
     /**
@@ -129,9 +152,19 @@ class TicketController extends Controller
      * @param  \App\Models\Ticket  $ticket
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Ticket $ticket)
-    {
-        //
+    public function update(Request $request, $id)
+    {   
+        //validasi form update
+        $request->validate([
+            'status' => 'required',
+        ]);
+        //update status tiket di tabel tiket
+        Ticket::where('id', $id)
+            ->update([
+                'ticket_status_id' => $request->status,
+                'Tick_Priority' => $request->priority,
+            ]);
+        return redirect('/ticket');
     }
 
     /**

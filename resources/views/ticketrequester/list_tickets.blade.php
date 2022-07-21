@@ -78,13 +78,6 @@
             <tbody>
             @foreach($tickets as $ticket)
             <tr>
-              <!-- <td>01/10/2022</td>
-              <td>Mis inputan</td>
-              <td>Lambung sakit saat belum makan di bulan puasa</td>
-              <td>Question</td>
-              <td>
-                <span class="badge badge-danger">Pending</span>
-              </td> -->
               <td>{{ $ticket->updated_at}}</td>
               <td>{{ $ticket->Tick_Subj}}</td>
               <td>{{ $ticket->Tick_Issue}}</td>

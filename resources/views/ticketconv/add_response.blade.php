@@ -1,4 +1,4 @@
-@extends('layouts.appuser')
+@extends('layouts.app')
 @section("css")
 <style>
   .timeline{list-style:none;padding:0 0 20px;position:relative;margin-top:-15px;border:1px solid #ccc}
@@ -81,7 +81,7 @@
                     </div>
 
                     <div class="mt-4">
-                        <a href="/requester" class="btn btn-outline-danger ">Cancel</a>
+                        <a href="/ticket" class="btn btn-outline-danger ">Cancel</a>
                         <!-- Button trigger modal -->
                         <button type="button" class="btn btn-outline-primary mx-2 float-right" data-bs-toggle="modal" data-bs-target="#add">
                             Save
@@ -96,7 +96,6 @@
                                 </div>
                                 <div class="text-center mb-4">
                                     <button type="button" class="btn btn-danger mx-2" data-bs-dismiss="modal">Tidak</button>
-                                    
                                     <button type="submit" class="btn btn-primary mx-2">Iya</button>
                                 </div>
                             </div>
