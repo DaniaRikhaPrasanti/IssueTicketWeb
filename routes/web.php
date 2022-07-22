@@ -25,8 +25,8 @@ use App\Providers\RouteServiceProvider;
 */
 
 Route::get('/', function () {
-    return view('/home');
-})->middleware(['auth']);
+    return redirect('login');
+});
 
 
 //login multi-level
