@@ -18,7 +18,7 @@ class TicketController extends Controller
     public function index()
     {
         // select distinct all ticket from ticket table
-        //$tickets = Ticket::select('*')->distinct()->get();
+        // $tickets = Ticket::select('*')->distinct()->get();
         $tickets_admin = Ticket::all();
         $tickets = Ticket::where('Tick_Req', auth()->user()->name)->get();
         // dd($tickets);
@@ -114,7 +114,7 @@ class TicketController extends Controller
         $ticket_user = Ticket::where('id', $ticket->id)->get();
         $ticketconv = TicketConv::where('ticket_id',$ticket->id)->get();
         $ticket_status = TicketStatus::all();
-        //dd($ticketconv);
+        // dd($ticketDetail);
         if (auth()->user()->role_id == 2) {
             return view('ticketrequester.detail_ticket', [
                 'title' => 'Detail Ticket',
@@ -122,6 +122,7 @@ class TicketController extends Controller
                 'id_ticket' => $ticket->id,
                 'ticketconv' =>  $ticketconv,
                 'ticket_status' => $ticket_status,
+                'priority' => $ticket_user,
             ]);
         }else{
             return view('ticketagent.detail_ticket', [
@@ -130,6 +131,7 @@ class TicketController extends Controller
                 'id_ticket' => $ticket->id,
                 'ticketconv' =>  $ticketconv,
                 'ticket_status' => $ticket_status,
+                'priority' => $ticket_user,
             ]);
         }
     }

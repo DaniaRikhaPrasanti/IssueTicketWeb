@@ -128,7 +128,6 @@
                             </div>                     
                             </div>
                             @endforeach
-
                             <a href="/ticketconvform/{{ $id_ticket }}">
 	                            <button type="button" class="btn btn-outline-info" style="float: right; margin-right: 35px; margin-top: 15px">Respond</button>
 	                        </a>
@@ -140,19 +139,19 @@
                 @method('put')
                 <div style="display:inline-block;width:20%">
                     <p class="judul">Status</p>
-                    <select name="status" type="number" id="status" class="btn-danger">
+                    <select name="status" type="number" id="status" class="btn-default">
                         @foreach ($ticket_status as $ticket)
-                            <option value="{{ $ticket->id }}">{{ $ticket->status }}</option>
+                            <option value="{{ $ticket->id }}" {{ $ticket->id == $tickets[0]->ticket_status_id ? 'selected' : '' }}>{{ $ticket->status }}</option>
                         @endforeach
                     </select>
                 </div>
                 <div style="display:inline-block;width:40%" >
                     <p class="judul">Priority</p>
                     <select class="btn-default" name="priority" type="text" id="priority">
-                        <option value="Low">Low</option>
-                        <option value="Medium">Medium</option>
-                        <option value="High">High</option>
-                        <option value="Critical">Critical</option>
+                        <option value="Low" {{ $priority[0]->Tick_Priority == "Low" ? 'selected' : '' }}>Low</option>
+                        <option value="Medium" {{ $priority[0]->Tick_Priority == "Medium" ? 'selected' : '' }}>Medium</option>
+                        <option value="High" {{ $priority[0]->Tick_Priority == "High" ? 'selected' : '' }}>High</option>
+                        <option value="Critical" {{ $priority[0]->Tick_Priority == "Critical" ? 'selected' : '' }}>Critical</option>
                     </select>
                 </div>
                     <!-- @foreach ($tickets as $ticket)
@@ -169,7 +168,7 @@
                 <h5 class="judul" style="padding-top:1.5%">Subject</h5>
                 <div class="input-group mb-3" style="border:1px solid #CED4DA;background-color:#E9ECEF;border-radius:5px;vertical-align:baseline;align-items:center">
                     <i class="fa fa-duotone fa-filter" style="margin-left:1%;color:#A0A4A8;"></i>
-                    <p class="ket">{{ $ticket->Tick_Subj }}</p>
+                    <p class="ket" style="margin-left:1%">{{ $ticket->Tick_Subj }}</p>
                 </div>
 
                 <h5 class="judul">Issues</h5>
@@ -215,3 +214,12 @@
 
 @section("script")
 @endsection
+<script>
+    function change_status_color()
+	{
+		change_status_color = document.querySelector('#status');
+        change_status_color.classList.remove('btn-default');
+		change_status_color.classList.add('btn-danger');
+        change_status_color.innerHTML = 'btn-danger';
+	}
+</script>
