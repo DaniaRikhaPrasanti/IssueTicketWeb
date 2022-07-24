@@ -10,7 +10,7 @@
             <hr>
             <div class="form">
                 <form action="POST">
-                    <label for="Log_Creator" class="form-label">Requester : </label>
+                    <label for="Log_Creator" class="form-label">Response Creator : </label>
                     <div class="input-group mb-3">
                         <span class="input-group-text" id="basic-addon1">
                             <i class="fas fa-user"></i>
