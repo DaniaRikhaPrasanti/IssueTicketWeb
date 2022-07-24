@@ -51,7 +51,7 @@
                     </div>
                
 
-                <label for="Log_Desc" class="form-label">Replay : </label>
+                <label for="Log_Desc" class="form-label">Reply : </label>
                     <div>
                         <textarea class="form-control" name="Log_Desc" id="Log_Desc" rows="8" placeholder="Masukkan Isu yang dialami disini..."></textarea>
                         @error('Log_Desc')
