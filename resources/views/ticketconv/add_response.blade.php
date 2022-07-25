@@ -1,4 +1,8 @@
-@extends('layouts.app')
+@if (auth()->user()->role_id == 2)
+    @extends('layouts.appuser')
+@else
+    @extends('layouts.app')
+@endif
 @section("css")
 <style>
   .timeline{list-style:none;padding:0 0 20px;position:relative;margin-top:-15px;border:1px solid #ccc}
