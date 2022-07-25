@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\DB;
 
 class DashboardController extends Controller
 {
-
+    //menampilkan semua data pada tabel Ticket melalui halaman views/dashboard/dashboard_agent.blade.php
     public function index()
     {
 
@@ -102,7 +102,7 @@ class DashboardController extends Controller
         ]);
     }
 
-
+    //menampilkan semua data pada tabel Ticket melalui halaman views/dashboard/dashboard_agent.blade.php dalam bentuk list
     public function show(Ticket $ticket)
     {
         // select * from ticket where id = $id and tick_req = Auth::user()->name
@@ -120,7 +120,7 @@ class DashboardController extends Controller
         ]);
     }
 
-
+    //menampilkan data ticket sesuai id yang dipilih ke halaman views/ticketagent/detail_timeline_ticket.blade.php
     public function ticketDetail(Ticket $ticket)
     {
         return view("ticketagent.detail_timeline_ticket", compact('ticket'));

@@ -17,11 +17,12 @@ class RequesterController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    //mengecek apakah user sudah mempunyai hak mengakses web atau belum, dalam hal ini yang mempunyai hak akses adalah role requester atau role admin
     public function __construct()
     {
         $this->middleware('role:requester||admin');
     }
-
+    //menampilkan semua data user dengan role "requester" melalui halaman views/requester/list.blade.php
     public function index()
     {
         return view('requester.list',[
@@ -35,6 +36,7 @@ class RequesterController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    //menampilkan halaman views/requestrer/add.blade.php yaitu form untuk membuat user baru dengan role "requester"
     public function create()
     {
         return view('requester.add', [
@@ -48,6 +50,7 @@ class RequesterController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+    //menyimpan data inputan di form views/requester/add.blade.php ke database segingga dapat membuat user baru dengan role "requester"
     public function store(Request $request)
     {
         $request->validate([
@@ -62,8 +65,7 @@ class RequesterController extends Controller
             'Req_Address' => 'required|max:255',
             'role_id' => 'required'
         ]);
-
-
+        //menambahkan data di tabel Requester
         requester::create([
             'Req_Name' => $request->Req_Name,
             'Req_Organization' => $request->Req_Organization,
@@ -75,6 +77,7 @@ class RequesterController extends Controller
             'Req_Address' => $request->Req_Address,
             'role_id' => $request->role_id,
         ]);
+        //menambahkan data di tabel User
         User::create([
             'name' => $request->Req_Name,
             'email' => $request->Req_Email,
@@ -89,7 +92,7 @@ class RequesterController extends Controller
             'url' => 'http://127.0.0.1:8000/login',
 
         ];
-
+        //mengirimkan email berisi username dan password agent yang telah dibuatkan oleh admin melalui halaman views/requester/add.blade.php
 		Mail::to($request->Req_Email)->send(new Email($data));
 
 
@@ -103,6 +106,7 @@ class RequesterController extends Controller
      * @param  \App\Models\requester  $requester
      * @return \Illuminate\Http\Response
      */
+    //menampilkan data user dengan role "requester" yang tersimpan di database. data ini ditampilkan di halaman views/requester/details.blade.php
     public function show(requester $requester)
     {
         return view('requester.details', [
@@ -118,6 +122,7 @@ class RequesterController extends Controller
      * @param  \App\Models\requester  $requester
      * @return \Illuminate\Http\Response
      */
+    //menampilkan form views/requester/edit.blade.php yang berisi data user dengan role "requester" sesuai id yang dipilih untuk dilakukan edit data user tersebut
     public function edit(requester $requester)
     {
         return view('requester.edit',[
@@ -142,6 +147,7 @@ class RequesterController extends Controller
      * @param  \App\Models\requester  $requester
      * @return \Illuminate\Http\Response
      */
+    //melakukan update data requester yang telah diisikan pada form views/requester/edit.blade.php sebelumnya
     public function update(Request $request, requester $requester)
     {
         $request->validate([
@@ -155,7 +161,7 @@ class RequesterController extends Controller
             'Req_No' => 'required|numeric|min:8',
             'Req_Address' => 'required|max:255'
         ]);
-
+        //update data di tabel Requester
         requester::where('id', $requester->id)
             ->update([
                 'Req_Name' => $request->Req_Name,
@@ -167,6 +173,7 @@ class RequesterController extends Controller
                 'Req_No' => $request->Req_No,
                 'Req_Address' => $request->Req_Address
         ]);
+        //update data di tabel User
         User::where('email', $requester->Req_Email)
             ->update([
                 'name' => $request->Req_Name,
@@ -182,6 +189,7 @@ class RequesterController extends Controller
      * @param  \App\Models\requester  $requester
      * @return \Illuminate\Http\Response
      */
+    //menghapus data agent sesuai id yang dipilih (data dihapus di kedua tabel, yaitu tabel Requester dan tabel User)
     public function destroy(requester $requester)
     {
         requester::destroy($requester->id);
@@ -189,13 +197,4 @@ class RequesterController extends Controller
         $del->delete();
         return redirect('/requester');
     }
-
-    // public function destroyid($Req_Email){
-    //     $requester = requester::where('Req_Email', $Req_Email);
-    //     $requester->delete();
-    //     $del = User::where('email', $Req_Email);
-    //     $del->delete();
-    //     return redirect('/requester')->with('mssg','requester Deleted');
-
-    // }
 }

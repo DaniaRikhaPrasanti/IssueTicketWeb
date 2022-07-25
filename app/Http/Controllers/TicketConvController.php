@@ -42,7 +42,7 @@ class TicketConvController extends Controller
             'title' => 'Respond Tickets - Question',
         ]);
     }
-    
+    //menampilkan halaman views/ticketconv/add_response yang digunakan untuk menambahkan respond pada ticket sesuai id yang dipilih
     public function ticketConv($id)
     {
         return view('ticketconv.add_response', [
@@ -57,9 +57,9 @@ class TicketConvController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+    //menyimpan data ke tabel TicketConv sesuai dengan id tabel Ticket yang dipilih.
     public function store(Request $request)
     {
-        //
         $request->validate([
             'Log_Title' => 'required|max:255',
             'Log_Desc' => 'required|max:255',
@@ -92,6 +92,7 @@ class TicketConvController extends Controller
      * @param  \App\Models\TicketConv  $ticketConv
      * @return \Illuminate\Http\Response
      */
+    //menampilkan halaman views/ticketrequester/timeline_convdetails yang berisi data pada tabel TicketConv setelah melakukan tambah response melalui halaman views/ticketconv/add_response.blade.php sebelumnya.
     public function show($id)
     {
         // memerikSa id tiket_conv dengan id yang dikirim unutk ditampilkan ke timeline tiketconv 
@@ -103,7 +104,7 @@ class TicketConvController extends Controller
         ]);
         
     }
-    
+    //menampilkan halaman views/ticketagent/timeline_convdetails yang berisi data pada tabel TicketConv setelah melakukan tambah response melalui halaman views/ticketconv/add_response.blade.php sebelumnya.
     public function show2($id)
     {
         // memerikSa id tiket_conv dengan id yang dikirim unutk ditampilkan ke timeline tiketconv 

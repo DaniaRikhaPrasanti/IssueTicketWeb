@@ -36,6 +36,7 @@ class RegisterController extends Controller
      *
      * @return void
      */
+    //otomatis dipanggil saat class register di instansiasi
     public function __construct()
     {
         $this->middleware('guest');
@@ -47,6 +48,7 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
+    //fungsi dipanggil untuk validasi form register
     protected function validator(array $data)
     {
         return Validator::make($data, [
@@ -64,6 +66,7 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \App\Models\User
      */
+    //menyimpan data ke tabel User. membuat data untuk role admin
     protected function create(array $data)
     {
         return User::create([

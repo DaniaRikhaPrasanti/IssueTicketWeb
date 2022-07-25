@@ -15,6 +15,7 @@ class TicketController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    //menampilkan data pada tabel Ticket sesuai dengan role yang mengakses
     public function index()
     {
         // select distinct all ticket from ticket table
@@ -40,13 +41,6 @@ class TicketController extends Controller
                 'tickets' => $tickets_admin
             ]);
         }
-
-
-        // old
-        // return view('ticketrequester.list_tickets', [
-        //     'title' => 'List Tickets',
-        //     'tickets' => Ticket::all()
-        // ]);
     }
 
     /**
@@ -54,6 +48,7 @@ class TicketController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    //menampilkan halaman views/ticketrequester/create_ticket.blade.php yaitu form untuk membuat ticket baru milik user dengan role "requester"
     public function create()
     {
         return view('ticketrequester.create_ticket', [
@@ -67,6 +62,7 @@ class TicketController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+    //menyimpan data inputan di form views/ticketrequester/create_ticket.blade.php ke tabel Ticket 
     public function store(Request $request)
     {
         $request->validate([
@@ -101,6 +97,7 @@ class TicketController extends Controller
      * @param  \App\Models\Ticket  $ticket
      * @return \Illuminate\Http\Response
      */
+    //menampilkan data pada tabel Ticket sesuai dengan user yang mengakses. 
     public function show(Ticket $ticket)
     {
         // select * from ticket where id = $id and tick_req = Auth::user()->name 
@@ -115,6 +112,7 @@ class TicketController extends Controller
         $ticketconv = TicketConv::where('ticket_id',$ticket->id)->get();
         $ticket_status = TicketStatus::all();
         // dd($ticketDetail);
+        //jika requester yang mengakses maka data akan ditampilkan melalui halaman views/ticketreuester/detail_ticket.blade.php
         if (auth()->user()->role_id == 2) {
             return view('ticketrequester.detail_ticket', [
                 'title' => 'Detail Ticket',
@@ -124,6 +122,7 @@ class TicketController extends Controller
                 'ticket_status' => $ticket_status,
                 'priority' => $ticket_user,
             ]);
+            //jika agent yang mengakses maka data akan ditampilkan melalui halaman views/ticketagent/detail_ticket.blade.php
         }else{
             return view('ticketagent.detail_ticket', [
                 'title' => 'Detail Ticket',
@@ -154,6 +153,7 @@ class TicketController extends Controller
      * @param  \App\Models\Ticket  $ticket
      * @return \Illuminate\Http\Response
      */
+    //menyimpan perubahan data status dan prioritas melalui halaman views/ticketrequester/detail_ticket.blade.php atau views/ticketagent/detail_ticket.blade.php. perubahan data terjadi di tabel Ticket pada kolom ticket_status_id dan Tick_Priority
     public function update(Request $request, $id)
     {   
         //validasi form update
@@ -175,12 +175,14 @@ class TicketController extends Controller
      * @param  \App\Models\Ticket  $ticket
      * @return \Illuminate\Http\Response
      */
+    //menghapus data pada tabel Ticket sesuai id yang dipilih
     public function destroy(Ticket $ticket)
     {
         Ticket::destroy($ticket->id);
         return redirect('/ticket');
     }
 
+    //menampilkan halaman views/ticketagent/detail_timeline_ticket.blade.php yang menampilkan data pada tabel Ticket
     public function ticketDetail(Ticket $ticket)
     {
         return view("ticketagent.detail_timeline_ticket", compact('ticket'));

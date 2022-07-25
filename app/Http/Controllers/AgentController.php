@@ -17,11 +17,13 @@ class AgentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    //mengecek apakah user sudah mempunyai hak mengakses web atau belum, dalam hal ini yang mempunyai hak akses adalah role agent atau role admin
     public function __construct()
     {
         $this->middleware('role:agent||admin');
     }
 
+    //menampilkan semua data user dengan role "agent" melalui halaman views/agent/list.blade.php
     public function index()
     {
         $datas = Agent::all();
@@ -35,6 +37,7 @@ class AgentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    //menampilkan halaman views/agent/add.blade.php yaitu form untuk membuat user baru dengan role "agent"
     public function create()
     {
         $model = new Agent;
@@ -49,6 +52,7 @@ class AgentController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+    //menyimpan data inputan di form views/agent/add.blade.php ke database segingga dapat membuat user baru dengan role "agent"
     public function store(Request $request)
     {
        
@@ -62,6 +66,7 @@ class AgentController extends Controller
             'Team_Status' => 'boolean',
             'role_id' => 'required'
         ]);
+        //menambahkan data di tabel agent
         Agent::create([
             'Ag_Name' => $request->Ag_Name,
             'Ag_Email' => $request->Ag_Email,
@@ -71,6 +76,7 @@ class AgentController extends Controller
             'Team_Status' => $request->boolean('Team_Status'),
             'role_id' => $request->role_id,
         ]);
+        //menambahkan data di tabel user (agar user bisa login)
         User::create([
             'name' => $request->Ag_Name,
             'email' => $request->Ag_Email,
@@ -84,7 +90,7 @@ class AgentController extends Controller
             'url' => 'https://issueticketweb.id',
 
         ];
-
+        //mengirimkan email berisi username dan password agent yang telah dibuatkan oleh admin melalui halaman views/agent/add.blade.php
 		Mail::to($request->Ag_Email)->send(new Email($data));
 
 
@@ -98,9 +104,9 @@ class AgentController extends Controller
      * @param  \App\Models\Agent  $agent
      * @return \Illuminate\Http\Response
      */
+    //menampilkan data user dengan role "agent" yang tersimpan di database. data ini ditampilkan di halaman views/agent/details.blade.php
     public function show(Agent $agent)
     {
-        //
         return view('agent.details', [
             'title' => 'Agent/Details',
             'agent' => $agent
@@ -113,6 +119,7 @@ class AgentController extends Controller
      * @param  \App\Models\Agent  $agent
      * @return \Illuminate\Http\Response
      */
+    //menampilkan form views/agent/edit.blade.php yang berisi data user dengan role "agent" sesuai id yang dipilih untuk dilakukan edit data user tersebut
     public function edit(Agent $agent)
     {
     
@@ -136,10 +143,9 @@ class AgentController extends Controller
      * @param  \App\Models\Agent  $agent
      * @return \Illuminate\Http\Response
      */
+    //melakukan update data agent yang telah diisikan pada form views/agent/edit.blade.php sebelumnya
     public function update(Request $request, Agent $agent)
     {
-
-        //
         $request->validate([
             'Ag_Name' => 'required|max:255',
             'Ag_Email' => 'required|email',
@@ -149,7 +155,7 @@ class AgentController extends Controller
             'Ag_Address' => 'required|max:255',
             'Team_Status' => 'boolean',
         ]);
-
+        //update data di tabel agent
         Agent::where('id', $agent->id)
             ->update([
                 'Ag_Name' => $request->Ag_Name,
@@ -159,7 +165,7 @@ class AgentController extends Controller
                 'Ag_Address' => $request->Ag_Address,
                 'Team_Status' => $request->boolean('Team_Status'),
             ]);
-
+        //update data di tabel user
         User::where('email', $agent->Ag_Email)
             ->update([
                 'name' => $request->Ag_Name,
@@ -176,21 +182,13 @@ class AgentController extends Controller
      * @param  \App\Models\Agent  $agent
      * @return \Illuminate\Http\Response
      */
+    //menghapus data agent sesuai id yang dipilih (data dihapus di kedua tabel, yaitu tabel agent dan tabel user)
     public function destroy(Agent $agent)
     {
-        //
         Agent::destroy($agent->id);
         $del = User::where('email', $agent->Ag_Email);
         $del->delete();
         return redirect('/agent');
     }
 
-    // public function destroyid($Ag_Email){
-    //     $agent = Agent::where('Ag_Email', $Ag_Email);
-    //     $agent->delete();
-    //     $del = User::where('email', $Ag_Email);
-    //     $del->delete();
-    //     return redirect('/agent')->with('mssg','Agent Deleted');
-
-    // }
 }

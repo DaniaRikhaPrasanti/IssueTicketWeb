@@ -33,6 +33,7 @@ class LoginController extends Controller
      *
      * @return void
      */
+    //otomatis dipanggil saat class register di instansiasi
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
