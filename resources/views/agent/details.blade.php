@@ -8,6 +8,7 @@
             <hr>
             <div class="form">
                 <form action="POST">
+                    @csrf
                     <label for="Ag_Name" class="form-label">Nama : </label>
                     <div class="input-group mb-3">
                         <span class="input-group-text" id="basic-addon1">
